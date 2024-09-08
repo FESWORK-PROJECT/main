@@ -13,12 +13,14 @@
 	* Window-Preferences-Web-XML Files-Encoding: ISO 10646/Unicode(UTF-8)로 변경-Apply   
 	* Window-Preferences-General-Editors-TextEditors-Spelling-Encoding-UTF-8 체크-Apply   
 <br>
-2. jdk 설정   
+2. jdk 설정
 	* Window-Preferences-Java-Installed JREs-Add-[C:\Program Files\Jav\jdk-11] 선택-해당경로체크-Apply   
 	* Window-Preferences-Java-Compiler-Compiler compliance level: 11로 변경   
+
 <br>
 
 ---
+
 <br>
 
 ### ■ 서버환경설정
@@ -55,7 +57,7 @@
 
 ---
 
-<br><br>
+<br><br><br>
 
 # 협업용 SOURCETREE 사용 순서 <span style=color:red>(* 중요 *)</span>
 
