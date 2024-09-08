@@ -13,11 +13,10 @@
 	* Window-Preferences-Web-XML Files-Encoding: ISO 10646/Unicode(UTF-8)로 변경-Apply   
 	* Window-Preferences-General-Editors-TextEditors-Spelling-Encoding-UTF-8 체크-Apply   
 <br>
+
 2. jdk 설정
 	* Window-Preferences-Java-Installed JREs-Add-[C:\Program Files\Jav\jdk-11] 선택-해당경로체크-Apply   
 	* Window-Preferences-Java-Compiler-Compiler compliance level: 11로 변경   
-
-<br>
 
 ---
 
@@ -36,11 +35,9 @@
 
 3. 프로젝트 Facets 체크   
 	* fesworkProject 우클릭 - Properties - Project Facets에서   
-	
 		* Dynamic Web Module의 Version: 4.0   
 		* Java의 Version: 11   
 		* JavaScript의 Version: 1.0   
-  
 	* 우측 Runtimes - Apache Tomcat v9.0 체크   
 <br>
 
@@ -51,10 +48,7 @@
 
 5. 서버 생성 시 Modules 설정(contextPath)   
 	* Modules - Edit - /feswork   
-	* (다이나믹 웹 프로젝트 생성 시 설정을 feswork로 해두어서 이미 되어있을 가능성이 높지만 체크한번해주세요.)   
-
-<br>
-
+	* (다이나믹 웹 프로젝트 생성 시 설정을 feswork로 해두긴했지만.. 체크해주삼)   
 ---
 
 <br><br><br>
@@ -70,13 +64,10 @@
 1. Clone
 	* 소스경로
 		* https://github.com/FESWORK-PROJECT/main.git
-
 	* 목적지경로
-
 		* C:/workspace/Project_FESWORK (빈폴더로 생성하시면됨)
 
 <br>
-
 
 2. Local Branch Checkout
 	* 원격-origin-본인이름브랜치 더블클릭-확인클릭
@@ -125,9 +116,7 @@
 2. 커밋(commit작업)
 	* 우측 변경사항 확인 후
 	* 하단 커밋메시지 간결하게 작성, 아래 커밋메시지 규칙 읽어보길 권장
-
 		* 참조: https://velog.io/@chojs28/Git-%EC%BB%A4%EB%B0%8B-%EB%A9%94%EC%8B%9C%EC%A7%80-%EA%B7%9C%EC%B9%99
-
 	* 우측하단 [네모난 커밋] 클릭
 
 <br>
