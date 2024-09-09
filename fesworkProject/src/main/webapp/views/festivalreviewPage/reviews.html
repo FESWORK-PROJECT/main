@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>댓글 목록</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .comment-author {
+            font-weight: bold;
+        }
+        .comment-content {
+            margin-top: 5px;
+        }
+
+        .header {
+            background-color: #6CC04A;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+        }
+
+
+        .footer {
+            background-color: #6CC04A;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 30px;
+        }
+
+        h1{
+            color: white;
+            background-color: #6CC04A;     
+        }
+
+        #reviewSerch{
+            width: 60px;
+            height: 20px;
+            background-color: #6CC04A;
+            border: none;
+            color: white;
+            text-align: center;
+            font-size: larger;
+
+            padding-left: 0px; /* 이미지와 텍스트가 겹치지 않도록 여백 설정 */
+            background-size: 20px 20px; /* 이미지 크기를 원하는 크기로 조절 */
+            background-position: 5px center; /* 이미지 위치를 input 내부에서 설정 */
+            background-repeat: no-repeat; /* 이미지를 반복하지 않도록 설정 */
+        }
+
+      button{
+             float: right; 
+            border: none;
+            background-color: #6CC04A;
+            color: white; 
+        } 
+
+        #array_btn {
+           float: right; 
+           
+        }
+        
+        #reviewSearchcontainer{   
+            display: flex;
+            justify-content: end;
+            margin-bottom: 5px;
+            
+        }
+
+
+    </style>
+</head>
+<body>
+            <div class="header" align="">
+                FES WORK
+            </div>
+    
+        <div align="center">
+            <h1>방문객 후기 게시판</h1>
+        </div>
+
+        <div id="reviewSearchcontainer">
+            <input type="text" id="reviewSerch" name="reviewSerch" value="search">
+        </div>
+
+        <div id="array_btn">
+            <button>최신순</button>
+            <button>조회수</button>
+        </div>
+
+<div>
+    <ul>
+        <li>
+            <span class="comment-author">사용자1:</span>
+            <p class="comment-content">이 글 정말 유익하네요! 감사합니다.</p>
+        </li>
+        <li>
+            <span class="comment-author">sujinLim:</span>
+            <p class="comment-content">역시 종군님이 최고예요 항상 덕분에 힘이 납니다</p>
+        </li>
+        <li>
+            <span class="comment-author">사용자3:</span>
+            <p class="comment-content">더 많은 자료도 소개해 주실 수 있나요?</p>
+        </li>
+
+        <li>
+            <span class="comment-author">whdrns456:</span>
+            <p class="comment-content">더 많은 자료도 소개해 주실 수 있나요?</p>
+        </li>
+        <li>
+            <span class="comment-author">kkk:</span>
+            <p class="comment-content">더 많은 자료도 소개해 주실 수 있나요?</p>
+        </li>
+        <li>
+            <span class="comment-author">dddd3:</span>
+            <p class="comment-content">더 많은 자료도 소개해 주실 수 있나요?</p>
+        </li>
+    </ul>
+</div>
+
+
+    <div class="footer">
+        KH 정보교육원 © | 찾아오시는 길: KH L관 7층
+    </div>
+
+</body>
+</html>
