@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+ 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -54,7 +56,19 @@
 </style>
 </head>
 <body>
-<% String contextPath = request.getContextPath(); %>
+<% 
+	String contextPath = request.getContextPath(); 
+
+	String alertMsg = (String)session.getAttribute("alertMsg");
+%>
+<% if (alertMsg != null) { %>
+	<script>
+		alert("<%= alertMsg %>");
+	</script>
+	<% session.removeAttribute("alertMsg"); %>
+<% } %>
+
+
     <!-- 상단 메뉴 -->
     <div class="header">
         <div class="navi">
@@ -69,7 +83,17 @@
             <button>검색</button>
         </div>
         <div>
-            <a href="#">로그인</a>
+        	<c:choose>
+        		<c:when test="${ empty loginMember }">
+        			<!-- 로그인 안된 상태 -->
+		            <a href="<%= contextPath %>/views/member/loginForm.jsp">로그인/회원가입</a>
+        		</c:when>
+        		<c:otherwise>
+        			<!-- 로그인 성공 -->
+        			<a href="<%= contextPath %>/views/member/myPage.jsp">마이페이지</a>
+        			<a href="<%= contextPath %>/logout.me">로그아웃</a>
+        		</c:otherwise>
+        	</c:choose>
         </div>
     </div>
 </body>

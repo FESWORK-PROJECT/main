@@ -1,5 +1,56 @@
 package com.feswork.member.service;
 
+import org.apache.ibatis.session.SqlSession;
+
+import com.feswork.member.model.dao.MemberDao;
+import com.feswork.member.model.vo.Member;
+import com.feswork.template.MybatisTemplate;
+
 public class MemberService {
+
+	private MemberDao mDao = new MemberDao();
+	
+	public Member loginMember(Member m) {
+		System.out.println("service가 받은 m:"+m);
+		
+		Member loginMember = null;
+		
+		SqlSession sqlSession = MybatisTemplate.getSqlSession();
+		loginMember = mDao.loginMember(sqlSession, m);
+		
+		sqlSession.close();
+		
+		System.out.println("service가 받은 loginMember:"+loginMember);
+		
+		return loginMember;
+	}
+
+	public int signupMember(Member m) {
+		int result = 0;
+		
+		SqlSession sqlSession = MybatisTemplate.getSqlSession();
+		
+		result = mDao.signupMember(sqlSession, m);
+		
+		if(result>0) {
+			sqlSession.commit();
+		}
+		
+		sqlSession.close();
+		
+		return result;
+	}
+
+	public int idCheck(String memberId) {
+		SqlSession sqlSession = MybatisTemplate.getSqlSession();
+		
+		int count = mDao.idCheck(sqlSession, memberId);
+		
+		sqlSession.close();
+		
+		return count;
+	}
+
+
 
 }
