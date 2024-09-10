@@ -20,6 +20,20 @@ public class Member {
 		
 	}
 
+	//회원가입용 생성자
+	
+	public Member(String memberId, String memberPwd, String email, String memberName, String birth, String gender,
+			String phone) {
+		super();
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+		this.email = email;
+		this.memberName = memberName;
+		this.birth = birth;
+		this.gender = gender;
+		this.phone = phone;
+	}
+	
 	public Member(int memberNo, String memberId, String memberPwd, String email, String memberName, String birth,
 			String gender, String phone, String memberLevel, String signupDate, String resignDate) {
 		super();
@@ -35,6 +49,7 @@ public class Member {
 		this.signupDate = signupDate;
 		this.resignDate = resignDate;
 	}
+
 
 	public int getMemberNo() {
 		return memberNo;

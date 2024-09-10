@@ -25,6 +25,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        
     }
 
     #contentLeft, #contentRight {
@@ -38,6 +39,7 @@
         width: 300px;
         border-radius: 10px;
         margin-bottom: 20px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     }
 
     .input-group {
@@ -109,40 +111,56 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        width: 30%;
+        width: 60%;
         box-sizing: border-box;
+        font-size: large;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     }
 
-    input[name="userName"], input[name="phone"]{
+    input[name="memberName"], input[name="phone"]{
         width: 100%;
         padding: 10px;
         margin: 10px 0;
         border: 1px solid #ccc;
         border-radius: 5px;
         box-sizing: border-box;
+        
     }
 
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+
+    button[type=submit]:disabled{
+        background-color: #918f8f;
+        color: #b8bcbd;
+    }
     
 </style>
 </head>
 <body>
     <%@ include file="../common/header.jsp" %>
+    
     <div class="outer">
         <div class="content" id="contentLeft"></div>
         <div class="content" id="contentCenter">
+        <form action="<%= contextPath %>/singup.me" method="post">
             <h2>회원가입</h2>
             <div class="container">
                 <div class="input-group">
-                    <input type="text" name="userId" placeholder="아이디*" required>
+                    <input type="text" name="memberId" placeholder="아이디*" required>
                     <button type="button">중복체크</button>
                 </div>
-                <input type="password" name="userPwd" placeholder="비밀번호*" required>
-                <input type="password" name="userPwdCheck" placeholder="비밀번호 확인*" required>
+                <input type="password" name="memberPwd" placeholder="비밀번호*" required>
+                <input type="password" name="memberPwdCheck" placeholder="비밀번호 확인*" required>
                 <input type="email" name="email" placeholder="이메일 주소*" required>
             </div>
             <div class="container">
-                <input type="text" name="userName" placeholder="이름*" required>
-                <input type="date" name="birthDate" placeholder="생년월일" required>
+                <input type="text" name="memberName" placeholder="이름*" required>
+                <input type="date" name="birth" placeholder="생년월일" required>
                 
                 <div class="gender-container">
                     <input type="radio" id="male" name="gender" value="M" required>
@@ -153,9 +171,45 @@
                 
                 <input type="text" name="phone" placeholder="휴대전화번호" required>
             </div>
-            <button type="submit" class="submit-btn">회원가입</button>
+            <button type="submit" class="submit-btn" onclick="return pwdCheck();" disabled>회원가입</button>
+        </form>
         </div>
         <div class="content" id="contentRight"></div>
     </div>
+    
+    <script>
+    	function pwdCheck(){
+    		const pwd = document.querySelector(".container input[name=memberPwd]").value;
+    		const pwdCheck = document.querySelector(".container input[name=memberPwdCheck]").value;
+
+    		if(pwd != pwdCheck){
+    			alert("비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
+    			return false;
+    		}
+    		
+    	}
+    	
+    	function idCheck(){
+    		const idEle = document.querySelector(".container input[name=memberId]").value;
+    		
+    		$({
+    			url: 'idCheck.me'
+    			type: 'get',
+    			data: { memberId: idEle.val() },
+    			success: function(result){
+    				if(result='false'){
+    					alert("이미 사용중인 아이디입니다.");
+    					idEle.focus();
+    				} else if(resut="true"){
+    					alert("사용 가능한 아이디입니다.");
+    					document.querySelector("form button[type=submit]").removeAttr("disabled");
+    				}
+    			},
+    			ERROR: function(err){
+    				console.log(err);
+    			}
+    		});
+    	}
+    </script>
 </body>
 </html>

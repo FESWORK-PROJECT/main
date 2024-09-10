@@ -112,18 +112,24 @@
                         </tr>
                         <tr align="center">
                             <td>
-                            	<!-- 회원가입 버튼으로 변경? 하고 서블릿을 사용해서 페이지만 요청하는 방식으로 변경해야함 -->
-                                <a href="<%= contextPath %>/views/member/signInForm.jsp">회원가입</a>
-                            </td>
-                            <td>
                                 <a href="<%= contextPath %>/findIdForm.jsp">아이디찾기</a>
                             </td>
                             <td>
                                 <a href="<%= contextPath %>/findPasswordForm.jsp">비밀번호찾기</a>
                             </td>
                         </tr>
-                        
+                        <tr align="center">
+                            <td colspan="3">
+                                <!-- 회원가입 버튼으로 변경? 하고 서블릿을 사용해서 페이지만 요청하는 방식으로 변경해야함 -->
+                                <button type="button" onclick="signupPage();">회원가입</button>
+                            </td>
+                        </tr>
                     </table>
+					<script>
+						function signupPage(){
+							location.href="<%= contextPath %>/signupPage.me"
+						}
+					</script>                    
                 </form>
             </div>
         </div>

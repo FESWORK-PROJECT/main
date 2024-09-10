@@ -25,6 +25,22 @@ public class MemberService {
 		return loginMember;
 	}
 
+	public int signupMember(Member m) {
+		int result = 0;
+		
+		SqlSession sqlSession = MybatisTemplate.getSqlSession();
+		
+		result = mDao.signupMember(sqlSession, m);
+		
+		if(result>0) {
+			sqlSession.commit();
+		}
+		
+		sqlSession.close();
+		
+		return result;
+	}
+
 
 
 }
