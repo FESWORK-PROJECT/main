@@ -60,7 +60,7 @@
            
             <a href="#">소개</a>
             <a href="#">축제정보</a>
-            <a href="#">축제홍보</a>
+            <a href="<%= contextPath %>/views/promo/promo.jsp">축제홍보</a>
         </div>
         <div class="search">
             <input type="text" placeholder="검색">
