@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
-
-
 <<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -122,14 +119,15 @@
         #fesvival-post2{
             display: grid;
             grid-template-columns: repeat(4, 1fr); /* 4개의 열 */
-           
             margin-left: 5px;
             justify-content: space-between; /* 가로로 간격을 조절 */
-
             gap: 10px; /* 요소 간의 간격 설정 */
             padding: 10px; /* 웹사이트 벽과의 거리 설정 */
             margin: 0 auto; /* 중앙 정렬 */
             max-width: 1200px; /* 컨테이너의 최대 너비 설정 */
+
+            /* overflow: hidden;
+            position: relative; */
         }
 
         #fesvival-post2 div > div {
@@ -137,7 +135,6 @@
             width: 150px;  
             height: 200px;
             padding: 40px;
-
         }
         #morediv {
             display: flex;
@@ -152,6 +149,13 @@
             background-color: #6CC04A;
             color: white;
             
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
         }
         ul li{
             list-style-type: none;
@@ -246,18 +250,51 @@
 
                 align-items: center;
             }
-                </style>
-            </head>
-            <body>
+            #more_festival{
+                display: grid;
+                 grid-template-columns: repeat(4, 1fr); /* 4개의 열 */
+                margin-left: 5px;
+                 justify-content: space-between; /* 가로로 간격을 조절 */
+                    gap: 10px; /* 요소 간의 간격 설정 */
+                 padding: 10px; /* 웹사이트 벽과의 거리 설정 */
+                margin: 0 auto; /* 중앙 정렬 */
+            max-width: 1200px; /* 컨테이너의 최대 너비 설정 */
+            }
 
+            #more_festival div > div {
+            background-size: cover;
+            width: 150px;  
+            height: 200px;
+            padding: 40px;
+        }
     
-    
+        #more_festival {
+        display: none;
+        margin: 0;
+        padding: 0;
+      }
+
+     #morediv {
+     margin-bottom: 10px;
+    }
+
+    .footer {
+    margin-top: 10px;
+    padding-top: 10px;
+    }
+
+                </style>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+<body>
+
     <div class="header" align="">
         FES WORK
     </div>
             <!-- 메인바  구간-->
 
-            <br> <br><br>
+            <br>
 
     <main role="main" id="mainTab" >
         <div class="wrap">
@@ -291,7 +328,6 @@
                                 </select>
                             </div>
                             
-
                             <div class="select_box select_area">
                                 <label for="searchArea"style="display: none;">지역 선택</label>
                                 <select name="searchArea" id="searchArea" title="지역 선택">
@@ -360,21 +396,17 @@
                                 <span>초기화</span></button>
                             <button class="btn_search" id="btnSearch"><span>검색</span>
                             </button>
-                        </div>
                             
+                        </div>
+                        
                         <div class= "serchinput">
                             <input type="text" value="검색" id="searchinput">
                         </div>
-
+                    </form>
 
                         </div> 
 
                         <br><br>
-
-                            <div>
-
-                            </div>
-
 
                             <div id="fesvival-post1">
                             <!-- <a href="detailFestival.html" style="background-image: url(resources/urbanbrush-20180824005523160427.png);">
@@ -389,17 +421,19 @@
                             </div>
                             
                             <br>
-                            <hr size="1" color="green">
+                            <hr size="1" color="green">                          
+                
+                        </section>
 
-                            </section>
 
+                        
                         <section>
                             <div class="festival_ul_top" id="festival_ul_top" style="">
                                 <ul class="tab_area">
                                     <li id="tabFstvlList" class="active">
                                         <button>기간순</button>
                                     </li>
-                                
+                                    
                                     <li id="tabFstvlLikeOrderList">
                                         <button>인기순</button>
                                     </li>
@@ -407,7 +441,7 @@
                             </div>
 
                           <div id="fesvival-post2" style="height: 50px;">
-                                <div>
+                            <div>
                                 <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
                                     <div>
                                         <strong>해운대모래축제</strong>
@@ -433,133 +467,63 @@
                                         <p>가산동 149-2 유앤율 202호</p>
                                     </div>
                               </div>
-                                
-                              <div>
-                                <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                    <div>
-                                        <strong>해운대모래축제</strong>
-                                        <small>1994.03.07 ~ 2024.09.05</small>
-                                        <p>가산동 149-2 유앤율 202호</p>
-                                    </div>
-                              </div>
-                                
-                              <div>
-                                <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                    <div>
-                                        <strong>해운대모래축제</strong>
-                                        <small>1994.03.07 ~ 2024.09.05</small>
-                                        <p>가산동 149-2 유앤율 202호</p>
-                                    </div>
-                              </div>  
-                                
-                              <div>
-                                <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                    <div>
-                                        <strong>해운대모래축제</strong>
-                                        <small>1994.03.07 ~ 2024.09.05</small>
-                                        <p>가산동 149-2 유앤율 202호</p>
-                                    </div>
-                              </div> 
-                               
-                              <div>
-                                <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                    <div>
-                                        <strong>해운대모래축제</strong>
-                                        <small>1994.03.07 ~ 2024.09.05</small>
-                                        <p>가산동 149-2 유앤율 202호</p>
-                                    </div>
-                              </div>
-                                
-                              <div>
-                                <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                    <div>
-                                        <strong>해운대모래축제</strong>
-                                        <small>1994.03.07 ~ 2024.09.05</small>
-                                        <p>가산동 149-2 유앤율 202호</p>
-                                    </div>
-                              </div>
-                               
-                              <div>
-                                <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                    <div>
-                                        <strong>해운대모래축제</strong>
-                                        <small>1994.03.07 ~ 2024.09.05</small>
-                                        <p>가산동 149-2 유앤율 202호</p>
-                                    </div>
-                              </div>
-                              
-                              <div>
-                                <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                    <div>
-                                        <strong>해운대모래축제</strong>
-                                        <small>1994.03.07 ~ 2024.09.05</small>
-                                        <p>가산동 149-2 유앤율 202호</p>
-                                    </div>
-                              </div>
-                                
-                              <div>
-                                <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                    <div>
-                                        <strong>해운대모래축제</strong>
-                                        <small>1994.03.07 ~ 2024.09.05</small>
-                                        <p>가산동 149-2 유앤율 202호</p>
-                                    </div>
-                              </div>
-                              
-                              <div>
-                                <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                    <div>
-                                        <strong>해운대모래축제</strong>
-                                        <small>1994.03.07 ~ 2024.09.05</small>
-                                        <p>가산동 149-2 유앤율 202호</p>
-                                    </div>
-                              </div>
-                               
-                              <div>
-                                <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                    <div>
-                                        <strong>해운대모래축제</strong>
-                                        <small>1994.03.07 ~ 2024.09.05</small>
-                                        <p>가산동 149-2 유앤율 202호</p>
-                                    </div>
-                              </div>
-                              
-                              <div>
-                                <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                    <div>
-                                        <strong>해운대모래축제</strong>
-                                        <small>1994.03.07 ~ 2024.09.05</small>
-                                        <p>가산동 149-2 유앤율 202호</p>
-                                    </div>
-                              </div>
-                             
-                              <div>
-                                <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                    <div>
-                                        <strong>해운대모래축제</strong>
-                                        <small>1994.03.07 ~ 2024.09.05</small>
-                                        <p>가산동 149-2 유앤율 202호</p>
-                                    </div>
-                              </div>
-                                
-                              <div>
-                                <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                    <div>
-                                        <strong>해운대모래축제</strong>
-                                        <small>1994.03.07 ~ 2024.09.05</small>
-                                        <p>가산동 149-2 유앤율 202호</p>
-                                    </div>
-                              </div>
-                            </div>
-                        </section>
 
-
-                    <section>
-                        <div id="morediv">
-                            <button type="submit" id="more">더보기</button>
-                        </div>
+                              <div>
+                                <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
+                                    <div>
+                                        <strong>해운대모래축제</strong>
+                                        <small>1994.03.07 ~ 2024.09.05</small>
+                                        <p>가산동 149-2 유앤율 202호</p>
+                                    </div>
+                              </div>
                     </section>
-                  
+                    
+                    <div id="morediv">
+                        <button id="more">더보기</button>
+                    </div>
+
+                    <section id="more_festival">
+                        <div>
+                            <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
+                                <div>
+                                    <strong>해운대모래축제</strong>
+                                    <small>1994.03.07 ~ 2024.09.05</small>
+                                    <p>가산동 149-2 유앤율 202호</p>
+                                </div>
+                          </div>
+
+                          <div>
+                            <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
+                                <div>
+                                    <strong>해운대모래축제</strong>
+                                    <small>1994.03.07 ~ 2024.09.05</small>
+                                    <p>가산동 149-2 유앤율 202호</p>
+                                </div>
+                          </div>
+
+                          <div>
+                            <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
+                                <div>
+                                    <strong>해운대모래축제</strong>
+                                    <small>1994.03.07 ~ 2024.09.05</small>
+                                    <p>가산동 149-2 유앤율 202호</p>
+                                </div>
+                          </div>
+
+                          <div>
+                            <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
+                                <div>
+                                    <strong>해운대모래축제</strong>
+                                    <small>1994.03.07 ~ 2024.09.05</small>
+                                    <p>가산동 149-2 유앤율 202호</p>
+                                </div>
+                          </div>   
+
+                    </section>
+
+
+                     
+    </div>         
     </main>
       
     <section>
@@ -567,7 +531,12 @@
     <div class="footer">
         KH 정보교육원 © | 찾아오시는 길: KH L관 7층
     </div>
-  </section>
+    </section>
+
+                <script>
+
+                    
+                </script>
 
 </body>
 </html>
