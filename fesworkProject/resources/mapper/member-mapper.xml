@@ -1,1 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+
+	<resultMap id="memberResultSet" type="Member">
+		<result column="MEM_NO" property="memberNo" />
+		<result column="MEM_ID" property="memberId" />
+		<result column="MEM_PASSWORD" property="memberPwd" />
+		<result column="EMAIL" property="email" />
+		<result column="MEM_NAME" property="memberName" />
+		<result column="BIRTH" property="birth" />
+		<result column="GENDER" property="gender" />
+		<result column="PHONE" property="phone" />
+		<result column="MEM_LEVEL" property="memberLevel" />
+		<result column="SIGNUP_DATE" property="signupDate" />
+		<result column="RESIGN_DATE" property="resignDate" />
+	</resultMap>
+
+	<select id="loginMember" resultMap="memberResultSet">
+		SELECT *
+			FROM MEMBER 
+		WHERE MEM_ID = #{memberId} AND MEM_PASSWORD = #{memberPwd} AND RESIGN_DATE IS NULL
+	</select>
+
+</mapper>

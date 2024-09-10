@@ -5,6 +5,7 @@
 <configuration>
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL" />
+		 <setting name="logImpl" value="STDOUT_LOGGING"/>
 	</settings>
 	
 	<typeAliases>
@@ -23,6 +24,6 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="/mapper/member-mapper.xml" />
+   		 <mapper resource="/mapper/member-mapper.xml"/>
 	</mappers>
 </configuration>

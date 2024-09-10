@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +53,19 @@
 </style>
 </head>
 <body>
-<% String contextPath = request.getContextPath(); %>
+<% 
+	String contextPath = request.getContextPath(); 
+
+	String alertMsg = (String)session.getAttribute("alertMsg");
+%>
+<% if (alertMsg != null) { %>
+	<script>
+		alert("<%= alertMsg %>");
+	</script>
+	<% session.removeAttribute("alertMsg"); %>
+<% } %>
+
+
     <!-- 상단 메뉴 -->
     <div class="header">
         <div class="navi">
@@ -67,7 +80,17 @@
             <button>검색</button>
         </div>
         <div>
-            <a href="#">로그인</a>
+        	<c:choose>
+        		<c:when test="${ empty loginMember }">
+        			<!-- 로그인 안된 상태 -->
+		            <a href="<%= contextPath %>/views/member/loginForm.jsp">로그인</a>
+        		</c:when>
+        		<c:otherwise>
+        			<!-- 로그인 성공 -->
+        			<a href="<%= contextPath %>/views/member/myPage.jsp">마이페이지</a>
+        			<a href="<%= contextPath %>/views/member/logout.me">로그아웃</a>
+        		</c:otherwise>
+        	</c:choose>
         </div>
     </div>
 </body>
