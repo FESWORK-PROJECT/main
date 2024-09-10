@@ -20,4 +20,11 @@ public class MemberDao {
 		return sqlSession.insert("memberMapper.insertMember", m);
 	}
 
+	public int idCheck(SqlSession sqlSession, String memberId) {
+		int count = sqlSession.selectOne("memberMapper.idCheck", memberId);
+		
+		return count;
+		
+	}
+
 }

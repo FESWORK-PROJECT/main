@@ -41,6 +41,16 @@ public class MemberService {
 		return result;
 	}
 
+	public int idCheck(String memberId) {
+		SqlSession sqlSession = MybatisTemplate.getSqlSession();
+		
+		int count = mDao.idCheck(sqlSession, memberId);
+		
+		sqlSession.close();
+		
+		return count;
+	}
+
 
 
 }

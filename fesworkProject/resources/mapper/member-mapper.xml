@@ -18,12 +18,14 @@
 		<result column="RESIGN_DATE" property="resignDate" />
 	</resultMap>
 
+	<!-- 로그인 기능 쿼리문 -->
 	<select id="loginMember" resultMap="memberResultSet">
 		SELECT *
 			FROM MEMBER 
 		WHERE MEM_ID = #{memberId} AND MEM_PASSWORD = #{memberPwd} AND RESIGN_DATE IS NULL
 	</select>
 	
+	<!-- 회원가입 기능 쿼리문 -->
 	<insert id="insertMember" parameterType="Member">
 			INSERT INTO MEMBER(MEM_NO
 							 , MEM_ID
@@ -49,4 +51,10 @@
 				   , NULL			)
 	</insert>
 
+	<!-- 아이디중복체크 기능 쿼리문 -->
+	<select id="idCheck" resultType="_int">
+		SELECT COUNT(*) COUNT
+			FROM MEMBER
+		WHERE MEM_ID = #{memberId} AND RESIGN_DATE IS NULL
+	</select>
 </mapper>

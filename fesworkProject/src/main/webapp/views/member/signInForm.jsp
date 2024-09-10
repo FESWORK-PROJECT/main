@@ -152,7 +152,7 @@
             <div class="container">
                 <div class="input-group">
                     <input type="text" name="memberId" placeholder="아이디*" required>
-                    <button type="button">중복체크</button>
+                    <button type="button" onclick="idCheck();">중복체크</button>
                 </div>
                 <input type="password" name="memberPwd" placeholder="비밀번호*" required>
                 <input type="password" name="memberPwdCheck" placeholder="비밀번호 확인*" required>
@@ -190,19 +190,19 @@
     	}
     	
     	function idCheck(){
-    		const idEle = document.querySelector(".container input[name=memberId]").value;
+    		 const idEle = $("input[name='memberId']");
     		
-    		$({
-    			url: 'idCheck.me'
+    		$.ajax({
+    			url: 'idCheck.me',
     			type: 'get',
     			data: { memberId: idEle.val() },
     			success: function(result){
-    				if(result='false'){
+    				if(result=='false'){
     					alert("이미 사용중인 아이디입니다.");
     					idEle.focus();
-    				} else if(resut="true"){
+    				} else if(result=='true'){
     					alert("사용 가능한 아이디입니다.");
-    					document.querySelector("form button[type=submit]").removeAttr("disabled");
+    					$("form button[type=submit]").prop("disabled", false);
     				}
     			},
     			ERROR: function(err){

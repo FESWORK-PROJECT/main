@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.feswork.member.service.MemberService;
+
 /**
  * Servlet implementation class IdCheckController
  */
@@ -28,6 +30,13 @@ public class IdCheckController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memberId = request.getParameter("memberId");
 		
+		int count = new MemberService().idCheck(memberId);
+		
+		if(count>0) {
+			response.getWriter().print("false");
+		} else {
+			response.getWriter().print("true");
+		}
 		
 	}
 
