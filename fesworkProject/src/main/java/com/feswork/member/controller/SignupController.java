@@ -13,16 +13,16 @@ import com.feswork.member.model.vo.Member;
 import com.feswork.member.service.MemberService;
 
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class SingupController
  */
-@WebServlet("/login.me")
-public class LoginController extends HttpServlet {
+@WebServlet("/singup.me")
+public class SignupController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public SignupController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,25 +37,31 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("memberId");
-		String pwd = request.getParameter("memberPwd");
-		
-		Member m = new Member();
-		m.setMemberId(id);
-		m.setMemberPwd(pwd);
-	
-		Member loginMember = new MemberService().loginMember(m); 
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		
-		if(loginMember != null) {
-			session.setAttribute("loginMember", loginMember);
-			session.setAttribute("alertMsg", "로그인성공");
-			response.sendRedirect( request.getContextPath() );
-		} else {
-			session.setAttribute("alertMsg", "로그인실패. 아이디와 비밀번호를 확인하세요.");
-			response.sendRedirect( request.getContextPath() );
-		}
 		
+		String memberId = request.getParameter("memberId");
+		String memberPwd = request.getParameter("memberPwd");
+		String email = request.getParameter("email");
+		String memberName = request.getParameter("memberName");
+		String birth = request.getParameter("birth");
+		String gender = request.getParameter("gender");
+		String phone = request.getParameter("phone");
+		
+		Member m = new Member(memberId, memberPwd, email, memberName, birth, gender, phone);
+		
+		int result = new MemberService().signupMember(m);
+		
+		
+		if(result>0) {
+			
+			session.setAttribute("alertMsg", m.getMemberName()+"님 FESWORK와 함께해주셔서 감사합니다.");
+			
+			response.sendRedirect(request.getContextPath());
+		} else {
+			session.setAttribute("alertMsg", "회원가입에 실패했습니다. 관리자에게 문의해주세요.");
+		}
 	}
 
 }
