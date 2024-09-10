@@ -1,17 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
     <title>Document</title>
 
     <style>
         #explanation{font-size: small;}
 
        .off{
-   
+
          /* 이미지와 텍스트가 겹치지 않도록 여백 설정 */
-    
         background-size: 20px 20px; /* 이미지 크기를 원하는 크기로 조절 */
         background-position: 10px center; /* 이미지 위치를 input 내부에서 설정 */
         background-repeat: no-repeat; /* 이미지를 반복하지 않도록 설정 */
@@ -23,22 +26,6 @@
         box-sizing: border-box;
     
     }
-
-    .footer {
-            background-color: #6CC04A;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 30px;
-        }
-        .header {
-            background-color: #6CC04A;
-            padding: 20px;
-            text-align: center;
-            color: white;
-            font-size: 24px;
-        }
-    
         .event-image {
             text-align: center;
             margin-bottom: 20px;
@@ -49,8 +36,6 @@
             height: auto;
             border-radius: 10px;
         }
-
-     
 
         .info-item {
             display: flex;
@@ -76,7 +61,7 @@
         }
 
         #reviewmore{
-            background-color: #6CC04A;
+            background-color: #35096ebb;
             color: white;
             font-size: larger;
             text-decoration: none;
@@ -98,14 +83,11 @@
 </head>
 <body>
 
-        <section align="center">
-    <div class="header" align="">
-        FES WORK
-    </div>
+  	 <jsp:include page="../common/header.jsp"/>
 
-     <br>
+   <br><br>
 
-    <div>
+    <div align="center">
         <span>경복궁에서 마주한 특별한 시간</span>
         <h2>경복궁 생과방</h2>
     </div>
@@ -131,7 +113,7 @@
 
     <br>
 
-    <div id="explanation">
+    <div id="explanation"align="center" >
       
         <P> *
     <strong>
@@ -145,7 +127,7 @@
 </section>
 
     <br>
-    <hr color="#6CC04A">
+    <hr color="#35096ebb">
 
         <section>
             <div>
@@ -171,13 +153,8 @@
 
         </section>
 
-    <hr color="#6CC04A">
-
-
-
-    <div class="footer">
-        KH 정보교육원 © | 찾아오시는 길: KH L관 7층
-    </div>
+ 
+		<jsp:include page="../common/footer.jsp"/>
 
 </body>
 </html>
