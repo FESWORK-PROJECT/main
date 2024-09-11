@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>축제 홍보 페이지</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
@@ -14,11 +14,13 @@
     text-align: center;
     margin-top: 50px;
 }
-#write {
+.write {
+    font-size: 12px;
+    text-decoration: none;
     margin-top: auto;
     margin-bottom: auto;
     margin-right: 10px;
-    width: 100px;
+    width: 140px;
     height: 40px;
     background-color: yellow;
     border-radius: 10px;
@@ -29,9 +31,10 @@
     width: 600px;
 }
 #second{
+    text-decoration: none;
     justify-content: space-between;
     display: flex;
-    background-color: violet;
+    background-color: rgb(253, 161, 253);
     margin-top: 50px;
     color: white;
     margin-bottom: 20px;
@@ -44,10 +47,10 @@
     border-top: 2px solid black; border-bottom: 2px solid black;
 }
 #color2{
-    background-color: #cc84ee; color: white;
+    background-color: #5658b58a; color: white;
 }
 #color3{
-    background-color: #35096ebb; color: white;
+    background-color: #a575e44f; color: white;
 }
 #second-1{
     margin-left: 20px;
@@ -101,10 +104,6 @@ th, td {
 .pagination-button {
     background-color: #35096ebb;color: white;border: none;cursor: pointer;
     padding: 10px;font-size: 18px;border-radius: 5px;display: inline-block;
-}
-
-.pagination-button:hover {
-    background-color: #76c060;
 }
 #ggg{
     margin-left: 30px;margin-right: 20px;
@@ -189,8 +188,8 @@ th, td {
     <div id="second">
         <h1 id="second-1"><span>홍보 등록 게시판-</span><span id="color">이런 축제도 있어요!</span></h1>
         <div id="second-2">
-            <button id="write"><a href="">내 작성글 보기</a></button>
-            <button id="write"><a href="">홍보글 등록</a></button>
+            <button class="write"><a href="writecheck.jsp" class="write" >내 작성글 보기</a></button>
+            <button class="write"><a href="promowrite.jsp" class="write" >홍보글 등록</a></button>
         </div>
     </div>
 
@@ -212,8 +211,8 @@ th, td {
                     <th>구리시 어쩌구 저쩌구</th>
                     <th>허완</th>
                     <th>2024-08-13</th>
-                    <th>18</th>
-                    <th>18</th>
+                    <th>25</th>
+                    <th>1855</th>
                 </tr>
                 <tr id="color3">
                     <th>2</th>
@@ -221,8 +220,8 @@ th, td {
                     <th>서울시 어쩌구 저쩌구</th>
                     <th>김인창</th>
                     <th>2024-09-03</th>
-                    <th>18</th>
-                    <th>18</th>
+                    <th>20</th>
+                    <th>1444</th>
                 </tr>
                 <tr id="color2">
                     <th>3</th>
@@ -283,13 +282,15 @@ th, td {
 
     </div>
     <div id="pagination">
-        <a class="cross-wind" id="cross-left" href="">&nbsp;</a>
-        <em>1</em>
-        <a href="">2</a>
-        <a href="">3</a>
-        <a href="">4</a>
-        <a href="">5</a>
-        <a class="cross-wind" id="cross-right" href="">&nbsp;</a>
+        <ul class="pagination">
+                    <li class="page-item"><a href="" class="page-link">Prev</a></li>
+                    <li class="page-item"><a href="" class="page-link">1</a></li>
+                    <li class="page-item"><a href="" class="page-link">2</a></li>
+                    <li class="page-item"><a href="" class="page-link">3</a></li>
+                    <li class="page-item"><a href="" class="page-link">4</a></li>
+                    <li class="page-item"><a href="" class="page-link">5</a></li>
+                    <li class="page-item"><a href="" class="page-link">Next</a></li>
+        </ul>
     </div>
     <script>
         let currentSlide = 0;

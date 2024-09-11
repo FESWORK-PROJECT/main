@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>축제 홍보 작성</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
@@ -16,10 +16,14 @@
 		    border-top: 2px solid black;
 		    border-bottom: 2px solid black;
 		}
+        #gall1{
+            border-radius: 5px;
+            margin-top: 10px; margin-bottom: 10px;
+        }
 		#ball{
 		    padding-left: 15px;
 		    font-size: 20px;
-		    background-color: #cdfabd;
+		    background-color: #f6c7ff;
 		    border-bottom: 1px solid black;
 		}
 		.box {
@@ -43,31 +47,10 @@
 		    color: green;
 		    font-size: 24px;
 		}
-		#sub {
-		    border: none;
-		    background-color: #35096ebb;
-		    margin-bottom: 200px;
-		    width: 100px;
-		    height: 50px;
-		    border-radius: 5px;
-		}
         table {
+            width: 70em;
             margin: auto;
             border-collapse: collapse;
-        }
-        input[type="date"] {
-            border: 1.5px rgb(68, 136, 244) solid;
-            width: 195px;
-            height: 30px;
-            border-radius: 5px;
-            padding-left: 10px;
-        }
-        input[type="text"] {
-            border: 1.5px rgb(68, 136, 244) solid;
-            width: 400px;
-            height: 30px;
-            border-radius: 5px;
-            padding-left: 10px;
         }
         textarea {
             border: 1.5px rgb(68, 136, 244) solid;
@@ -78,30 +61,42 @@
             padding-top: 10px;
             resize: none;
         }
-        .header {
+        .promo {
             height: 30px;
+        }
+        #sub {
+		    border: none;
+		    background-color: #35096ebb;
+		    margin-bottom: 200px;
+		    width: 100px;
+		    height: 50px;
+		    border-radius: 5px;
+		}
+        .inputStyle{
+            border-radius: 5px;
+            border: 1px solid lightblue;
         }
     </style>
 </head>
 <body>
-	<jsp:include page="../../common/header.jsp"/>
+	<jsp:include page="../common/header.jsp"/>
+    <br><br><br><br>
 	<div>
         <form action="" method="post" enctype="multipart/form-data">
             <table id="table"> 
-                <tr><td id="gall"><span >제목:(축제명으로 자동기입됨)</span></td></tr>
-                <tr><td id="ball"><span >허완  2024-08-24</span></td></tr>
+                <tr><td id="gall"><span >제목: <input type="text" id="gall1"></span></td></tr>
+                <tr><td id="ball"><span >아이디명</span></td></tr>
                 <tr><td>썸네일 이미지 </td></tr>
                 <tr>
                     <td class="box box1"><span class="plus-sign">+</span></td>
                     <td class="box box2"><span class="plus-sign">+</span></td>
                 </tr>
-                <tr><td class="header">축제명 :  <input type="text" placeholder="제목을 입력하세요" name="title" maxlength="40"></td></tr>
-                <tr><td class="header">축제기간 :  <input type="date" name="title"><input type="date" name="title"></td></tr>
-                <tr><td class="header">축제장소 :  <input type="text" name="title"></td></tr>
-                <tr><td class="header">축제 개요</td></tr>
+                <tr><td class="promo">축제명 :  <input type="text" placeholder="제목을 입력하세요" name="title" class="inputStyle" maxlength="40"></td></tr>
+                <tr><td class="promo">축제기간 :  <input type="date" name="title" class="inputStyle"><input type="date" name="title" class="inputStyle"></td></tr>
+                <tr><td class="promo">축제장소 :  <input type="text" name="title" class="inputStyle"></td></tr>
+                <tr><td class="promo">축제 개요</td></tr>
                 <tr><td><textarea placeholder="내용을 입력하세요" name="detail"></textarea></td></tr>
-                <tr><td class="header">주관</td></tr>
-                <tr><td><input type="text" name="title"></td></tr>
+                <tr><td class="promo">주관  <input type="text" name="title" class="inputStyle"></td></tr>
             </table>
             <br>
             <hr>
@@ -111,6 +106,6 @@
     <div align="center">
         <input type="button" id="sub" value="등록">
     </div>
-	<jsp:include page="../../common/footer.jsp"/>
+	<jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

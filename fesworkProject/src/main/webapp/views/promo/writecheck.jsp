@@ -4,13 +4,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내 작성글</title>
 <style>
+a{
+    text-decoration: none;
+}
+th{
+	text-decoration: none;
+}
 #p{
     margin-left: auto;
     margin-right: auto;
 }
 #board {
+	text-decoration: none;
     font-size: 20px;
     width: 80%; /* 원하는 너비로 설정 */
     margin: 0 auto; /* 상하 여백은 0, 좌우 여백은 auto로 중앙 정렬 */
@@ -35,7 +42,7 @@
 </style>
 </head>
 <body>
-	<jsp:include page="../../common/header.jsp"/>
+	<jsp:include page="../common/header.jsp"/>
 	<div id="board">
         <p>*** 님의 글 목록</p>
         <table id="board2" border= "">
@@ -80,6 +87,6 @@
         </table>
     </div>
 	
-	<jsp:include page="../../common/footer.jsp"/>
+	<jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

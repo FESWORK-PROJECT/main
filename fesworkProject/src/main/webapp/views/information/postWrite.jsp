@@ -1,9 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시글 작성 페이지</title>
+   <title>게시글 작성 페이지</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -54,41 +56,17 @@
             height: auto;
         }
 
-        .header {
-            background-color: #6CC04A;
-            padding: 20px;
-            text-align: center;
-            color: white;
-            font-size: 24px;
-        }
-
-
-        .footer {
-            background-color: #6CC04A;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 30px;
-        }
-        
         h1{
             color: #6CC04A;
         }
-
-
-
     </style>
 </head>
 <body>
-
-    <div class="header" align="">
-        FES WORK
-    </div>
-
-
-
+    <jsp:include page="../common/header.jsp"/>
+    
+    <h1>후기 작성</h1>
     <div class="container">
-        <h1>후기 작성</h1>
+
         <form action="/submit-post" method="post" enctype="multipart/form-data">
             <label for="title">제목</label>
             <input type="text" id="title" name="title" required placeholder="제목을 입력해주세요." style="resize: none;">
@@ -104,11 +82,8 @@
             <button type="submit" class="submit-btn">게시글 등록</button>
         </form>
     </div>
-
-    <div class="footer">
-        KH 정보교육원 © | 찾아오시는 길: KH L관 7층
-    </div>
-
+    <jsp:include page="../common/footer.jsp"/>
+   
 
     <script>
         function previewImage(event) {
@@ -127,5 +102,7 @@
             }
         }
     </script>
+
 </body>
 </html>
+ 
