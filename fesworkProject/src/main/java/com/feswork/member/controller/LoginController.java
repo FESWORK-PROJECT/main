@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -37,5 +38,6 @@ public class LoginController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+	
 
 }
