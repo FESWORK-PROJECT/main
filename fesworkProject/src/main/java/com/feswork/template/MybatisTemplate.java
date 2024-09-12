@@ -13,7 +13,7 @@ public class MybatisTemplate {
 	public static SqlSession getSqlSession() {
 		SqlSession sqlSession = null;
 		
-		String resource = "/mybatis-config.xml";
+		String resource = "mybatis-config.xml";
 		
 		try {
 			InputStream stream = Resources.getResourceAsStream(resource);
