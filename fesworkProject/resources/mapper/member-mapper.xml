@@ -1,1 +1,60 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+
+	<resultMap id="memberResultSet" type="Member">
+		<result column="MEM_NO" property="memberNo" />
+		<result column="MEM_ID" property="memberId" />
+		<result column="MEM_PASSWORD" property="memberPwd" />
+		<result column="EMAIL" property="email" />
+		<result column="MEM_NAME" property="memberName" />
+		<result column="BIRTH" property="birth" />
+		<result column="GENDER" property="gender" />
+		<result column="PHONE" property="phone" />
+		<result column="MEM_LEVEL" property="memberLevel" />
+		<result column="SIGNUP_DATE" property="signupDate" />
+		<result column="RESIGN_DATE" property="resignDate" />
+	</resultMap>
+
+	<!-- 로그인 기능 쿼리문 -->
+	<select id="loginMember" resultMap="memberResultSet">
+		SELECT *
+			FROM MEMBER 
+		WHERE MEM_ID = #{memberId} AND MEM_PASSWORD = #{memberPwd} AND RESIGN_DATE IS NULL
+	</select>
+	
+	<!-- 회원가입 기능 쿼리문 -->
+	<insert id="insertMember" parameterType="Member">
+			INSERT INTO MEMBER(MEM_NO
+							 , MEM_ID
+							 , MEM_PASSWORD
+							 , EMAIL
+							 , MEM_NAME
+							 , BIRTH
+							 , GENDER
+							 , PHONE
+							 , MEM_LEVEL
+							 , SIGNUP_DATE
+							 , RESIGN_DATE)
+			VALUES ( MEMBER_SEQ.NEXTVAL
+				   , #{memberId}
+				   , #{memberPwd}
+				   , #{email}
+				   , #{memberName}
+				   , #{birth}
+				   , #{gender}
+				   , #{phone}
+				   , '회원'
+				   , SYSDATE
+				   , NULL			)
+	</insert>
+
+	<!-- 아이디중복체크 기능 쿼리문 -->
+	<select id="idCheck" resultType="_int">
+		SELECT COUNT(*) COUNT
+			FROM MEMBER
+		WHERE MEM_ID = #{memberId} AND RESIGN_DATE IS NULL
+	</select>
+</mapper>

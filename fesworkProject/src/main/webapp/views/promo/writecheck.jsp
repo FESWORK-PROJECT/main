@@ -44,45 +44,30 @@ th{
 <body>
 	<jsp:include page="../common/header.jsp"/>
 	<div id="board">
-        <p>*** 님의 글 목록</p>
+        <p> ${ loginMember.memberId } 님의 글 목록</p>
         <table id="board2" border= "">
+        	<thead>
+                <th>글번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>조회수</th>
+                <th>작성일</th>
+                <th>첨부파일</th>
+            </thead>
             <tbody>
-                <tr>
-                    <th id="num">번호</th>
-                    <th id="title">제목</th>
-                    <th id="date">작성일</th>
-                    <th id="count">조회수</th>
-                </tr>
-                <tr>
-                    <th>1</th>
-                    <th><a href="../board/1.html">구리시 한강 코스모스 축제</a></th>
-                    <th>2024-08-23</th>
-                    <th>150</th>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <th><a href="../board/2.html">아 하기 싫다</a></th>
-                    <th>2024-08-27</th>
-                    <th>2000</th>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <th><a href="../board/3.html">어그로 끌기 대 성공!</a></th>
-                    <th>2024-08-29</th>
-                    <th>450</th>
-                </tr>
-                <tr>
-                    <th>4</th>
-                    <th><a href="../board/4.html">내일은 뭘먹지</a></th>
-                    <th>2024-09-03</th>
-                    <th>200</th>
-                </tr>
-                <tr>
-                    <th>5</th>
-                    <th><a href="../board/5.html">님들 나 큰일남</a></th>
-                    <th>2024-09-03</th>
-                    <th>400</th>
-                </tr>
+                <%-- for(Board b : list ) {} --%>
+                	<c:forEach var="m" items="${ list }">
+	                    <tr>
+	                        <td>${ m.memberId }</td>
+	                        <td>${ m.memberName }</td>
+	                        <td>${ m.email }</td>
+	                        <td>${ m.birth }</td>
+	                        <td>${ m.gender }</td>
+	                        <td>
+	                        	<c:if test="${ not empty m.phone }">■</c:if>
+	                        </td>
+	                    </tr>
+                    </c:forEach>
             </tbody>
         </table>
     </div>

@@ -5,7 +5,7 @@ import java.sql.Date;
 public class promo {
 	private int rv_Vo;
 	private int fes_No;
-	private int Mem_Id2;
+	private String mem_Id;
 	private String rv_Con;
 	private String rv_Img;
 	private int rv_Like;
@@ -13,11 +13,11 @@ public class promo {
 	public promo() {
 		super();
 	}
-	public promo(int rv_Vo, int fes_No, int mem_Id2, String rv_Con, String rv_Img, int rv_Like, Date rv_Date) {
+	public promo(int rv_Vo, int fes_No, String mem_Id, String rv_Con, String rv_Img, int rv_Like, Date rv_Date) {
 		super();
 		this.rv_Vo = rv_Vo;
 		this.fes_No = fes_No;
-		this.Mem_Id2 = mem_Id2;
+		this.mem_Id = mem_Id;
 		this.rv_Con = rv_Con;
 		this.rv_Img = rv_Img;
 		this.rv_Like = rv_Like;
@@ -35,11 +35,11 @@ public class promo {
 	public void setFes_No(int fes_No) {
 		this.fes_No = fes_No;
 	}
-	public int getMem_Id2() {
-		return Mem_Id2;
+	public String getMem_Id() {
+		return mem_Id;
 	}
-	public void setMem_Id2(int mem_Id2) {
-		Mem_Id2 = mem_Id2;
+	public void setMem_Id(String mem_Id) {
+		this.mem_Id = mem_Id;
 	}
 	public String getRv_Con() {
 		return rv_Con;
@@ -67,9 +67,7 @@ public class promo {
 	}
 	@Override
 	public String toString() {
-		return "promo [rv_Vo=" + rv_Vo + ", fes_No=" + fes_No + ", Mem_Id2=" + Mem_Id2 + ", rv_Con=" + rv_Con
+		return "promo [rv_Vo=" + rv_Vo + ", fes_No=" + fes_No + ", mem_Id=" + mem_Id + ", rv_Con=" + rv_Con
 				+ ", rv_Img=" + rv_Img + ", rv_Like=" + rv_Like + ", rv_Date=" + rv_Date + "]";
 	}
-	
-	
 }

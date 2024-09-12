@@ -85,12 +85,8 @@
         <form action="" method="post" enctype="multipart/form-data">
             <table id="table"> 
                 <tr><td id="gall"><span >제목: <input type="text" id="gall1"></span></td></tr>
-                <tr><td id="ball"><span >아이디명</span></td></tr>
-                <tr><td>썸네일 이미지 </td></tr>
-                <tr>
-                    <td class="box box1"><span class="plus-sign">+</span></td>
-                    <td class="box box2"><span class="plus-sign">+</span></td>
-                </tr>
+                <tr><td id="ball"><span > ${ loginMember.memberId }  </span></td></tr>
+                <tr><td>썸네일 이미지 <input type="file" name="" id=""></td></tr>
                 <tr><td class="promo">축제명 :  <input type="text" placeholder="제목을 입력하세요" name="title" class="inputStyle" maxlength="40"></td></tr>
                 <tr><td class="promo">축제기간 :  <input type="date" name="title" class="inputStyle"><input type="date" name="title" class="inputStyle"></td></tr>
                 <tr><td class="promo">축제장소 :  <input type="text" name="title" class="inputStyle"></td></tr>

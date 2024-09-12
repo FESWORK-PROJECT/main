@@ -98,6 +98,7 @@ th, td {
 #pagination {
     display: flex;justify-content: center;align-items: center;margin: 20px 0;
 }
+#pagingArea {width:fit-content; margin:auto;}
 #page-number {
     font-size: 20px;margin: 0 10px;display: inline-block; 
 }
@@ -158,27 +159,27 @@ th, td {
         <button class="arrow left-arrow" onclick="prevSlide()">&#9664;</button>
         <div class="slides">
             <div class="slide active">
-                <div class="description">허완님이 홍보한</div>
+                <div class="description">${ loginMember.memberId }</div>
                 <a href="#"><img src="" alt="Image 1" id="imgg"></a>
                 <div class="description">고양 푸드 앤 비어 페스티벌</div> <!-- 설명 추가 -->
             </div>
             <div class="slide">
-                <div class="description">김정현님이 홍보한</div>
+                <div class="description">${ loginMember.memberId }</div>
                 <a href="#"><img src="" alt="Image 2" id="imgg"></a>
                 <div class="description">턴업</div> <!-- 다른 설명 추가 -->
             </div>
             <div class="slide">
-                <div class="description">양민욱님이 홍보한</div>
+                <div class="description">${ loginMember.memberId }</div>
                 <a href="#"><img src="" alt="Image 2" id="imgg"></a>
                 <div class="description">턴다운</div> <!-- 다른 설명 추가 -->
             </div>
             <div class="slide">
-                <div class="description">최종군님이 홍보한</div>
+                <div class="description">${ loginMember.memberId }</div>
                 <a href="#"><img src="" alt="Image 2" id="imgg"></a>
                 <div class="description">턴레프트</div> <!-- 다른 설명 추가 -->
             </div>
             <div class="slide">
-                <div class="description">김인창님이 홍보한</div>
+                <div class="description">${ loginMember.memberId }님이 홍보한</div>
                 <a href="#"><img src="" alt="Image 2" id="imgg"></a>
                 <div class="description">턴라이트</div> <!-- 다른 설명 추가 -->
             </div>
@@ -281,17 +282,39 @@ th, td {
         </table>
 
     </div>
-    <div id="pagination">
-        <ul class="pagination">
-                    <li class="page-item"><a href="" class="page-link">Prev</a></li>
-                    <li class="page-item"><a href="" class="page-link">1</a></li>
-                    <li class="page-item"><a href="" class="page-link">2</a></li>
-                    <li class="page-item"><a href="" class="page-link">3</a></li>
-                    <li class="page-item"><a href="" class="page-link">4</a></li>
-                    <li class="page-item"><a href="" class="page-link">5</a></li>
-                    <li class="page-item"><a href="" class="page-link">Next</a></li>
-        </ul>
-    </div>
+    <div id="pagingArea">
+                <ul class="pagination">
+                	<c:choose>
+                		<c:when test="${ pi.currentPage eq 1 }">
+	                    	<li class="page-item disabled">
+	                    		<a href="#" class="page-link">Prev</a>
+	                    	</li>
+	                    </c:when>
+	                    <c:otherwise>
+	                    	<li class="page-item">
+	                    		<a href="list?cpage=${ pi.currentPage - 1 }" class="page-link">Prev</a>
+	                    	</li>
+	                    </c:otherwise>
+                    </c:choose>
+                    <c:forEach var="i" begin="${ pi.startPage }" end="${ pi.endPage }">
+                    	<li class="page-item">
+                    		<a href="list?cpage=${ i }" class="page-link">${ i }</a>
+                    	</li>
+                    </c:forEach>
+                    <c:choose>
+                		<c:when test="${ pi.currentPage eq pi.maxPage }">
+                			<li class="page-item disabled">
+                				<a href="#" class="page-link">Next</a>
+                			</li>
+                		</c:when>
+                		<c:otherwise>
+                			<li class="page-item">
+                				<a href="list?cpage=${ pi.currentPage + 1 }" class="page-link">Next</a>
+                			</li>
+                		</c:otherwise>
+                    </c:choose>
+                </ul>
+            </div>
     <script>
         let currentSlide = 0;
 		let currentPage = 1;
