@@ -2,7 +2,6 @@ package com.feswork.member.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,20 +39,25 @@ public class ModifyPasswordController extends HttpServlet {
 		String newPwd = request.getParameter("newPwd");
 		Member m = (Member)session.getAttribute("loginMember");
 		String memberId = m.getMemberId();
-		Map map = new HashMap();
+		HashMap<String, String> memberMap = new HashMap<>();
 		
-		map.put("memberPwd", memberPwd);
-		map.put("newPwd", newPwd);
-		map.put("memberId", memberId);
+		memberMap.put("memberPwd", memberPwd);
+		memberMap.put("newPwd", newPwd);
+		memberMap.put("memberId", memberId);
 		
+		System.out.println("memberPwd 값 :"+memberPwd);
+		System.out.println("newPwd 값 :"+newPwd);
+		System.out.println("memberId 값 :"+memberId);
 		
-		int result = new MemberService().modifyPwd(memberId, memberPwd, newPwd);
+		int result = new MemberService().modifyPwd(memberMap);
 		
+		System.out.println("반환받은 result의 값 :"+result);
 		if(result>0) {
 			session.setAttribute("alertMsg", "비밀번호가 변경되었습니다.");
+			response.sendRedirect(request.getContextPath()+"/modifyMemberPage.me");
 		} else {
 			session.setAttribute("alertMsg", "비밀번호가 틀립니다. 다시 확인해주세요.");
-			
+			response.sendRedirect(request.getContextPath()+"/modifyMemberPage.me");
 		}
 		
 	}

@@ -153,6 +153,16 @@
 			</div>
 		</div>
 	</div>
-
+	<script>
+		function pwdCheck() {
+			const pwd = document.querySelector("#updatePwdModal input[name=newPwd]").value;
+			const pwdCheck = document.querySelector("#updatePwdModal input[name=newPwdCheck]").value;
+	
+			if (pwd != pwdCheck) {
+				alert("비밀번호와 비밀번호 확인 입력값이 다릅니다.");
+				return false;
+			}
+		}
+	</script>
 </body>
 </html>

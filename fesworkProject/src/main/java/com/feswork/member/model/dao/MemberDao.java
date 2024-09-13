@@ -1,5 +1,7 @@
 package com.feswork.member.model.dao;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.feswork.member.model.vo.Member;
@@ -47,9 +49,9 @@ public class MemberDao {
 		return result;
 	}
 
-	public int modifyPwd(SqlSession sqlSession, String memberId, String memberPwd, String newPwd) {
+	public int modifyPwd(SqlSession sqlSession, Map memberMap) {
 		
-		int result = sqlSession.update("member-Mapper.modifyPwd", memberId, memberPwd, newPwd);
+		int result = sqlSession.update("memberMapper.modifyPwd", memberMap);
 		
 		return result;
 	}

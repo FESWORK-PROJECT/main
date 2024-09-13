@@ -1,5 +1,7 @@
 package com.feswork.member.service;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.feswork.member.model.dao.MemberDao;
@@ -89,11 +91,11 @@ public class MemberService {
 		return result;
 	}
 
-	public int modifyPwd(String memberId, String memberPwd, String newPwd) {
+	public int modifyPwd(Map memberMap) {
 		
 		SqlSession sqlSession = MybatisTemplate.getSqlSession();
 
-		int result = mDao.modifyPwd(sqlSession, memberId, memberPwd, newPwd);
+		int result = mDao.modifyPwd(sqlSession, memberMap);
 		
 		if(result>0) {
 			sqlSession.commit();
