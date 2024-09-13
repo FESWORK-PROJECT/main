@@ -25,7 +25,11 @@
 		</environment>
 	</environments>
 	<mappers>
+<<<<<<< HEAD
    		 <mapper resource="/mapper/information-mapper.xml"/>
    		 <mapper resource="/mapper/member-mapper.xml"/>
+=======
+		<mapper resource="/mapper/member-mapper.xml" />
+>>>>>>> Project_FESWORK
 	</mappers>
 </configuration>
