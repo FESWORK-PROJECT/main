@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,14 +16,19 @@
     margin-top: 50px;
 }
 .write {
-    font-size: 12px;
+    display: flex; /* Flexbox로 설정 */
+    align-items: center; /* 수직 정렬 */
+    justify-content: center; /* 수평 정렬 */
+    color: rgb(120, 120, 255);
+    text-align: center;
+    font-size: 14px;
     text-decoration: none;
     margin-top: auto;
     margin-bottom: auto;
     margin-right: 10px;
     width: 140px;
     height: 40px;
-    background-color: yellow;
+    background-color: rgb(255, 255, 154);
     border-radius: 10px;
     border: none;
     cursor: pointer;
@@ -189,8 +195,11 @@ th, td {
     <div id="second">
         <h1 id="second-1"><span>홍보 등록 게시판-</span><span id="color">이런 축제도 있어요!</span></h1>
         <div id="second-2">
-            <button class="write"><a href="writecheck.jsp" class="write" >내 작성글 보기</a></button>
-            <button class="write"><a href="promowrite.jsp" class="write" >홍보글 등록</a></button>
+            <%-- 로그인 시에만 글쓰기 버튼 표시 --%>
+            <c:if test = "${ not empty loginMember }">
+            	<a href="writecheck.jsp" class="write" >내 작성글 보기</a>
+            	<a href="promowrite.jsp" class="write" >홍보글 등록</a>
+            </c:if>
         </div>
     </div>
 

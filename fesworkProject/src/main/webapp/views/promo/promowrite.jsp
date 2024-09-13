@@ -76,6 +76,11 @@
             border-radius: 5px;
             border: 1px solid lightblue;
         }
+        #id{
+            background-color:  #f6c7ff;
+            border: none;
+        }
+        
     </style>
 </head>
 <body>
@@ -85,14 +90,14 @@
         <form action="" method="post" enctype="multipart/form-data">
             <table id="table"> 
                 <tr><td id="gall"><span >제목: <input type="text" id="gall1"></span></td></tr>
-                <tr><td id="ball"><span > ${ loginMember.memberId }  </span></td></tr>
-                <tr><td>썸네일 이미지 <input type="file" name="" id=""></td></tr>
+                <tr><td id="ball"><input type="text" name="promowriter" id="id" value="${ loginMember.memberId }"></td></tr>
+                <tr><td>썸네일 이미지 <input type="file" name="img" id=""></td></tr>
                 <tr><td class="promo">축제명 :  <input type="text" placeholder="제목을 입력하세요" name="title" class="inputStyle" maxlength="40"></td></tr>
-                <tr><td class="promo">축제기간 :  <input type="date" name="title" class="inputStyle"><input type="date" name="title" class="inputStyle"></td></tr>
-                <tr><td class="promo">축제장소 :  <input type="text" name="title" class="inputStyle"></td></tr>
+                <tr><td class="promo">축제기간 :  <input type="date" name="startdate" class="inputStyle"><input type="date" name="enddate" class="inputStyle"></td></tr>
+                <tr><td class="promo">축제장소 :  <input type="text" name="location" class="inputStyle"></td></tr>
                 <tr><td class="promo">축제 개요</td></tr>
-                <tr><td><textarea placeholder="내용을 입력하세요" name="detail"></textarea></td></tr>
-                <tr><td class="promo">주관  <input type="text" name="title" class="inputStyle"></td></tr>
+                <tr><td><textarea placeholder="내용을 입력하세요" name="content"></textarea></td></tr>
+                <tr><td class="promo">주관  <input type="text" name="part" class="inputStyle"></td></tr>
             </table>
             <br>
             <hr>
