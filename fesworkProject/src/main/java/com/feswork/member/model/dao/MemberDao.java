@@ -11,7 +11,7 @@ public class MemberDao {
 		//System.out.println("dao로받은m:"+m);
 		loginMember = sqlSession.selectOne("memberMapper.loginMember", m);
 		
-		//System.out.println("DB갔다온 loginMember:"+loginMember);
+		System.out.println("DB갔다온 loginMember:"+loginMember);
 		return loginMember;
 	}
 
@@ -27,4 +27,32 @@ public class MemberDao {
 		
 	}
 
+	public int updateMember(SqlSession sqlSession, Member m) {
+		
+		System.out.println("dao가받은 m"+m);
+		int result = sqlSession.update("memberMapper.updateMember", m);
+		
+		return result;
+	}
+
+	public Member selectUpdateMember(SqlSession sqlSession, Member m) {
+		
+		return sqlSession.selectOne("memberMapper.modifiedMember", m);
+	}
+
+	public int resignMember(SqlSession sqlSession, Member m) {
+		
+		int result = sqlSession.update("memberMapper.resignMember", m);
+		
+		return result;
+	}
+
+	public int modifyPwd(SqlSession sqlSession, String memberId, String memberPwd, String newPwd) {
+		
+		int result = sqlSession.update("member-Mapper.modifyPwd", memberId, memberPwd, newPwd);
+		
+		return result;
+	}
+
+	
 }

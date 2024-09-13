@@ -51,6 +51,61 @@ public class MemberService {
 		return count;
 	}
 
+	public Member updateMember(Member m) {
+		Member updateMember = null;
+		SqlSession sqlSession = MybatisTemplate.getSqlSession();
+
+		System.out.println("서비스가 받은 m:"+m);
+		int result = mDao.updateMember(sqlSession, m);
+		
+		if(result > 0) {
+			sqlSession.commit();
+			
+			updateMember = mDao.selectUpdateMember(sqlSession, m);
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		
+		System.out.println("서비스가 받은 updateMember:"+updateMember);
+		
+		return updateMember;
+	}
+
+	public int resignMember(Member m) {
+		SqlSession sqlSession = MybatisTemplate.getSqlSession();
+		
+		int result = mDao.resignMember(sqlSession, m);
+		
+		if(result >0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		
+		return result;
+	}
+
+	public int modifyPwd(String memberId, String memberPwd, String newPwd) {
+		
+		SqlSession sqlSession = MybatisTemplate.getSqlSession();
+
+		int result = mDao.modifyPwd(sqlSession, memberId, memberPwd, newPwd);
+		
+		if(result>0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		
+		return result;
+	}
+
 
 
 }

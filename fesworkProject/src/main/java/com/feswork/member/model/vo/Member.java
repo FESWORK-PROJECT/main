@@ -6,10 +6,10 @@ public class Member {
 	private int memberNo;
 	private String memberId;
 	private String memberPwd;
-	private String email;
 	private String memberName;
-	private String birth;
 	private String gender;
+	private String email;
+	private String birth;
 	private String phone;
 	private String memberLevel;
 	private String signupDate;
@@ -34,6 +34,18 @@ public class Member {
 		this.phone = phone;
 	}
 	
+	//회원정보수정용 생성자
+	
+	public Member(String memberId, String email, String memberName, String birth, String phone) {
+		super();
+		this.memberId = memberId;
+		this.email = email;
+		this.memberName = memberName;
+		this.birth = birth;
+		this.phone = phone;
+	}
+	
+	
 	public Member(int memberNo, String memberId, String memberPwd, String email, String memberName, String birth,
 			String gender, String phone, String memberLevel, String signupDate, String resignDate) {
 		super();
@@ -49,7 +61,6 @@ public class Member {
 		this.signupDate = signupDate;
 		this.resignDate = resignDate;
 	}
-
 
 	public int getMemberNo() {
 		return memberNo;
@@ -75,14 +86,6 @@ public class Member {
 		this.memberPwd = memberPwd;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public String getMemberName() {
 		return memberName;
 	}
@@ -91,20 +94,28 @@ public class Member {
 		this.memberName = memberName;
 	}
 
-	public String getBirth() {
-		return birth;
-	}
-
-	public void setBirth(String birth) {
-		this.birth = birth;
-	}
-
 	public String getGender() {
 		return gender;
 	}
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getBirth() {
+		return birth;
+	}
+
+	public void setBirth(String birth) {
+		this.birth = birth;
 	}
 
 	public String getPhone() {
@@ -141,10 +152,14 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPwd=" + memberPwd + ", email="
-				+ email + ", memberName=" + memberName + ", birth=" + birth + ", gender=" + gender + ", phone=" + phone
+		return "Member [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPwd=" + memberPwd + ", memberName="
+				+ memberName + ", gender=" + gender + ", email=" + email + ", birth=" + birth + ", phone=" + phone
 				+ ", memberLevel=" + memberLevel + ", signupDate=" + signupDate + ", resignDate=" + resignDate + "]";
 	}
+
+
+
+
 
 
 	

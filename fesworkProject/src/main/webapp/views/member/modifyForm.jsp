@@ -5,20 +5,32 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보 수정페이지</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <style>
     body {
         margin: 0;
     }
     .outer {
-        border: 1px solid red;
-        height: 700px;
+        /* border: 1px solid red; */
+        height: 800px;
         box-sizing: border-box;
         display: flex;
         background-color: rgb(227, 238, 227);
     }
 
     .content {
-        border: 1px solid red;
+        /* border: 1px solid red; */
         height: 100%;
         width: 60%;
         display: flex;
@@ -32,42 +44,18 @@
         width: 20%;
     }
 
-    .container {
-        background-color: #020138cb;;
+    .modify-container {
+        background-color: #c5b9d4bb;;
         padding: 20px;
         width: 300px;
         border-radius: 10px;
         margin-bottom: 20px;
     }
 
-    .input-group {
-        display: flex;
-        align-items: center;
-        margin: 10px 0;
-    }
 
-    .input-group input[type="text"] {
-        width: 65%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px 0 0 5px;
-        box-sizing: border-box;
-    }
-
-    .input-group button {
-        width: 35%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 0 5px 5px 0;
-        box-sizing: border-box;
-        background-color: #333;
-        color: white;
-        cursor: pointer;
-    }
-
-    .container input[type="password"],
-    .container input[type="email"],
-    .container input[type="date"] {
+    .modify-container input[type="password"],
+    .modify-container input[type="email"],
+    .modify-container input[type="date"] {
         width: 100%;
         padding: 10px;
         margin: 10px 0;
@@ -76,34 +64,10 @@
         box-sizing: border-box;
     }
 
-    .gender-container {
-        display: flex;
-        justify-content: space-around;
-        margin: 10px 0;
-    }
 
-    .gender-container input[type="radio"] {
-        display: none;
-    }
 
-    .gender-container label {
-        width: 40%;
-        padding: 10px 0;
-        border: 2px solid #ccc;
-        border-radius: 5px;
-        text-align: center;
-        font-weight: bold;
-        cursor: pointer;
-        background-color: white;
-    }
-
-    .gender-container input[type="radio"]:checked + label {
-        background-color: #ccc;
-        border-color: #000;
-    }
-
-    .submit-btn {
-        background-color: #333;
+    .modify-btn {
+        background-color: #35096ebb;
         color: white;
         padding: 10px 20px;
         border: none;
@@ -111,15 +75,21 @@
         cursor: pointer;
         width: 100%;
         box-sizing: border-box;
+        margin: 10px 0px;
     }
 
-    input[name="userName"], input[name="phone"]{
+    input[name="memberId"], input[name="memberName"], input[name="phone"], input[name="birth"]{
         width: 100%;
         padding: 10px;
         margin: 10px 0;
         border: 1px solid #ccc;
         border-radius: 5px;
         box-sizing: border-box;
+    }
+    
+    input[name="memberId"]{
+        background-color: #bebebe;
+        color: #6b6b6b;
     }
 
     
@@ -131,27 +101,58 @@
         <div class="content" id="contentLeft"></div>
         <div class="content" id="contentCenter">
             <h2>정보수정</h2>
-            <!-- <div class="container">
-                <input type="password" name="userPwd" placeholder="비밀번호*" required>
-                <input type="password" name="userPwdCheck" placeholder="비밀번호 확인*" required>
-            </div> -->
-            <div class="container">
-                <input type="email" name="email" placeholder="이메일 주소*" required>
-                <input type="text" name="userName" placeholder="이름*" required>
-                <input type="date" name="birthDate" placeholder="생년월일" required>
-                
-                <div class="gender-container">
-                    <input type="radio" id="male" name="gender" value="male" required>
-                    <label for="male">남자</label>
-                    <input type="radio" id="female" name="gender" value="female">
-                    <label for="female">여자</label>
-                </div>
-                
-                <input type="text" name="phone" placeholder="휴대전화번호" required>
+        
+            <form action="<%= contextPath %>/modifyMember.me" method="post">
+            <div class="modify-container">
+            	아이디: <input type="memberId" name="memberId" value="${loginMember.memberId}"  readonly>
+            	비밀번호: <button type="button" class="modify-btn" data-toggle="modal" data-target="#updatePwdModal">비밀번호 변경</button>
+                이름: <input type="text" name="memberName" value="${loginMember.memberName}" required>
+                이메일: <input type="email" name="email" value="${loginMember.email}" required>
+                생년월일: <input type="text" name="birth" value="${loginMember.birth}" required>
+                휴대전화번호: <input type="text" name="phone" placeholder="휴대전화번호"  value="${loginMember.phone}" >
             </div>
-            <button type="submit" class="submit-btn">수정</button>
+            <button type="submit" class="modify-btn">수정</button>
+            </form>
         </div>
         <div class="content" id="contentRight"></div>
     </div>
+    
+	<!-- 비밀번호 변경용 모달 -->
+	<div class="modal fade" id="updatePwdModal" tabindex="-1" aria-labelledby="updatePwdModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="updatePwdModalLabel">비밀번호 변경</h1>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+				</div>
+				<div class="modal-body">
+					
+					<form action="<%= contextPath %>/modifyPassword.me" method="post">
+
+						<div class="mb-3">
+							<label for="memberPwd" class="col-form-label">현재 비밀번호: </label>
+							<input type="password" class="form-control" id="memberPwd" name="memberPwd">
+						</div>
+
+						<div class="mb-3">
+							<label for="newPassword" class="col-form-label">변경할 비밀번호:</label>
+							<input type="password" class="form-control" id="newPwd" name="newPwd">
+						</div>
+
+						<div class="mb-3">
+							<label for="newPasswordCheck" class="col-form-label">변경할 비밀번호 확인:</label>
+							<input type="password" class="form-control" id="newPwdCheck" name="newPwdCheck">
+						</div>
+
+						<br>
+
+						<button class="modify-btn" onclick="return pwdCheck()">비밀번호 변경</button>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>
