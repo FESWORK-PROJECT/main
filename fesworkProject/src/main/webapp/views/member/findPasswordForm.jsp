@@ -36,9 +36,9 @@
     }
 
     #table {
-        border: 20px solid #88D66C;
+        border: 20px solid #c5b9d4bb;
         border-radius: 10px;
-        background-color: #88D66C;
+        background-color: #c5b9d4bb;
     }
 
     table {
@@ -48,7 +48,7 @@
     }
 
     table  * {
-        background-color: #88D66C;
+        background-color: #c5b9d4bb;
         padding: 5px
     }
 
@@ -56,20 +56,16 @@
     table input {
         width: 280px;
         border-radius: 5px;
-        background-color: #c7e2bd;
+        background-color: #fbfafcbb;
     }
 
     table button {
         width: 280px;
-        background-color: rgb(43, 42, 42);
+        background-color: #35096ebb;
         color: aliceblue;
         border-radius: 5px;
     }
 
-    table a {
-        text-decoration: none;
-        color:rgb(43, 42, 42);
-    }
 </style>
 
 </head>
