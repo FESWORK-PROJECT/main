@@ -17,3 +17,36 @@ function recommendFestival() {
 
     window.location.href = 'index1.html'; 
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    var festivals = JSON.parse('<%= new Gson().toJson(request.getAttribute("recommendedFestivals")) %>');
+ var tables = document.querySelectorAll('#festival-form table');
+    var festivalIndex = 0;
+
+    tables.forEach(function(table) {
+        var rows = table.querySelectorAll('tr');
+        rows.forEach(function(row, rowIndex) {
+            var cells = row.querySelectorAll('td');
+            cells.forEach(function(cell, cellIndex) {
+                if (festivalIndex < festivals.length) {
+                    var festival = festivals[festivalIndex];
+                    if (rowIndex === 0) {
+                        // 이미지 설정
+                        cell.querySelector('img').src = festival.imageUrl;
+                        cell.querySelector('img').alt = festival.name;
+                    } else if (rowIndex === 1) {
+                        // 축제 이름 설정
+                        cell.textContent = festival.name;
+                    } else if (rowIndex === 2) {
+                        // 추가 정보 설정 (예: 날짜)
+                        cell.textContent = festival.date;
+                    }
+                 
+                      festivalIndex++;
+                }
+            });
+        });
+    });
+});
+
+

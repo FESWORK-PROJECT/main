@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>성별 추천 페이지</title>
   <link rel="stylesheet" href="gender.css">
+   <script src="gender.js"></script>
 </head>
 
 <body>
@@ -98,7 +99,7 @@
               </div>
             </div>
           </div>
-          <div class="festival-grid">
+          <div class="festival-grid" id="favorite-area">
             <div class="festival-item">
               <td scope="col"><img src="" alt="" /></td>
             </div>
@@ -186,7 +187,6 @@
 
 
 
-  <script src="JavaScript.js"></script>
 
 </body>
 

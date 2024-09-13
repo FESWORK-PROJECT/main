@@ -71,19 +71,19 @@
             <div class="table-container">
                 <table>
                     <tr>
-                        <td scope="col"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_143fc344-bb22-43aa-bb05-940710dd3fcd_1.jpg" alt=""></td>
-                        <td scope="col"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_910bb144-bf74-4eee-9e91-8fbcbaf302ac_1.JPG" alt=""></td>
-                        <td scope="col"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_4e70ff58-cba3-4484-8e2d-0704feac6136_1.jpg" alt=""></td>
+                        <td scope="col"><img src="" alt=""></td>
+                        <td scope="col"><img src="" alt=""></td>
+                        <td scope="col"><img src="" alt=""></td>
                     </tr>
                     <tr>
-                        <td>송도 축제</td>
-                        <td>보령머드 축제</td>
-                        <td>핑크뮬리축제</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td>인천 연수구</td>
-                        <td>충남 보령시</td>
-                        <td>제주 서귀포시</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </table>
             </div>
@@ -92,19 +92,19 @@
             <div class="table-container">
                 <table>
                     <tr>
-                        <td scope="col"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_143fc344-bb22-43aa-bb05-940710dd3fcd_1.jpg" alt=""></td>
-                        <td scope="col"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_910bb144-bf74-4eee-9e91-8fbcbaf302ac_1.JPG" alt=""></td>
-                        <td scope="col"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_4e70ff58-cba3-4484-8e2d-0704feac6136_1.jpg" alt=""></td>
+                        <td scope="col"><img src="" alt=""></td>
+                        <td scope="col"><img src="" alt=""></td>
+                        <td scope="col"><img src="" alt=""></td>
                     </tr>
                     <tr>
-                        <td>송도 축제</td>
-                        <td>보령머드 축제</td>
-                        <td>핑크뮬리축제</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td>인천 연수구</td>
-                        <td>충남 보령시</td>
-                        <td>제주 서귀포시</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </table>
             </div>

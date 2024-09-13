@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>도시별 추천 페이지</title>
   <link rel="stylesheet" href="city.css">
+    <script src="city.js"></script>
 </head>
 
 <body>
@@ -110,7 +111,7 @@
               </div>
             </div>
           </div>
-          <div class="festival-grid">
+          <div class="festival-grid" id="favorite-area">
             <div class="festival-item">
               <td scope="col"><img
                   src=""
@@ -215,7 +216,7 @@
 
 
 
-  <script src="JavaScript.js"></script>
+
 
 </body>
 
