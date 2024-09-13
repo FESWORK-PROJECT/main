@@ -80,8 +80,13 @@
             <a href="<%= contextPath %>/promotion">축제홍보</a>
 =======
             <a href="#">소개</a>
+<<<<<<< HEAD
+            <a href="<%=contextPath%>/information">축제정보</a>
+            <a href="#">축제홍보</a>
+=======
             <a href="#">축제정보</a>
             <a href="<%= contextPath %>/views/promo/promo.jsp">축제홍보</a>
+>>>>>>> Project_FESWORK
         </div>
         <div class="search">
             <input type="text" placeholder="검색">

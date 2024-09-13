@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -161,9 +162,9 @@
             list-style-type: none;
         }
         .festival_ul_top{
-   
             display: flex;
             justify-content: right;
+            
         }
         .tab_area li {
         display: inline-block; /* li 태그를 일렬로 배치 */
@@ -282,7 +283,55 @@
     margin-top: 10px;
     padding-top: 10px;
     }
+    
+	    .tab_cont_area {
+        padding: 20px;
+    }
 
+    .other_festival_ul {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 한 줄에 4개의 항목 */
+        gap: 10px; /* 항목 간의 간격 설정 */
+        list-style-type: none; /* 기본 리스트 스타일 제거 */
+        padding: 0;
+        margin: 0;
+    }
+
+    .other_festival_ul li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: #fff; /* 배경 색상 설정 (선택 사항) */
+        border: 1px solid #ddd; /* 테두리 색상 설정 (선택 사항) */
+        border-radius: 5px; /* 테두리 둥글게 설정 (선택 사항) */
+        overflow: hidden; /* 이미지가 범위를 넘어가지 않도록 설정 */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 (선택 사항) */
+    }
+
+    .other_festival_img {
+        width: 200px; /* 부모 요소의 너비에 맞게 조정 */
+        height: 200px; /* 고정 높이 설정 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden; /* 이미지가 부모 요소를 넘지 않도록 설정 */
+    }
+
+    .other_festival_img img {
+        width: 100%;
+        height: 100%;
+         
+    }
+
+    .sing_area, .other_festival_content {
+        padding: 10px;
+        
+    }
+    
+    a {
+    	text-decoration:none;
+    }
                 </style>
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -291,7 +340,6 @@
 
  	<jsp:include page="../common/header.jsp"/>
          
-
             <br>
 
     <main role="main" id="mainTab" >
@@ -301,7 +349,7 @@
                 <div class="inner">
                     <div class="blind">검색영역</div>
                     
-                    <form action="" name="festivalSearch" id="festivalSearch">
+                    <form action="searchRequest" name="festivalSearch" id="festivalSearch">
                         <fieldset>
                             <legend class="blind">축제 검색</legend>
                         <div class="search_box_wrap">
@@ -331,21 +379,21 @@
                                 <select name="searchArea" id="searchArea" title="지역 선택">
                                     <option value="">지역</option>
                                     
-                                        <option value="1">서울</option>
+                                        <option value="11">서울</option>
                                     
-                                        <option value="2">인천</option>
+                                        <option value="23">인천</option>
                                     
-                                        <option value="3">대전</option>
+                                        <option value="25">대전</option>
                                     
-                                        <option value="4">대구</option>
+                                        <option value="22">대구</option>
                                     
-                                        <option value="5">광주</option>
+                                        <option value="24">광주</option>
                                     
-                                        <option value="6">부산</option>
+                                        <option value="21">부산</option>
                                     
-                                        <option value="7">울산</option>
+                                        <option value="26">울산</option>
                                     
-                                        <option value="8">세종시</option>
+                                        <option value="29">세종시</option>
                                     
                                         <option value="31">경기도</option>
                                     
@@ -355,14 +403,14 @@
                                     
                                         <option value="34">충청남도</option>
                                     
-                                        <option value="35">경상북도</option>
+                                        <option value="37">경상북도</option>
                                     
-                                        <option value="36">경상남도</option>
+                                        <option value="38">경상남도</option>
                                     
                                         <option value="37">전북특별자치도</option>
                                     
                                         <option value="38">전라남도</option>
-                                    
+                              
                                         <option value="39">제주도</option>
                                 </select>
                                 </div>
@@ -371,32 +419,30 @@
                                 style="background-image:url(/kfes/resources/img/cate_ico.svg)" ;>
                                <label for="searchCate" style="display: none;">카테고리 선택</label>
                                <select name="searchCate" id="searchCate" title="카테고리 선택">
-                                       <option value=>카테고리</option>
+                                       <option value="">카테고리</option>
                                    
-                                       <option value="나들이">나들이</option>
+                                       <option value="전통">전통</option>
                                    
-                                       <option value="가을꽃">가을꽃</option>
+                                       <option value="음식">음식</option>
                                    
-                                       <option value="야경">야경</option>
+                                       <option value="문화">문화</option>
                                    
-                                       <option value="문화예술">문화예술</option>
+                                       <option value="체험">체험</option>
                                    
                                        <option value="미디어아트">미디어아트</option>
                                    
                                        <option value="빛">빛</option>
-                                   
                                </select>
                            </div>
 
                            <div class="btn_box">
-                            <button class="btn_reset"
-                                    onclick="javascript:location.href='/kfes/list/wntyFstvlList.do';">
+                            <button type="reset">
                                 <span>초기화</span></button>
-                            <button class="btn_search" id="btnSearch"><span>검색</span>
+                            <button class="btn_search" id="btnSearch" type="submit"><span>검색</span>
                             </button>
                             
                         </div>
-                        
+                 
                         <div class= "serchinput">
                             <input type="text" value="검색" id="searchinput">
                         </div>
@@ -407,11 +453,7 @@
                         <br><br>
 
                             <div id="fesvival-post1">
-                            <!-- <a href="detailFestival.html" style="background-image: url(resources/urbanbrush-20180824005523160427.png);">
-                                    <h2>경복궁 별빛야행</h2>
-                                    <p>2024.09.11 ~ 2024.10.06</p>
-                                    <p>서울 종로구</p>
-                            </a> -->
+                     
                                 <div style="background-image: url(resources/urbanbrush-20180824005523160427.png);"></div>
                                 <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
                                 <div style="background-image: url(resources/1404859143246_PicsArt_1404833148597.png);"></div>
@@ -423,26 +465,11 @@
                 
                         </section>
 
-
-                        
                         <section>
-                            <!-- <div class="festival_ul_top" id="festival_ul_top" style="">
-                                <ul class="tab_area">
-                                    <li id="tabFstvlList" class="active">
-                                        <button>기간순</button>
-                                    </li>
-                                    
-                                    <li id="tabFstvlLikeOrderList">
-                                        <button>인기순</button>
-                                    </li>
-                                </ul>
-                            </div> -->
-
                             <section class="other_list type2" role="region">
                                 <div class="inner">
                                     <div class="other_festival" role="application">
                                         <div class="blind">페스티벌 검색 리스트</div>
-                    
                                         <!-- 검색 결과 없음 -->
                                         <div class="no_list" style="display: none;" id="divNoData">
                                             <div class="no_img"></div>
@@ -454,42 +481,42 @@
                                         <div class="festival_ul_top" id="festival_ul_top" style="">
                                             <ul class="tab_area">
                                                 <li id="tabFstvlList" class="active">
-                                                    <button>기간순</button>
+                                                    <button id="btnDate">기간순</button>
                                                 </li>
                                                 
                                                 <li id="tabFstvlLikeOrderList">
-                                                    <button>인기순</button>
+                                                    <button id="btnLike">인기순</button>
                                                 </li>
                                             </ul>
                                         </div>
 
                                         <div class="tab_cont_area">
-                                      
+                                      		
                                             <!-- 축제일순 -->
                                             <div class="tab_cont active" aria-expanded="true" role="application">
                                                 <p class="blind">축제일순 리스트</p>
                                                 <ul class="other_festival_ul" id="fstvlList">
+                                                    	<c:forEach var="f" items="${fList}">
                                                     <li>    
                                                         <a href="">
                                                             <div class="other_festival_img">
-                                                                <img src="" alt=""><!--이미지 자리-->
+                                                                <img src="${f.fesImage}"><!--이미지 자리-->
                                                             </div>
-                                                            <div class="sing_area">
-                                                                <div><!--축제 테마 자리--></div>
-                                                            </div>
+                                                  
                                                             <div class="other_festival_content">
-                                                                <strong><!--축제명--></strong>
-                                                                <div class="date"><!--축제 기간--></div>
-                                                                <div class="ioc"><!--축제 지역코드?--></div>
+                                                                <strong>${f.festivalName}</strong>
+                                                                <div class="date">${f.openDate} ~  ${f.closeDate}</div>
+                                                                <div class="ioc">${f.fesAdd}</div>
                                                             </div>
                                                         </a>
                                                     </li>
+                                                    </c:forEach>
                                                 </ul>
                                             </div>
                                             <!--// 축제일순 -->
                                        
                                             <!-- 인기순 -->
-                                            <div class="tab_cont" aria-expanded="false" role="application">
+                                            <div class="tab_cont" aria-expanded="false" role="application" style="display: none;">
                                                 <p class="blind">인기순 리스트</p>
                                                 <ul class="other_festival_ul" id="fstvlLikeOrderList">
                                                     <li>    
@@ -515,52 +542,57 @@
                                 </div>
                             </section>
                     
-                    <!-- <div id="morediv">
-                        <button id="more">더보기</button>
-                    </div>
 
-                    <section id="more_festival">
-                        <div>
-                            <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                <div>
-                                    <strong>해운대모래축제</strong>
-                                    <small>1994.03.07 ~ 2024.09.05</small>
-                                    <p>가산동 149-2 유앤율 202호</p>
-                                </div>
-                          </div>
+                        </div>         
+                        </main>
+                        <jsp:include page="../common/footer.jsp"/>       
 
-                          <div>
-                            <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                <div>
-                                    <strong>해운대모래축제</strong>
-                                    <small>1994.03.07 ~ 2024.09.05</small>
-                                    <p>가산동 149-2 유앤율 202호</p>
-                                </div>
-                          </div>
+                        <script>
+              
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const btnDate = document.getElementById('btnDate');
+                                const btnLike = document.getElementById('btnLike');
 
-                          <div>
-                            <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                <div>
-                                    <strong>해운대모래축제</strong>
-                                    <small>1994.03.07 ~ 2024.09.05</small>
-                                    <p>가산동 149-2 유앤율 202호</p>
-                                </div>
-                          </div>
+                                btnDate.addEventListener('click',function(){
+                                    fesWorkList('dateSort');
+                                });
+                                btnLike.addEventListener('click',function(){
+                                    fesWorkList('likeSort');
+                                });
 
-                          <div>
-                            <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                <div>
-                                    <strong>해운대모래축제</strong>
-                                    <small>1994.03.07 ~ 2024.09.05</small>
-                                    <p>가산동 149-2 유앤율 202호</p>
-                                </div>
-                          </div>   
-                    </section> -->
-    </div>         
-    </main>
-      	
-  	<jsp:include page="../common/footer.jsp"/>
 
-       
+                                function fesWorkList(sortOrder) {
+                                    fetch('list/wntyFstvlList.do?sortOrder='+sortOrder)
+                                    .then(response => response.json())
+                                    .then(data => updateFestivalList(data))
+                                    .catch(error => console.error('Error:', error));
+                                
+                                }
+                                
+                                function updateFestivalList(fesData){
+                                    const list = document.getElementById('fstvlList');
+
+                                    list.innerHTML = '';
+                                    
+                                    
+
+                                    fesData.forEach(fList =>{
+                                        const listItem = document.createElement('li');
+                                        listItem.innerHTML = '<a href="">' + 
+                                                            '<div class="other_festival_img">' + 
+                                                                 '<img src="' + fList.fesImage + '">' +
+                                                               '</div>' +
+                                                 
+                                                           '<div class="other_festival_content">' + 
+                                                                '<strong>' + fList.festivalName +'</strong>'+ 
+                                                               '<div class="date">'+fList.openDate+'~'+ fList.closeDate+'</div>' +
+                                                               '<div class="ioc">' + fList.fesAdd + '</div>' +
+                                                            '</div>' +
+                                                        '</a>';
+                                        list.appendChild(listItem);
+                                    });
+                                }
+                            });
+                        </script>
 </body>
 </html>

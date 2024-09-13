@@ -8,10 +8,10 @@
 		<result column="MEM_NO" property="memberNo" />
 		<result column="MEM_ID" property="memberId" />
 		<result column="MEM_PASSWORD" property="memberPwd" />
-		<result column="EMAIL" property="email" />
 		<result column="MEM_NAME" property="memberName" />
-		<result column="BIRTH" property="birth" />
 		<result column="GENDER" property="gender" />
+		<result column="EMAIL" property="email" />
+		<result column="BIRTH" property="birth" />
 		<result column="PHONE" property="phone" />
 		<result column="MEM_LEVEL" property="memberLevel" />
 		<result column="SIGNUP_DATE" property="signupDate" />
@@ -55,6 +55,36 @@
 	<select id="idCheck" resultType="_int">
 		SELECT COUNT(*) COUNT
 			FROM MEMBER
+		WHERE MEM_ID = #{memberId}
+	</select>
+	
+	<!-- 정보수정 기능 쿼리문 -->
+	<update id="updateMember" parameterType="Member">
+		UPDATE MEMBER
+			SET EMAIL = #{ email }
+			  , BIRTH = #{ birth }
+			  , PHONE = #{ phone } 		
+		WHERE MEM_ID = #{ memberId } AND RESIGN_DATE IS NULL
+	</update>
+	
+	<!-- 수정된정보 조회 쿼리문 -->
+	<select id="modifiedMember" resultMap="memberResultSet">
+		SELECT *
+			FROM MEMBER 
 		WHERE MEM_ID = #{memberId} AND RESIGN_DATE IS NULL
 	</select>
+	
+	<!-- 회원탈퇴 기능 쿼리문 -->
+	<update id="resignMember">
+		UPDATE MEMBER
+			SET RESIGN_DATE = SYSDATE
+		WHERE MEM_ID = #{ memberId } AND MEM_PASSWORD = #{ memberPwd } AND RESIGN_DATE IS NULL
+	</update>
+	
+	<!-- 비밀번호 변경 기능 쿼리문 -->
+	<update id="modifyPwd">
+		UPDATE MEMBER
+			SET MEM_PASSWORD = #{ newPwd }
+		WHERE MEM_ID = #{ memberId } AND MEM_PASSWORD = #{ memberPwd } AND RESIGN_DATE IS NULL
+	</update>
 </mapper>

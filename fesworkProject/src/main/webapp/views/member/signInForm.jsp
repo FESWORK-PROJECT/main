@@ -11,7 +11,7 @@
     }
     .outer {
         /* border: 1px solid red; */
-        height: 700px;
+        height: 900px;
         box-sizing: border-box;
         display: flex;
         background-color: rgb(227, 238, 227);
@@ -33,7 +33,7 @@
         width: 20%;
     }
 
-    .container {
+    .signup-container {
         background-color: #c5b9d4bb;
         padding: 20px;
         width: 300px;
@@ -67,9 +67,9 @@
         cursor: pointer;
     }
 
-    .container input[type="password"],
-    .container input[type="email"],
-    .container input[type="date"] {
+    .signup-container input[type="password"],
+    .signup-container input[type="email"],
+    .signup-container input[name="birth"] {
         width: 100%;
         padding: 10px;
         margin: 10px 0;
@@ -149,7 +149,7 @@
         <div class="content" id="contentCenter">
         <form action="<%= contextPath %>/singup.me" method="post">
             <h2>회원가입</h2>
-            <div class="container">
+            <div class="signup-container">
                 <div class="input-group">
                     <input type="text" name="memberId" placeholder="아이디*" required>
                     <button type="button" onclick="idCheck();">중복체크</button>
@@ -158,14 +158,14 @@
                 <input type="password" name="memberPwdCheck" placeholder="비밀번호 확인*" required>
                 <input type="email" name="email" placeholder="이메일 주소*" required>
             </div>
-            <div class="container">
+            <div class="signup-container">
                 <input type="text" name="memberName" placeholder="이름*" required>
-                <input type="date" name="birth" placeholder="생년월일" required>
+                <input type="text" name="birth" placeholder="생년월일" required>
                 
                 <div class="gender-container">
-                    <input type="radio" id="male" name="gender" value="M" required>
+                    <input type="radio" id="male" name="gender" value="남자" required>
                     <label for="male">남자</label>
-                    <input type="radio" id="female" name="gender" value="F">
+                    <input type="radio" id="female" name="gender" value="여자">
                     <label for="female">여자</label>
                 </div>
                 

@@ -10,6 +10,5 @@
 	index 페이지입니다.
 	<jsp:forward page="views/main.jsp"/>
 		
-	
 </body>
 </html>
