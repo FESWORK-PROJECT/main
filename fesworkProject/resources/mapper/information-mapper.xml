@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="informationMapper">
+	<resultMap id="InformationResultSet" type="Information">
+		<result column="FESTIVAL_NO" property="festivalNo" />
+		<result column="MEM_ID" property="memId" />
+		<result column="LOCAL_CODE" property="localCode" />
+		<result column="FESTIVAL_NAME" property="festivalName" />
+		<result column="OPEN_DATE" property="openDate" />
+		<result column="CLOSE_DATE" property="closeDate" />
+		<result column="FES_LIKE" property="fesLike" />
+		<result column="FES_DESCRIPTION" property="fesDescription"/>
+		<result column="FES_ADD" property="fesAdd" />
+		<result column="FES_IMAGE" property="fesImage"/>
+	</resultMap>
+
+  <select id="selectFestivalsOrderByDate" resultMap="InformationResultSet">
+        SELECT * FROM FESTIVAL ORDER BY OPEN_DATE ASC
+    </select>
+    
+     <select id="selectSortLike" resultMap="InformationResultSet">
+        SELECT * FROM FESTIVAL 
+        ORDER BY FES_LIKE DESC
+    </select>
+    
+    <select id="getSearchFestival" resultMap="InformationResultSet">
+	
+		SELECT *
+		FROM FESTIVAL
+		WHERE TO_CHAR(OPEN_DATE, 'MM') = #{searchDate} 
+		AND  LOCAL_CODE = #{searchArea}
+	    
+    </select>
+    
+    
+    
+    
+    
+</mapper>

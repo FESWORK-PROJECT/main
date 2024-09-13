@@ -75,7 +75,7 @@
             <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_e2b3015d-7660-4355-8d27-e0b67ea23ef9_1.png" width="80px" height="80px">
            
             <a href="#">소개</a>
-            <a href="#">축제정보</a>
+            <a href="<%=contextPath%>/information">축제정보</a>
             <a href="#">축제홍보</a>
         </div>
         <div class="search">
