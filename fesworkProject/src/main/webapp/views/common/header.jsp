@@ -74,6 +74,11 @@
         <div class="navi">
             <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_e2b3015d-7660-4355-8d27-e0b67ea23ef9_1.png" width="80px" height="80px">
            
+<<<<<<< HEAD
+            <a href="<%= contextPath %>/introduce">소개</a>
+            <a href="<%= contextPath %>/views/information/festivalinformation.jsp">축제정보</a>
+            <a href="<%= contextPath %>/promotion">축제홍보</a>
+=======
             <a href="#">소개</a>
 <<<<<<< HEAD
             <a href="<%=contextPath%>/information">축제정보</a>
@@ -86,7 +91,12 @@
         <div class="search">
             <input type="text" placeholder="검색">
             <button>검색</button>
+>>>>>>> Project_FESWORK
         </div>
+        <form class="search" action="/keyword.fe" method="get">
+            <input class="keyword" type="text" placeholder="검색" value="" name="search" autocomplete="off">
+            <button class="searchBtn" type="submit">검색</button>
+        </form>
         <div>
         	<c:choose>
         		<c:when test="${ empty loginMember }">
@@ -101,5 +111,15 @@
         	</c:choose>
         </div>
     </div>
+    <script>
+    const Searching = Search.prototype;
+    
+    function Search(){
+    	this.keyword = document.querySelector('input[name = "search"]');
+    	this.engine = document.querySelector();
+    	this.button = document.querySelector('.searchBtn');
+    	this.form
+    }
+    </script>
 </body>
 </html>
