@@ -59,6 +59,7 @@ public class SignupController extends HttpServlet {
 			session.setAttribute("alertMsg", m.getMemberName()+"님 FESWORK와 함께해주셔서 감사합니다.");
 			
 			response.sendRedirect(request.getContextPath());
+			
 		} else {
 			session.setAttribute("alertMsg", "회원가입에 실패했습니다. 관리자에게 문의해주세요.");
 		}
