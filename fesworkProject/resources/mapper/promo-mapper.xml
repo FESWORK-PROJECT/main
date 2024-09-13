@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="promoMapper">
+	<resultMap id = "promoResultSet" type="promo">
+		<result column="FESTIVAL_NO" property="fes_No"/>
+		<result column="MEM_ID" property="mem_Id"/>
+		<result column="LOCAL_CODE" property="local_Code"/>
+		<result column="FESTIVAL_NAME" property="fes_Name"/>
+		<result column="OPEN_DATE" property="open_Date"/>
+		<result column="CLOSE_DATE" property="close_Date"/>
+		<result column="FES_LIKE" property="fes_Like"/>
+		<result column="FES_DESCRIPTION" property="fes_Des"/>
+		<result column="FES_ADD" property="fes_Add"/>
+		<result column="FES_IMAGE" property="fes_Img"/>
+		<result column="FES_TITLE" property="fes_Title"/>
+	</resultMap>
+	<insert id = "insertBoard">
+		INSERT INTO RV ( FESTIVAL_NO 
+               , FES_TITLE
+               , MEM_ID
+               , OPEN_DATE
+               , CLOSE_DATE
+               , FES_DESCRIPTION
+              )
+			VALUES ( SEQ_RV_NO.NEXTVAL
+			       , #{fes_Title}
+			       , #{mem_Id}
+			       , #{open_Date}
+			       , #{close_Date}
+			       , #{fes_Des}
+			       );
+	</insert>
+	<select id="selectBoard" resultMap="boardResultSet">
+		SELECT FESTIVAL_NO
+			, FES_TITLE
+			, MEM_ID
+			, TO_CHAR(OPEN_DATE, 'YYYY-MM-DD') "OPEN_DATE"
+			, TO_CHAR(CLOSE_DATE, 'YYYY-MM-DD') "CLOSE_DATE"
+			, FES_DESCRIPTION
+		FROM FESTIVAL
+		WHERE FES_NO= #{fes_No} AND STATUS = 'Y'
+	</select>
+</mapper>
