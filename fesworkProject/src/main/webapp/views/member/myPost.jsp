@@ -23,21 +23,21 @@
     .content{
         /* border: 1px solid red; */
         height: 500px;
-        background-color: rgba(221, 223, 221, 0.411);
+        background-color: rgba(255, 255, 255, 0.411);
     }
 
     #contentLeft, #contentRight {
-        width:10%;
+        width:0%;
     }
 
     #contentCenter{
-        width: 80%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: antiquewhite;
-        border: 1px solid rgb(175, 185, 151);
+        background-color: rgb(243, 219, 241);
+        border: 1px solid rgb(255, 255, 255);
         border-radius: 30px;
     }
 

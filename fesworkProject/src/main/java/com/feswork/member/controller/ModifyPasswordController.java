@@ -45,13 +45,13 @@ public class ModifyPasswordController extends HttpServlet {
 		memberMap.put("newPwd", newPwd);
 		memberMap.put("memberId", memberId);
 		
-		System.out.println("memberPwd 값 :"+memberPwd);
-		System.out.println("newPwd 값 :"+newPwd);
-		System.out.println("memberId 값 :"+memberId);
+//		System.out.println("memberPwd 값 :"+memberPwd);
+//		System.out.println("newPwd 값 :"+newPwd);
+//		System.out.println("memberId 값 :"+memberId);
 		
 		int result = new MemberService().modifyPwd(memberMap);
 		
-		System.out.println("반환받은 result의 값 :"+result);
+//		System.out.println("반환받은 result의 값 :"+result);
 		if(result>0) {
 			session.setAttribute("alertMsg", "비밀번호가 변경되었습니다.");
 			response.sendRedirect(request.getContextPath()+"/modifyMemberPage.me");

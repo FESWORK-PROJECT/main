@@ -80,14 +80,14 @@
             <img src="#" alt="로고">
             <h2>비밀번호 찾기</h2>
             <div id="table">
-                <form action="어디로보낼지정하자" method="post">
+                <form action="<%= contextPath %>/findPassword" method="post">
                     <table >
                         <tr>
                             <td colspan="3">아이디</td>
                         </tr>
                         <tr align="center">
                             <td colspan="3">
-                                <input type="text" name="userId" id="userId">
+                                <input type="text" name="memberId" id="memberId">
                             </td>
                         </tr>
                         <tr>
@@ -95,7 +95,7 @@
                         </tr>
                         <tr align="center">
                             <td colspan="3">
-                                <input type="password" name="userPwd" id="userPwd">
+                                <input type="text" name="memberName" id="memberName">
                             </td>
                         </tr>
                         <tr>
@@ -103,7 +103,7 @@
                         </tr>
                         <tr align="center">
                             <td colspan="3">
-                                <input type="password" name="userPwd" id="userPwd">
+                                <input type="email" name="email" id="email">
                             </td>
                         </tr>
                         <tr>

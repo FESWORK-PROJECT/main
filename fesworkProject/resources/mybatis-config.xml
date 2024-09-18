@@ -19,17 +19,13 @@
 			<dataSource type="POOLED">
 				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
 				<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-				<property name="username" value="C##feswork" />
-				<property name="password" value="feswork"/>
+				<property name="username" value="C##FESWORK" />
+				<property name="password" value="FESWORK"/>
 			</dataSource>
 		</environment>
 	</environments>
 	<mappers>
-<<<<<<< HEAD
    		 <mapper resource="/mapper/information-mapper.xml"/>
    		 <mapper resource="/mapper/member-mapper.xml"/>
-=======
-		<mapper resource="/mapper/member-mapper.xml" />
->>>>>>> Project_FESWORK
 	</mappers>
 </configuration>
