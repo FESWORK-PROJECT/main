@@ -1,8 +1,6 @@
 package com.feswork.information.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,18 +12,16 @@ import com.feswork.information.model.vo.Information;
 import com.feswork.information.service.InformationService;
 
 /**
- * Servlet implementation class FestivalInformationController
+ * Servlet implementation class DetailFestival
  */
-@WebServlet("/information")
-public class FestivalInformationController extends HttpServlet {
+@WebServlet("/detailFes")
+public class DetailFestival extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	
-	
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FestivalInformationController() {
+    public DetailFestival() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,26 +31,23 @@ public class FestivalInformationController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String festivalNo = request.getParameter("festivalNo");
+		System.out.println("Received festivalNo: " + festivalNo);
 		
+		Information iBoard = new InformationService().selectDetailFestival(festivalNo);
 		
-		ArrayList<Information> information  = new InformationService().getFestivalOrderByDate();
-		ArrayList<Information> likeFestival = new InformationService().getLikeTopFestival();
-		
-		if(information != null) {
-		HttpSession session = request.getSession();
-		
-		session.setAttribute("fList", information);
-		session.setAttribute("lList", likeFestival);
-		
-		
-		request.getRequestDispatcher("views/information/festivalinformation.jsp").forward(request, response);
-		
-		
+		if(iBoard != null){
+			HttpSession session = request.getSession();
+			session.setAttribute("iBoard", iBoard);
+			request.getRequestDispatcher("views/information/detailFestival.jsp").forward(request, response);
+			
 		}else{
-			request.setAttribute("errorMsg", "요청이 실패했습니다");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-		
+			request.setAttribute("errorMsg", "해당 게시글을 찾을 수 없습니다.");
+			
 		}
+		
+		
+		
 	}
 
 	/**
