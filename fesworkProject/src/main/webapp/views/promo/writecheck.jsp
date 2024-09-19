@@ -49,25 +49,20 @@ th{
         	<thead>
                 <th>글번호</th>
                 <th>제목</th>
-                <th>작성자</th>
                 <th>조회수</th>
-                <th>작성일</th>
+                <th>오픈날짜</th>
                 <th>첨부파일</th>
             </thead>
             <tbody>
-                <%-- for(Board b : list ) {} --%>
-                	<c:forEach var="m" items="${ list }">
-	                    <tr>
-	                        <td>${ m.memberId }</td>
-	                        <td>${ m.memberName }</td>
-	                        <td>${ m.email }</td>
-	                        <td>${ m.birth }</td>
-	                        <td>${ m.gender }</td>
-	                        <td>
-	                        	<c:if test="${ not empty m.phone }">■</c:if>
-	                        </td>
-	                    </tr>
-                    </c:forEach>
+	            <c:forEach var="festival" items="${festivalList}">
+	               <tr>
+	                 <td>${ festival.festivalNo }</td>
+	                 <td>${ festival.festivalName }</td>
+	                 <td>${ festival.fesLike }</td>
+	                 <td>${ festival.openDate }</td>
+	                 <td>${ festival.fesImg }</td>
+	               </tr>
+			     </c:forEach>
             </tbody>
         </table>
     </div>

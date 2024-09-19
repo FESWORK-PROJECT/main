@@ -122,13 +122,14 @@ th, td {
     margin-top: 200px;position: relative;width: 400px; margin: 0 auto; text-align: center; 
 }
 .description{
-    border-radius: 10px;background-color: #35096ebb;margin-top: 20px;
+    border-radius: 0px 0px 10px 10px;background-color: #35096ebb;
     margin-bottom: 20px;color: yellow;padding: auto;font-size: 20px;
 }
 .slide {
     display: none;opacity: 0;transition: opacity 0.5s ease-in-out;
 }
 .slide.active {
+    margin-top: 20px;
     display: block;opacity: 1;
 }
 .arrow {
@@ -157,6 +158,20 @@ th, td {
 #cross-right{
     background-image: url("");background-size: cover;width: 20px;height: 20px;
 }
+tbody{
+    font-size: 12px;
+    font-weight: 600;
+}
+#img{
+    width: 150px; height: 100px;
+}
+#center{
+    text-align: center;
+    font-size: 10px;
+}
+#des{
+    text-align: left;
+}
 </style>
 </head>
 <body>
@@ -165,29 +180,24 @@ th, td {
         <button class="arrow left-arrow" onclick="prevSlide()">&#9664;</button>
         <div class="slides">
             <div class="slide active">
-                <div class="description">${ loginMember.memberId }</div>
-                <a href="#"><img src="" alt="Image 1" id="imgg"></a>
-                <div class="description">고양 푸드 앤 비어 페스티벌</div> <!-- 설명 추가 -->
+                <a href="#"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_7be130ae-d136-45d7-9a5c-de3af5691c16_1.jpg" alt="Image 1" id="imgg"></a>
+                <div class="description">태안 빛축제</div> <!-- 설명 추가 -->
             </div>
             <div class="slide">
-                <div class="description">${ loginMember.memberId }</div>
-                <a href="#"><img src="" alt="Image 2" id="imgg"></a>
-                <div class="description">턴업</div> <!-- 다른 설명 추가 -->
+                <a href="#"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/3f9ff7c2-828e-40d1-8dca-88448590b1db_2.jpeg" alt="Image 2" id="imgg"></a>
+                <div class="description">송월동 동화마을 코스튬 페스티벌</div> <!-- 다른 설명 추가 -->
             </div>
             <div class="slide">
-                <div class="description">${ loginMember.memberId }</div>
-                <a href="#"><img src="" alt="Image 2" id="imgg"></a>
-                <div class="description">턴다운</div> <!-- 다른 설명 추가 -->
+                <a href="#"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/e7f655b5-b2d3-4923-90ba-6d7ce678b381_3.jpg" alt="Image 2" id="imgg"></a>
+                <div class="description">부평풍물대축제</div> <!-- 다른 설명 추가 -->
             </div>
             <div class="slide">
-                <div class="description">${ loginMember.memberId }</div>
-                <a href="#"><img src="" alt="Image 2" id="imgg"></a>
-                <div class="description">턴레프트</div> <!-- 다른 설명 추가 -->
+                <a href="#"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/ef9e5602-4f91-4efc-8750-816bbe9ab6f5_3.jpg" alt="Image 2" id="imgg"></a>
+                <div class="description">정서진 피크닉 클래식</div> <!-- 다른 설명 추가 -->
             </div>
             <div class="slide">
-                <div class="description">${ loginMember.memberId }님이 홍보한</div>
-                <a href="#"><img src="" alt="Image 2" id="imgg"></a>
-                <div class="description">턴라이트</div> <!-- 다른 설명 추가 -->
+                <a href="#"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/04cf3274-b4bd-464b-acba-b89406600472_4.jpg" alt="Image 2" id="imgg"></a>
+                <div class="description">원주용수골가을꽃축제</div> <!-- 다른 설명 추가 -->
             </div>
         </div>
         <button class="arrow right-arrow" onclick="nextSlide()">&#9654;</button>
@@ -197,98 +207,45 @@ th, td {
         <div id="second-2">
             <%-- 로그인 시에만 글쓰기 버튼 표시 --%>
             <c:if test = "${ not empty loginMember }">
-            	<a href="writecheck.jsp" class="write" >내 작성글 보기</a>
-            	<a href="promowrite.jsp" class="write" >홍보글 등록</a>
+            	<a href="writePage" class="write" >내 작성글 보기</a>
+            	<a href="writecontext" class="write" >홍보글 등록</a>
             </c:if>
         </div>
     </div>
 
     <div>
-        <table id="docu" border="">
-            <tbody>
-                <tr id="color1">
-                    <th >번호</th>
-                    <th id="img3">이미지</th>
-                    <th id="title">제목</th>
-                    <th>작성자</th>
-                    <th>작성일</th>
-                    <th>추천수</th>
-                    <th>조회수</th>
+        <c:if test="${not empty festivalList}">
+    	<table>
+        <thead>
+            <tr>
+                <th id="center">번호</th>
+                <th id="center">사진</th>
+                <th id="center">축제 이름</th>
+                <th id="center">시작 날짜</th>
+                <th id="center">종료 날짜</th>
+                <th id="center">설명</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="festival" items="${festivalList}">
+                <tr>
+                    <td>${festival.festivalNo}</td>
+                    <td>
+                    	<img src="${festival.fesImg}" id="img" />
+                    </td>
+                    <td>${festival.festivalName}</td>
+                    <td id="center">${festival.openDate}</td>
+                    <td id="center">${festival.closeDate}</td>
+                    <td id="des">${festival.fesDescription}</td>
                 </tr>
-                <tr id="color2">
-                    <th>1</th>
-                    <th id="img3"><img src="" id="imggg"></th>
-                    <th>구리시 어쩌구 저쩌구</th>
-                    <th>허완</th>
-                    <th>2024-08-13</th>
-                    <th>25</th>
-                    <th>1855</th>
-                </tr>
-                <tr id="color3">
-                    <th>2</th>
-                    <th id="img3"><img src="" id="imggg"></th>
-                    <th>서울시 어쩌구 저쩌구</th>
-                    <th>김인창</th>
-                    <th>2024-09-03</th>
-                    <th>20</th>
-                    <th>1444</th>
-                </tr>
-                <tr id="color2">
-                    <th>3</th>
-                    <th id="img3"><img src="" id="imggg"></th>
-                    <th>서울시 동작구</th>
-                    <th>양민욱</th>
-                    <th>2024-09-02</th>
-                    <th>18</th>
-                    <th>18</th>
-                </tr>
-                <tr id="color3">
-                    <th>3</th>
-                    <th id="img3"><img src="" id="imggg"></th>
-                    <th>서울시 동작구</th>
-                    <th>양민욱</th>
-                    <th>2024-09-02</th>
-                    <th>18</th>
-                    <th>18</th>
-                </tr>
-                <tr id="color2">
-                    <th>3</th>
-                    <th id="img3"><img src="" id="imggg"></th>
-                    <th>서울시 동작구</th>
-                    <th>양민욱</th>
-                    <th>2024-09-02</th>
-                    <th>18</th>
-                    <th>18</th>
-                </tr>
-                <tr id="color3">
-                    <th>3</th>
-                    <th id="img3"><img src="" id="imggg"></th>
-                    <th>서울시 동작구</th>
-                    <th>양민욱</th>
-                    <th>2024-09-02</th>
-                    <th>18</th>
-                    <th>18</th>
-                </tr>
-                <tr id="color2">
-                    <th>3</th>
-                    <th id="img3"><img src="" id="imggg"></th>
-                    <th>서울시 동작구</th>
-                    <th>양민욱</th>
-                    <th>2024-09-02</th>
-                    <th>18</th>
-                    <th>18</th>
-                </tr>
-                <tr id="color3">
-                    <th>3</th>
-                    <th id="img3"><img src="" id="imggg"></th>
-                    <th>서울시 동작구</th>
-                    <th>양민욱</th>
-                    <th>2024-09-02</th>
-                    <th>18</th>
-                    <th>18</th>
-                </tr>
-            </tbody>
-        </table>
+		     </c:forEach>
+		 </tbody>
+		 </table>
+		</c:if>		
+		<c:if test="${empty festivalList}">
+		    <p>축제 목록이 없습니다.</p>
+		</c:if>
+
 
     </div>
     <div id="pagingArea">
@@ -301,13 +258,13 @@ th, td {
 	                    </c:when>
 	                    <c:otherwise>
 	                    	<li class="page-item">
-	                    		<a href="list?cpage=${ pi.currentPage - 1 }" class="page-link">Prev</a>
+	                    		<a href="festivalList?cpage=${ pi.currentPage - 1 }" class="page-link">Prev</a>
 	                    	</li>
 	                    </c:otherwise>
                     </c:choose>
                     <c:forEach var="i" begin="${ pi.startPage }" end="${ pi.endPage }">
                     	<li class="page-item">
-                    		<a href="list?cpage=${ i }" class="page-link">${ i }</a>
+                    		<a href="festivalList?cpage=${ i }" class="page-link">${ i }</a>
                     	</li>
                     </c:forEach>
                     <c:choose>
@@ -318,14 +275,14 @@ th, td {
                 		</c:when>
                 		<c:otherwise>
                 			<li class="page-item">
-                				<a href="list?cpage=${ pi.currentPage + 1 }" class="page-link">Next</a>
+                				<a href="festivalList?cpage=${ pi.currentPage + 1 }" class="page-link">Next</a>
                 			</li>
                 		</c:otherwise>
                     </c:choose>
                 </ul>
             </div>
     <script>
-        let currentSlide = 0;
+        let currentSlide = 1;
 		let currentPage = 1;
 		const totalPages = 5;
 
@@ -365,6 +322,15 @@ th, td {
 	        showPage(currentPage);
 	    }
 	}
+    </script>
+    <script>
+    	$(function(){
+    		
+    		<!-- 게시글 목록의 행을 클릭했을 때 detail 요청을 하도록 -->
+    		$("#boardList>tbody>tr").click(function(){
+    			location.href = 'detail?bno=' + $(this).children(".bno").text();
+    		});
+    	});
     </script>
 
 <jsp:include page="../common/footer.jsp"/>

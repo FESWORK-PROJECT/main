@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -57,15 +57,15 @@
 </head>
 <body>
 <% 
-	String contextPath = request.getContextPath(); 
+   String contextPath = request.getContextPath(); 
 
-	String alertMsg = (String)session.getAttribute("alertMsg");
+   String alertMsg = (String)session.getAttribute("alertMsg");
 %>
 <% if (alertMsg != null) { %>
-	<script>
-		alert("<%= alertMsg %>");
-	</script>
-	<% session.removeAttribute("alertMsg"); %>
+   <script>
+      alert("<%= alertMsg %>");
+   </script>
+   <% session.removeAttribute("alertMsg"); %>
 <% } %>
 
 
@@ -74,27 +74,40 @@
         <div class="navi">
             <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_e2b3015d-7660-4355-8d27-e0b67ea23ef9_1.png" width="80px" height="80px">
            
-            <a href="#">소개</a>
-            <a href="#">축제정보</a>
-            <a href="<%= contextPath %>/views/promo/promo.jsp">축제홍보</a>
+
+            <a href="<%= contextPath %>/introduce">소개</a>
+            <a href="<%= contextPath %>/information">축제정보</a>
+            <a href="<%= contextPath %>/festivalList">축제홍보</a>
+
         </div>
-        <div class="search">
-            <input type="text" placeholder="검색">
-            <button>검색</button>
-        </div>
+
+        <form class="search" action="/keyword.fe" method="get">
+            <input class="keyword" type="text" placeholder="검색" value="" name="search" autocomplete="off">
+            <button class="searchBtn" type="submit">검색</button>
+        </form>
         <div>
-        	<c:choose>
-        		<c:when test="${ empty loginMember }">
-        			<!-- 로그인 안된 상태 -->
-		            <a href="<%= contextPath %>/views/member/loginForm.jsp">로그인/회원가입</a>
-        		</c:when>
-        		<c:otherwise>
-        			<!-- 로그인 성공 -->
-        			<a href="<%= contextPath %>/views/member/myPage.jsp">마이페이지</a>
-        			<a href="<%= contextPath %>/logout.me">로그아웃</a>
-        		</c:otherwise>
-        	</c:choose>
+           <c:choose>
+              <c:when test="${ empty loginMember }">
+                 <!-- 로그인 안된 상태 -->
+                  <a href="<%= contextPath %>/views/member/loginForm.jsp">로그인/회원가입</a>
+              </c:when>
+              <c:otherwise>
+                 <!-- 로그인 성공 -->
+                 <a href="<%= contextPath %>/views/member/myPage.jsp">마이페이지</a>
+                 <a href="<%= contextPath %>/logout.me">로그아웃</a>
+              </c:otherwise>
+           </c:choose>
         </div>
     </div>
+    <script>
+    const Searching = Search.prototype;
+    
+    function Search(){
+       this.keyword = document.querySelector('input[name = "search"]');
+       this.engine = document.querySelector();
+       this.button = document.querySelector('.searchBtn');
+       this.form
+    }
+    </script>
 </body>
 </html>

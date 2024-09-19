@@ -14,6 +14,7 @@
             /*font-family: Arial, sans-serif;*/
             margin: 0;
             padding: 0;
+            
         }
         
 /* 메인 컨텐츠 스타일 */
@@ -60,7 +61,7 @@
             
         }
 
-        .festival h3 {
+        .festival h4 {
             margin: 10px 0 5px;
         }
 
@@ -195,6 +196,7 @@
             /* border: 1px solid red; */
             width: 100%;
             color:#5658b5b3;
+            font-family: "Dongle", sans-serif;
         }
 
         .cokcok{
@@ -230,7 +232,8 @@
 </head>
 <body>
 
-<jsp:include page="common/header.jsp"/>
+<jsp:include page = "common/header.jsp"/>
+<% String contextPath = request.getContextPath(); %>
 
 <!-- 메인 컨텐츠 -->
     <div class="main-content">
@@ -282,13 +285,17 @@
             </svg>
         
             <script>
-                const landArr = document.getElementsByClassName('land');
-        
-                for(const land of landArr) {
-                    land.onclick = function(event) {
-                        alert(event.target.getAttribute('title'));
-                    }
+            const landArr = document.getElementsByClassName('land');
+
+            for(const land of landArr) {
+                land.onclick = function(event) {
+                    const title = event.target.getAttribute('title');
+                    
+                    location.href = 'locationSearch?title='+title;
+                    
                 }
+               
+            }
             </script>
         </div> <!--width="400px"</div>-->
     
@@ -347,7 +354,7 @@
             </div>
             <!-- 축제콕콕 배너-->
             <div class="cokcok">
-                <a href="#">나만의 축제를 추천해드려요 - click !</a>
+                <a href="<%= contextPath %>/views/RecommendedPage/survey.jsp">나만의 축제를 추천해드려요 - click !</a>
             </div>
             <!-- 진행 중/예정된 축제 섹션 -->
             <div class="events-section">
@@ -393,6 +400,7 @@
         </div>
     </div>
         <jsp:include page="common/footer.jsp"/>
+        
 		
 </body>
 </html>

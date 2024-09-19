@@ -2,143 +2,117 @@ package com.feswork.promo.model.vo;
 
 import java.sql.Date;
 
-public class festival {
-	private int fes_No;
-	private String mem_Id;
-	private String local_Code;
-	private String fes_Name;
-	private Date open_Date;
-	private Date close_Date;
-	private int fes_Like;
-	private String fes_Des;
-	private String fes_Add;
-	private String fes_Img;
-	private	String fes_Title;
+public class Festival {
+	private int festivalNo;
+	private String memId;
+	private String localCode;
+	private String festivalName;
+	private Date openDate;
+	private Date closeDate;
+	private int fesLike;
+	private String fesAdd;
+	private String fesImg;
+	private	String fesTitle;
 	private String status;
+	private String fesDescription;
 	
-	public festival() {
+	
+	
+	public Festival() {
 		super();
 	}
 
-	public festival(int fes_No, String mem_Id, String local_Code, String fes_Name, Date open_Date, Date close_Date,
-			int fes_Like, String fes_Des, String fes_Add, String fes_Img, String fes_Title, String status) {
+
+	public Festival(int festivalNo, String memId, String localCode, String festivalName, Date openDate, Date closeDate,
+			int fesLike, String fesAdd, String fesImg, String fesTitle, String status, String fesDescription) {
 		super();
-		this.fes_No = fes_No;
-		this.mem_Id = mem_Id;
-		this.local_Code = local_Code;
-		this.fes_Name = fes_Name;
-		this.open_Date = open_Date;
-		this.close_Date = close_Date;
-		this.fes_Like = fes_Like;
-		this.fes_Des = fes_Des;
-		this.fes_Add = fes_Add;
-		this.fes_Img = fes_Img;
-		this.fes_Title = fes_Title;
+		this.festivalNo = festivalNo;
+		this.memId = memId;
+		this.localCode = localCode;
+		this.festivalName = festivalName;
+		this.openDate = openDate;
+		this.closeDate = closeDate;
+		this.fesLike = fesLike;
+		this.fesAdd = fesAdd;
+		this.fesImg = fesImg;
+		this.fesTitle = fesTitle;
 		this.status = status;
+		this.fesDescription = fesDescription;
 	}
 
-	public int getFes_No() {
-		return fes_No;
-	}
 
-	public void setFes_No(int fes_No) {
-		this.fes_No = fes_No;
+	public int getFestivalNo() {
+		return festivalNo;
 	}
-
-	public String getMem_Id() {
-		return mem_Id;
+	public void setFestivalNo(int festivalNo) {
+		this.festivalNo = festivalNo;
 	}
-
-	public void setMem_Id(String mem_Id) {
-		this.mem_Id = mem_Id;
+	public String getMemId() {
+		return memId;
 	}
-
-	public String getLocal_Code() {
-		return local_Code;
+	public void setMemId(String memId) {
+		this.memId = memId;
 	}
-
-	public void setLocal_Code(String local_Code) {
-		this.local_Code = local_Code;
+	public String getLocalCode() {
+		return localCode;
 	}
-
-	public String getFes_Name() {
-		return fes_Name;
+	public void setLocalCode(String localCode) {
+		this.localCode = localCode;
 	}
-
-	public void setFes_Name(String fes_Name) {
-		this.fes_Name = fes_Name;
+	public String getFestivalName() {
+		return festivalName;
 	}
-
-	public Date getOpen_Date() {
-		return open_Date;
+	public void setFestivalName(String festivalName) {
+		this.festivalName = festivalName;
 	}
-
-	public void setOpen_Date(Date open_Date) {
-		this.open_Date = open_Date;
+	public Date getOpenDate() {
+		return openDate;
 	}
-
-	public Date getClose_Date() {
-		return close_Date;
+	public void setOpenDate(Date openDate) {
+		this.openDate = openDate;
 	}
-
-	public void setClose_Date(Date close_Date) {
-		this.close_Date = close_Date;
+	public Date getCloseDate() {
+		return closeDate;
 	}
-
-	public int getFes_Like() {
-		return fes_Like;
+	public void setCloseDate(Date closeDate) {
+		this.closeDate = closeDate;
 	}
-
-	public void setFes_Like(int fes_Like) {
-		this.fes_Like = fes_Like;
+	public int getFesLike() {
+		return fesLike;
 	}
-
-	public String getFes_Des() {
-		return fes_Des;
+	public void setFesLike(int fesLike) {
+		this.fesLike = fesLike;
 	}
-
-	public void setFes_Des(String fes_Des) {
-		this.fes_Des = fes_Des;
+	public String getFesAdd() {
+		return fesAdd;
 	}
-
-	public String getFes_Add() {
-		return fes_Add;
+	public void setFesAdd(String fesAdd) {
+		this.fesAdd = fesAdd;
 	}
-
-	public void setFes_Add(String fes_Add) {
-		this.fes_Add = fes_Add;
+	public String getFesImg() {
+		return fesImg;
 	}
-
-	public String getFes_Img() {
-		return fes_Img;
+	public void setFesImg(String fesImg) {
+		this.fesImg = fesImg;
 	}
-
-	public void setFes_Img(String fes_Img) {
-		this.fes_Img = fes_Img;
+	public String getFesTitle() {
+		return fesTitle;
 	}
-
-	public String getFes_Title() {
-		return fes_Title;
+	public void setFesTitle(String fesTitle) {
+		this.fesTitle = fesTitle;
 	}
-
-	public void setFes_Title(String fes_Title) {
-		this.fes_Title = fes_Title;
-	}
-
 	public String getStatus() {
 		return status;
 	}
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-	@Override
-	public String toString() {
-		return "festival [fes_No=" + fes_No + ", mem_Id=" + mem_Id + ", local_Code=" + local_Code + ", fes_Name="
-				+ fes_Name + ", open_Date=" + open_Date + ", close_Date=" + close_Date + ", fes_Like=" + fes_Like
-				+ ", fes_Des=" + fes_Des + ", fes_Add=" + fes_Add + ", fes_Img=" + fes_Img + ", fes_Title=" + fes_Title
-				+ ", status=" + status + "]";
+	public String getFesDescription() {
+		return fesDescription;
 	}
+	public void setFesDescription(String fesDescription) {
+		this.fesDescription = fesDescription;
+	}
+	
 	
 }
