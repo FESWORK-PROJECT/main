@@ -14,16 +14,16 @@ import com.feswork.information.model.vo.Information;
 import com.feswork.information.service.InformationService;
 
 /**
- * Servlet implementation class searchFestivalController
+ * Servlet implementation class SearchKeywordFestival
  */
-@WebServlet("/searchRequest")
-public class searchFestivalController extends HttpServlet {
+@WebServlet("/search")
+public class SearchKeywordFestival extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public searchFestivalController() {
+    public SearchKeywordFestival() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,29 +32,18 @@ public class searchFestivalController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String festivalName = request.getParameter("festivalName");
 		
-		// 지역별 
-		String searchArea = request.getParameter("searchArea");
-		String searchDate = request.getParameter("searchDate");
-		String searchCate = request.getParameter("searchCate");
-		
-		ArrayList<Information> information  = new InformationService().getSearchFestival(searchArea, searchDate, searchCate);
-			
-		
-			
-		if(information != null){
-			HttpSession session = request.getSession();
-			session.setAttribute("fList", information);
-			
+		ArrayList<Information> sList = new InformationService().getFestivalSearch(festivalName);
+		HttpSession session = request.getSession();
+		if(sList != null){
+			session.setAttribute("fList", sList);
 			request.getRequestDispatcher("views/information/festivalinformation.jsp")
 			.forward(request, response);
+		}else {
 			
-				
-		}else{
-			request.setAttribute("errorMsg", "요청이 실패했습니다");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
-		
 		
 		
 	}
