@@ -16,8 +16,8 @@
             padding: 0;
             
         }
-        
-/* 메인 컨텐츠 스타일 */
+	        
+		/* 메인 컨텐츠 스타일 */
         .main-content {
             display: flex;
             /*flex-direction: column;	*/
@@ -97,40 +97,42 @@
         
         /* slider__wrap */
         .slide {
-            height: 400px;
+            height: 500px;
             text-align: center;
-            /* border: 1px solid black; */
+            /*border: 1px solid black;*/ 
         }
 
         .slidecontent {
             width: 100%;
-            height: 300px;
+            height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
-            /* border: 4px solid yellow; */
+            /*border: 4px solid yellow;*/
         }
 
         .slider__img { /*이미지가 보이는 영역*/
             position: relative;
             width: 400px;
-            height: 250px;
+            height: 500px;
             overflow: hidden;
-            /* border: 4px solid green; */
+            /*border: 4px solid green; */
         }
 
         .slider__inner { /*전체 이미지를 감싸고 있는 부모 : 움직이는 영역*/
             display: flex;
             flex-wrap: wrap;
             width: 400px;
-            height: 250px;
-            /* border: 1px solid red; */
+            height: 500px;
+            transition: transform 0.5s ease-in-out;
+            /*border: 1px solid red; */
         }
         
         .slider { /*개별적인 이미지*/
             position: relative;
             width: 400px;
-            /* border: 3px solid blue; */
+            flex-shrink: 0;
+            /*border: 3px solid blue; */
         }
        
         .prev {
@@ -170,16 +172,7 @@
             color: #fff;
         
         }
-       
-        .s1 {
-            background-image: url("https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_adf4c92b-e2a1-4404-87b7-31086e6f230c_1.JPG");
-            background-repeat: no-repeat;
-            background-size : cover;
-            display:flex;
-            justify-content: center;
-            align-items: flex-end;
-        }
-
+    
         .slidetitle {
           /* display:flex; */
           /* justify-content: center; */
@@ -191,12 +184,38 @@
           font-size: 40px;
                  
         }
+        
+        .slider img {
+		    width: 400px;      /* 원하는 너비 */
+		    height: 500px;     /* 원하는 높이 */
+		    object-fit: cover; /* 비율을 유지하며 잘라내기 */
+		    radius: 20px;
+		}
 
         .events-section{
-            /* border: 1px solid red; */
-            width: 100%;
+            /*border: 1px solid red;*/
+            width: 120%;
             color:#5658b5b3;
             font-family: "Dongle", sans-serif;
+        }
+        .event-category{
+        	/*border: 1px solid black;*/
+        	width: 49%;
+        	display: flex;
+        	justify-content: center;
+        	flex-direction: column;
+        	align-items: center;
+        }
+        .event-list{
+        	/*border: 1px solid blue;*/
+        	width: 97%;
+        	display: flex;
+        	justify-content: center;
+        	font-size: 20px;
+        }
+        .event-category img{
+            width: 100%;
+            height: 100px;
         }
 
         .cokcok{
@@ -219,15 +238,18 @@
             width:100%;
         }
         
-        .event-category img{
-            width: 70px;
-        }
-        
         .bodyfooter{
         	display: flex;
         	flex-direction: column;
         	
         }
+        .active {
+	    	display: block;
+		}
+		
+		.hidden {
+		    display: none;
+		}
 </style>
 </head>
 <body>
@@ -320,38 +342,92 @@
 
             <!-- 이미지 슬라이드 섹션-->
             <div class="slide">
-                <main id="main">
-                    <div class="slider__wrap">
-                        <div class="slidecontent">
-                        <div class="click"><a href="#" class="prev" title="이전이미지">&lt;</a></div>
-                        <div class="slider__img">
-                            <div class="slider__inner">
-                                <div class="slider s1"></div>
-                            </div>         
-                        </div>
-                        <div class="click"><a href="#"  class="next" title="다음이미지">&gt;</a></div>
-                        </div>
-                        <div class="slidetitle">서촌 비빔밥축제</div>                               
-                                <!-- <div class="slider s1"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_adf4c92b-e2a1-4404-87b7-31086e6f230c_1.JPG" alt="이미지1"></div> -->
-                                <!-- <div class="slider s2"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_202a3575-509f-4e34-bbf8-59328d7b89eb_1.jpg" alt="이미지2"></div> -->
-                                <!-- <div class="slider s3"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_9368f6c0-eea2-4f94-aaa1-638085ff2161_1.jpg" alt="이미지3"></div> -->
-                                <!-- <div class="slider s4"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_df8c22a2-24cd-4504-9f5e-400ef9362737_1.jpg" alt="이미지4"></div> -->
-                                <!-- <div class="slider s5"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_5b8b0d03-bdf6-4eb4-b9b4-4d2577a30aca_1.jpg" alt="이미지5"></div> -->
-                               
-                                 
-                        <!-- <div class="slider__btn">
-                            <a href="#" class="prev" title="이전이미지">&lt;</a>
-                            <a href="#" class="next" title="다음이미지">&gt;</a>
-                        </div> -->
-                        <!-- <div class="slider__dot"> -->
-                            <!-- <a href="#" class="active dot">이미지1</a>
-                            <a href="#" class="dot">이미지2</a>
-                            <a href="#" class="dot">이미지3</a>
-                            <a href="#" class="dot">이미지4</a>
-                            <a href="#" class="dot">이미지5</a> -->  
-                        </div>
-                </main>
-            </div>
+			    <main id="main">
+			        <div class="slider__wrap">
+			            <div class="slidecontent">
+			                <div class="click"><a href="#" class="prev" title="이전이미지" onclick="prevSlide()">&lt;</a></div>
+			                <div class="slider__img">
+			                    <div class="slider__inner" id="sliderInner">
+			                         <!-- 슬라이드 이미지들이 여기에 추가될 것입니다 -->
+			                    </div>
+			                </div>
+			                <div class="click"><a href="#" class="next" title="다음이미지" onclick="nextSlide()">&gt;</a></div>
+			            </div>
+			            <div class="slidetitle"></div>
+			        </div>
+			    </main>
+			</div>
+			<script>
+			let currentSlide = 0;
+			let slides = [];
+
+			async function fetchSlides() {
+				try {
+			        const response = await fetch('/feswork/api/slides');
+			        if (!response.ok) {
+			            throw new Error('Network response was not ok');
+			        }
+			        const contentType = response.headers.get("content-type");
+			        if (!contentType || !contentType.includes("application/json")) {
+			            throw new Error("Expected JSON but received " + contentType);
+			        }
+			        const data = await response.json();
+			        console.log(data);
+			        return data;
+			    } catch (error) {
+			        console.error('There has been a problem with your fetch operation:', error);
+			        return []; // 에러가 발생하면 빈 배열 반환
+			    }
+			}
+
+			function createSlideElement(fesImage, festivalName) {
+			    const slide = document.createElement('div');
+			    slide.classList.add('slider');
+			    slide.classList.add('hidden');  // 기본적으로 슬라이드를 숨김
+			    slide.innerHTML = '<img src="' + fesImage + '" alt="Festival Image" style="width: 400px; height: 400px;"><div class="slidetitle">' + festivalName + '</div>';
+			    return slide;
+			}
+
+			async function loadSlides() {
+			    const sliderInner = document.getElementById('sliderInner');
+			    const slidesData = await fetchSlides();
+			    
+			    console.log(slidesData);
+			    
+			    slidesData.forEach((slide, index) => {
+			        const slideElement = createSlideElement(slide.fesImage, slide.festivalName); // festivalName도 전달
+			        if (index === 0) {
+			            slideElement.classList.remove('hidden');  // 첫 번째 슬라이드는 표시
+			        }
+			        sliderInner.appendChild(slideElement);
+			        slides.push(slideElement);
+			    });
+			}
+
+			function showSlide(index) {
+			    slides.forEach((slide, i) => {
+			        slide.classList.add('hidden');  // 모든 슬라이드를 숨김
+			        if (i === index) {
+			            slide.classList.remove('hidden');  // 선택한 슬라이드만 표시
+			        }
+			    });
+			}
+
+			function nextSlide() {
+			    currentSlide = (currentSlide + 1) % slides.length;
+			    showSlide(currentSlide);
+			}
+
+			function prevSlide() {
+			    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+			    showSlide(currentSlide);
+			}
+
+			// 페이지 로드 시 슬라이드 로드
+			window.onload = loadSlides;
+
+
+			</script>
             <!-- 축제콕콕 배너-->
             <div class="cokcok">
                 <a href="<%= contextPath %>/views/RecommendedPage/survey.jsp">나만의 축제를 추천해드려요 - click !</a>
@@ -361,7 +437,7 @@
                 <div class="event-category">
                     <h2>진행중</h2>
                     <div class="event-list">
-                        <div>
+                        <div class="event-img">
                             <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_527be805-75fb-4361-8e7f-6883c1a00f1e_1.jpg" alt="Event 1">
                             <p>2024 통영 한산대첩 축제</p>
                         </div>
