@@ -104,19 +104,36 @@
 
         .blind{ display: none;}
        
-       
-        #fesvival-post1{
-            display: flex; 
-            height:250px;
-            justify-content: center; /* 가로 중앙 정렬 */
-        }
-        #fesvival-post1 div{
-            background-size: cover;
-            width: 210px;     
-            margin: 10px;
-            display: block;
-        }
+       #fesvival-post1 {
+    display: flex;
+    flex-wrap: wrap; /* 줄 바꿈을 허용 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    gap: 10px; /* 요소들 간의 간격 설정 */
+}
 
+#fesvival-post1 > div {
+    width: 210px;  /* 이미지 컨테이너의 너비 설정 */
+    height: 250px; /* 이미지 컨테이너의 높이 설정 */
+    overflow: hidden; /* 이미지가 컨테이너를 넘지 않도록 설정 */
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    background-color: #ddd; /* 배경색 설정 (선택 사항) */
+    border-radius: 5px; /* 둥근 모서리 (선택 사항) */
+}
+
+#fesvival-post1 img {
+    max-width: 100%;  /* 컨테이너 너비에 맞게 이미지 크기 조절 */
+    max-height: 100%; /* 컨테이너 높이에 맞게 이미지 크기 조절 */
+    object-fit: cover; /* 이미지 비율 유지하면서 컨테이너를 채우도록 설정 */
+}
+       
+    
+    
+    
+    
+    
+    
         #fesvival-post2{
             display: grid;
             grid-template-columns: repeat(4, 1fr); /* 4개의 열 */
@@ -332,6 +349,47 @@
     a {
     	text-decoration:none;
     }
+    
+    
+    /* 검색 결과 없음 스타일링 */
+		.no-results {
+		    text-align: center;
+		    padding: 50px;
+		    background-color: #f9f9f9;
+		    border: 1px solid #ddd;
+		    border-radius: 10px;
+		    margin: 20px auto;
+		    max-width: 600px;
+		}
+		
+		.no-results__image {
+		    margin-bottom: 20px;
+		}
+		
+		.no-results__image img {
+		    max-width: 150px;
+		    height: auto;
+		}
+		
+		.no-results__message {
+		    color: #555;
+		}
+		
+		.no-results__title {
+		    font-size: 24px;
+		    color: #333;
+		    font-weight: bold;
+		    margin-bottom: 10px;
+		}
+		
+		.no-results__description {
+		    font-size: 16px;
+		    color: #777;
+		}
+    
+    
+    
+    
                 </style>
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -421,13 +479,13 @@
                                <select name="searchCate" id="searchCate" title="카테고리 선택">
                                        <option value="">카테고리</option>
                                    
-                                       <option value="전통">전통</option>
+                                       <option value="tradition">전통</option>
                                    
-                                       <option value="음식">음식</option>
+                                       <option value="food">음식</option>
                                    
-                                       <option value="문화">문화</option>
+                                       <option value="culture">문화</option>
                                    
-                                       <option value="체험">체험</option>
+                                       <option value="experience">체험</option>
                                    
                                        <option value="미디어아트">미디어아트</option>
                                    
@@ -453,12 +511,10 @@
                         <br><br>
 
                             <div id="fesvival-post1">
-                     
-                                <div style="background-image: url(resources/urbanbrush-20180824005523160427.png);"></div>
-                                <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                <div style="background-image: url(resources/1404859143246_PicsArt_1404833148597.png);"></div>
-                                <div style="background-image: url(resources/redheartemoji1.jpg);"></div>
-                            </div>
+                     			<c:forEach var="l" items="${ lList}">	
+                                <div><img src="${l.fesImage}"></div>
+                                </c:forEach>
+                                </div>
                             
                             <br>
                             <hr size="1" color="green">                          
@@ -470,14 +526,23 @@
                                 <div class="inner">
                                     <div class="other_festival" role="application">
                                         <div class="blind">페스티벌 검색 리스트</div>
+                                      <c:choose>
+                                      
+                                      <c:when test="${ empty fList  }">
                                         <!-- 검색 결과 없음 -->
-                                        <div class="no_list" style="display: none;" id="divNoData">
-                                            <div class="no_img"></div>
-                                            <strong>검색결과가 없습니다</strong>
-                                            <p>찾으시는 축제를 다시 검색해 주세요</p>
-                                        </div>
+                                   <!-- 검색 결과 없음 -->
+											<div class="no-results">
+											    <div class="no-results__image">
+											        <img src="resources/images/free-icon-cry-1463950.png" alt="No Results">
+											    </div>
+											    <div class="no-results__message">
+											        <strong class="no-results__title">검색결과가 없습니다</strong>
+											        <p class="no-results__description">찾으시는 축제를 다시 검색해 주세요</p>
+											    </div>
+											</div>
                                         <!-- //검색 결과 없음 -->
-                    
+                   						</c:when>
+                   						<c:otherwise>
                                         <div class="festival_ul_top" id="festival_ul_top" style="">
                                             <ul class="tab_area">
                                                 <li id="tabFstvlList" class="active">
@@ -498,7 +563,7 @@
                                                 <ul class="other_festival_ul" id="fstvlList">
                                                     	<c:forEach var="f" items="${fList}">
                                                     <li>    
-                                                        <a href="">
+                                                        <a href="detailFes?festivalNo=${f.festivalNo }">
                                                             <div class="other_festival_img">
                                                                 <img src="${f.fesImage}"><!--이미지 자리-->
                                                             </div>
@@ -514,7 +579,8 @@
                                                 </ul>
                                             </div>
                                             <!--// 축제일순 -->
-                                       
+                                       </c:otherwise>
+                                            </c:choose>
                                             <!-- 인기순 -->
                                             <div class="tab_cont" aria-expanded="false" role="application" style="display: none;">
                                                 <p class="blind">인기순 리스트</p>

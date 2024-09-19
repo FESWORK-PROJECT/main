@@ -74,27 +74,21 @@
         <div class="navi">
             <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_e2b3015d-7660-4355-8d27-e0b67ea23ef9_1.png" width="80px" height="80px">
            
-<<<<<<< HEAD
-            <a href="<%= contextPath %>/introduce">소개</a>
-            <a href="<%= contextPath %>/views/information/festivalinformation.jsp">축제정보</a>
-            <a href="<%= contextPath %>/promotion">축제홍보</a>
-=======
+
+
             <a href="#">소개</a>
-<<<<<<< HEAD
             <a href="<%=contextPath%>/information">축제정보</a>
-            <a href="#">축제홍보</a>
-=======
-            <a href="#">축제정보</a>
             <a href="<%= contextPath %>/views/promo/promo.jsp">축제홍보</a>
->>>>>>> Project_FESWORK
+
         </div>
-        <div class="search">
+      <!--   <div class="search">
             <input type="text" placeholder="검색">
             <button>검색</button>
->>>>>>> Project_FESWORK
-        </div>
-        <form class="search" action="/keyword.fe" method="get">
-            <input class="keyword" type="text" placeholder="검색" value="" name="search" autocomplete="off">
+			불필요한 기능인거 같아서 일단 주석 처리만 했습니다.
+        </div> -->
+        
+        <form class="search" action="search" method="get">
+            <input class="keyword" type="text" placeholder="검색" value="" name="festivalName" autocomplete="off">
             <button class="searchBtn" type="submit">검색</button>
         </form>
         <div>
