@@ -14,18 +14,16 @@ import com.feswork.information.model.vo.Information;
 import com.feswork.information.service.InformationService;
 
 /**
- * Servlet implementation class FestivalInformationController
+ * Servlet implementation class searchFestivalController
  */
-@WebServlet("/information")
-public class FestivalInformationController extends HttpServlet {
+@WebServlet("/searchRequest")
+public class SearchFestivalController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	
-	
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FestivalInformationController() {
+    public SearchFestivalController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,26 +33,29 @@ public class FestivalInformationController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// 지역별 
+		String searchArea = request.getParameter("searchArea");
+		String searchDate = request.getParameter("searchDate");
+		String searchCate = request.getParameter("searchCate");
 		
+		ArrayList<Information> information  = new InformationService().getSearchFestival(searchArea, searchDate, searchCate);
+			
 		
-		ArrayList<Information> information  = new InformationService().getFestivalOrderByDate();
-		ArrayList<Information> likeFestival = new InformationService().getLikeTopFestival();
-		
-		if(information != null) {
-		HttpSession session = request.getSession();
-		
-		session.setAttribute("fList", information);
-		session.setAttribute("lList", likeFestival);
-		
-		
-		request.getRequestDispatcher("views/information/festivalinformation.jsp").forward(request, response);
-		
-		
+			
+		if(information != null){
+			HttpSession session = request.getSession();
+			session.setAttribute("fList", information);
+			
+			request.getRequestDispatcher("views/information/festivalinformation.jsp")
+			.forward(request, response);
+			
 		}else{
 			request.setAttribute("errorMsg", "요청이 실패했습니다");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-		
 		}
+		
+		
+		
 	}
 
 	/**

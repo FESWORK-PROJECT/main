@@ -11,6 +11,7 @@
 	<typeAliases>
 	 	<typeAlias type="com.feswork.member.model.vo.Member" alias="Member" />
 	 	<typeAlias type="com.feswork.information.model.vo.Information" alias="Information" />
+	 	<typeAlias type="com.feswork.theme.model.vo.Theme" alias="Theme" />
 	 	<typeAlias type="com.feswork.slide.model.vo.Slide" alias="Slide" />
 	 </typeAliases>
 	
