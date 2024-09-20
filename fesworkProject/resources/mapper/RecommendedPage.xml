@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="recommendedMapper">
+    <resultMap id="InformationResultSet" type="Information">
+        <result column="FESTIVAL_NO" property="festivalNo" />
+        <result column="FESTIVAL_NAME" property="festivalName" />
+        <result column="FES_IMAGE" property="fesImage"/>
+        <result column="FES_DESCRIPTION" property="fesDescription"/>
+        <result column="LOCAL_CODE" property="localCode"/>
+    </resultMap>
+
+    <select id="getRecommendedFestivals" resultMap="InformationResultSet">
+      SELECT DISTINCT F.FESTIVAL_NAME, F.LOCAL_CODE, F.FES_IMAGE, F.FESTIVAL_NO
+		FROM FESTIVAL F
+		JOIN THEME_OF_FESTIVAL T ON F.FESTIVAL_NO = T.FESTIVAL_NO
+		WHERE F.LOCAL_CODE = #{preferredLocation} 
+	    <if test="themes != null and themes.length > 0">
+	      AND T.THEME_CODE IN 
+	      <foreach item="theme" index="index" collection="themes" open="(" separator="," close=")">
+	        #{theme}
+	      </foreach>
+	    </if>
+    </select>
+</mapper>

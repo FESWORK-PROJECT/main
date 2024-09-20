@@ -9,24 +9,9 @@
     <link rel="stylesheet" href="survey.css">
 </head>
 <body>
+	<%@ include file="../common/header.jsp" %>
     <div class="wrap">
       
-        <div class="header">
-            <div class="navi">
-                <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_e2b3015d-7660-4355-8d27-e0b67ea23ef9_1.png" width="80px" height="80px">
-                <a href="#">소개</a>
-                <a href="#">축제정보</a>
-                <a href="#">축제홍보</a>
-            </div>
-            <div class="search">
-                <input type="text" placeholder="검색">
-                <button>검색</button>
-            </div>
-            <div>
-                <a href="#">로그인</a>
-            </div>
-        </div>
-        
         <section id="festival-intro">
             <div id="a">
                 <main>
@@ -67,17 +52,17 @@
 
         <section id="festival-form">
             <div id="d">
-                <form id="festivalForm" action="FestivalRecommendationServlet" method="post">
+                <form id="festivalForm" action="<%= contextPath %>/survey" method="post">
                     <label for="gender">성별</label><br>
-                    <input type="radio" name="gender" value="여" required> 여
-                    <input type="radio" name="gender" value="남" required> 남
+                    <input type="radio"  value="여" required> 여
+                    <input type="radio"  value="남" required> 남
                     <br>
                     <label for="ageGroup">연령대</label><br>
-                    <input type="radio" name="ageGroup" value="미성년자" required> 미성년자
-                    <input type="radio" name="ageGroup" value="성인" required> 성인
+                    <input type="radio" value="미성년자" required> 미성년자
+                    <input type="radio" value="성인" required> 성인
                     <br>
                     <label for="preferredTime">희망시기</label><br>
-                    <select name="preferredTime" required>
+                    <select required>
                         <option value="1월">1월</option>
                         <option value="2월">2월</option>
                         <option value="3월">3월</option>
@@ -94,26 +79,26 @@
                     <br>
                     <label for="preferredLocation">희망여행지</label><br>
                     <select name="preferredLocation" required>
-                        <option value="서울">서울</option>
-                        <option value="부산">부산</option>
-                        <option value="제주">제주도</option>
-                        <option value="강원도">강원도</option>
-                        <option value="충청남도">충청남도</option>
-                        <option value="충청북도">충청북도</option>
-                        <option value="전라남도">전라남도</option>
-                        <option value="전라북도">전라북도</option>
-                        <option value="경상남도">경상남도</option>
-                        <option value="경상북도">경상북도</option>
-                        <option value="경기도">경기도</option>
-                        <option value="대구">대구</option>
-                        <option value="대전">대전</option>
+                        <option value="11">서울</option>
+                        <option value="21">부산</option>
+                        <option value="39">제주도</option>
+                        <option value="32">강원도</option>
+                        <option value="34">충청남도</option>
+                        <option value="33">충청북도</option>
+                        <option value="36">전라남도</option>
+                        <option value="35">전라북도</option>
+                        <option value="38">경상남도</option>
+                        <option value="37">경상북도</option>
+                        <option value="31">경기도</option>
+                        <option value="22">대구</option>
+                        <option value="25">대전</option>
                     </select>
                     <br>
                     <label for="theme">축제테마</label><br>
-                    <input type="checkbox" name="theme" value="전통"> 전통
-                    <input type="checkbox" name="theme" value="음식"> 음식
-                    <input type="checkbox" name="theme" value="문화"> 문화
-                    <input type="checkbox" name="theme" value="자연"> 자연
+                    <input type="checkbox" name="theme" value="tradition"> 전통
+                    <input type="checkbox" name="theme" value="food"> 음식
+                    <input type="checkbox" name="theme" value="culture"> 문화
+                    <input type="checkbox" name="theme" value="experience"> 자연
                     <br>
                 </form>
             </div>
