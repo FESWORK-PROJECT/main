@@ -76,10 +76,9 @@
            
 
 
-            <a href="#">소개</a>
+            <a href="<%= contextPath %>/introduce">소개</a>
             <a href="<%=contextPath%>/information">축제정보</a>
             <a href="<%= contextPath %>/views/promo/promo.jsp">축제홍보</a>
-
         </div>
       <!--   <div class="search">
             <input type="text" placeholder="검색">
@@ -95,11 +94,11 @@
         	<c:choose>
         		<c:when test="${ empty loginMember }">
         			<!-- 로그인 안된 상태 -->
-		            <a href="<%= contextPath %>/views/member/loginForm.jsp">로그인/회원가입</a>
+		            <a href="<%= contextPath %>/loginPage.me">로그인/회원가입</a>
         		</c:when>
         		<c:otherwise>
         			<!-- 로그인 성공 -->
-        			<a href="<%= contextPath %>/views/member/myPage.jsp">마이페이지</a>
+        			<a href="<%= contextPath %>/mypagePage.me">마이페이지</a>
         			<a href="<%= contextPath %>/logout.me">로그아웃</a>
         		</c:otherwise>
         	</c:choose>

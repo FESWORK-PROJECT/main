@@ -87,10 +87,11 @@ public class InformationService {
 	public int toggleLike(String festivalNo, boolean isLiked) {
 		SqlSession sqlSession = MybatisTemplate.getSqlSession();
 		int result = 0;
-		HashMap lMap = null;
-		lMap.put("festivalNo", festivalNo);
-		lMap.put("isLiked", isLiked);
 		
+		HashMap lMap = new HashMap<>();
+		
+		lMap.put("festivalNo", festivalNo);
+		lMap.put("isLiked", isLiked ? 1 : -1);
 		
 		result = iDao.toggleLike(sqlSession, lMap);
 		

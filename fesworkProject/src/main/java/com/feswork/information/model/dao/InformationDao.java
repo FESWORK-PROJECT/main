@@ -56,8 +56,6 @@ public class InformationDao {
 
 	public int toggleLike(SqlSession sqlSession, HashMap lMap) {
 		
-		
-		
 		return sqlSession.update("informationMapper.toggleLike",lMap);
 		
 	}

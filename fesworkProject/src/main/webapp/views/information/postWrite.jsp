@@ -15,7 +15,7 @@
             max-width: 600px;
             margin: 0 auto;
         }
-        h1 {
+        h3 {
             text-align: center;
         }
         label {
@@ -56,26 +56,28 @@
             height: auto;
         }
 
-        h1{
+        h3{
             color: #6CC04A;
         }
     </style>
 </head>
 <body>
     <jsp:include page="../common/header.jsp"/>
+    <br>
     
-    <h1>후기 작성</h1>
+    <h3>축제 후기 작성</h3>
+    <br>
     <div class="container">
 
-        <form action="/submit-post" method="post" enctype="multipart/form-data">
-            <label for="title">제목</label>
-            <input type="text" id="title" name="title" required placeholder="제목을 입력해주세요." style="resize: none;">
+        <form action="insert" method="post" enctype="multipart/form-data">
+            <label for="rvTitle">제목</label>
+            <input type="text" id="rvTitle" name="rvTitle" required placeholder="제목을 입력해주세요." style="resize: none;">
 
-            <label for="content" aria-placeholder="">내용</label>
-            <textarea id="content" name="content" required placeholder="내용을 입력해주세요." style="resize: none;"></textarea>
+            <label for="rvContent" aria-placeholder="">내용</label>
+            <textarea id="rvContent" name="rvContent" required placeholder="내용을 입력해주세요." style="resize: none;"></textarea>
 
-            <label for="image">이미지 업로드</label>
-            <input type="file" id="image" name="image" accept="image/*" onchange="previewImage(event)">
+            <label for="rvImg">이미지 업로드</label>
+            <input type="rvImg" id="rvImg" name="rvImg" accept="image/*" onchange="previewImage(event)">
 
             <img id="image-preview" class="image-preview" src="#" alt="이미지 미리보기" style="display: none;">
 
@@ -84,7 +86,6 @@
     </div>
     <jsp:include page="../common/footer.jsp"/>
    
-
     <script>
         function previewImage(event) {
             const image = document.getElementById('image-preview');
