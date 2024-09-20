@@ -1,4 +1,4 @@
-package com.feswork.information.controller;
+package com.feswork.review.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,50 +10,58 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.feswork.common.model.vo.PageInfo;
+import com.feswork.common.template.Pagination;
 import com.feswork.information.model.vo.Information;
 import com.feswork.information.service.InformationService;
+import com.feswork.review.model.vo.Review;
+import com.feswork.review.service.ReviewService;
 
 /**
- * Servlet implementation class FestivalInformationController
+ * Servlet implementation class ReviewController
  */
-@WebServlet("/information")
-public class FestivalInformationController extends HttpServlet {
+@WebServlet("/boardList")
+public class ReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FestivalInformationController() {
+    public ReviewController() {
         super();
         // TODO Auto-generated constructor stub
     }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String festivalNo = request.getParameter("festivalNo");
+		String strCpage = request.getParameter("cpage");
+		
+		int cpage = 1;
+		if (strCpage != null) {
+			cpage = Integer.parseInt(strCpage);
+			request.setAttribute("cpage", cpage);
+		}
+		
+		ArrayList<Review> rList = new ReviewService().getBoardList(festivalNo);
 		
 		
-		ArrayList<Information> information  = new InformationService().getFestivalOrderByDate();
-		ArrayList<Information> likeFestival = new InformationService().getLikeTopFestival();
+		// PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 5, 5);
 		
-		if(information != null) {
 		HttpSession session = request.getSession();
 		
-		session.setAttribute("fList", information);
-		session.setAttribute("lList", likeFestival);
+		if(rList != null){
+			session.setAttribute("rList", rList); 
 		
-		
-		request.getRequestDispatcher("views/information/festivalinformation.jsp").forward(request, response);
-		
-		
-		}else{
+			
+			request.getRequestDispatcher("views/information/boardList.jsp").forward(request, response);
+		}else {
 			request.setAttribute("errorMsg", "요청이 실패했습니다");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}	
 		
-		}
 	}
 
 	/**

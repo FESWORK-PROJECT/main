@@ -1,7 +1,7 @@
-package com.feswork.information.controller;
+package com.feswork.review.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,19 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.feswork.information.service.InformationService;
+import com.feswork.review.model.vo.Review;
+import com.feswork.review.service.ReviewService;
 
 /**
- * Servlet implementation class LikeFestival
+ * Servlet implementation class InsertBoard
  */
-@WebServlet("/likeFestival")
-public class LikeFestival extends HttpServlet {
+@WebServlet("/insert")
+public class InsertBoard extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LikeFestival() {
+    public InsertBoard() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,23 +31,35 @@ public class LikeFestival extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 String festivalNo = request.getParameter("festivalNo");
-		 boolean isLiked = Boolean.parseBoolean(request.getParameter("isLiked"));
 		
-		 int result  = new InformationService().toggleLike(festivalNo, isLiked);
+		String rvTitle = request.getParameter("rvTitle");
+		String rvContent = request.getParameter("rvContent");
+		String rvImg = request.getParameter("rvImg");
 		
-		 response.setContentType("application/json");
-		 PrintWriter out = response.getWriter();
-		 
-		 
-		 System.out.println("festivalNo: " + festivalNo);
-		 System.out.println("isLiked: " + isLiked);
-		 
-		    if (result > 0) {
-		        out.print("{\"success\": true}");
-		    } else {
-		        out.print("{\"success\": false}");
-		    }
+		HashMap rv = new HashMap();
+		
+		rv.put("rvTitle", rvTitle);
+		rv.put("rvContent", rvContent);
+		rv.put("rvImg", rvImg);
+		
+		
+		int result = new ReviewService().insertReview(rv);
+		
+		if(result > 0){
+			
+			request.setAttribute("rv", rv);
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	/**
