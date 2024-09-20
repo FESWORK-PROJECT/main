@@ -1,16 +1,18 @@
 package com.feswork.promo.controller;
 
 import java.io.IOException;
-import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.feswork.common.template.MyFileRenamePolicy;
 import com.feswork.promo.Service.FestivalService;
 import com.feswork.promo.model.vo.Festival;
+import com.oreilly.servlet.MultipartRequest;
 
 /**
  * Servlet implementation class FestivalwriteController
@@ -41,32 +43,48 @@ public class FestivalwriteController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 
+		int maxSize = 10 * 1024 * 1024; 	// 10mbyte
+		String savePath = request.getSession().getServletContext().getRealPath("/resources/upfiles/");
+		
+		MultipartRequest multipart = new MultipartRequest(request
+				, savePath
+				, maxSize
+				, "UTF-8"
+				, new MyFileRenamePolicy());
+		
+		
+		
 	    // 폼에서 전송된 데이터 받기
-	    String festivalName = request.getParameter("festivalName");
-	    String memId = request.getParameter("memId");
-	    String localCode = request.getParameter("localCode");
-	    String openDate = request.getParameter("openDate");
-	    String closeDate = request.getParameter("closeDate");
-	    int fesLike = Integer.parseInt(request.getParameter("fesLike"));
-	    String fesAdd = request.getParameter("fesAdd");
-	    String fesImg = request.getParameter("fesImg");
-	    String fesTitle = request.getParameter("fesTitle");
-	    String status = request.getParameter("status");
-	    String fesDescription = request.getParameter("fesDescription");
+	    String festivalName = multipart.getParameter("festivalName");
+	    String memId = multipart.getParameter("memId");
+	    String localCode = multipart.getParameter("localCode");
+	    String openDate = multipart.getParameter("openDate");
+	    String closeDate = multipart.getParameter("closeDate");
+	    String fesAdd = multipart.getParameter("fesAdd");
+	    String fesImg = multipart.getFilesystemName("fesImg");
+	    String fesDescription = multipart.getParameter("fesDescription");
 
+	    System.out.println("받아온memid:"+memId);
 	    // Festival 객체에 데이터 설정
 	    Festival festival = new Festival();
 	    festival.setFestivalName(festivalName);
 	    festival.setMemId(memId);
 	    festival.setLocalCode(localCode);
-	    festival.setOpenDate(java.sql.Date.valueOf(openDate));  // String을 Date로 변환
-	    festival.setCloseDate(java.sql.Date.valueOf(closeDate));
-	    festival.setFesLike(fesLike);
+
+	    // 날짜 값이 null 또는 빈 문자열인지 확인 후 변환
+	    if (openDate != null && !openDate.isEmpty()) {
+	        festival.setOpenDate(java.sql.Date.valueOf(openDate));
+	    }
+	    if (closeDate != null && !closeDate.isEmpty()) {
+	        festival.setCloseDate(java.sql.Date.valueOf(closeDate));
+	    }
+
 	    festival.setFesAdd(fesAdd);
-	    festival.setFesImg(fesImg);
-	    festival.setFesTitle(fesTitle);
-	    festival.setStatus(status);
+	    
+	    festival.setFesImg("resources/upfiles/"+fesImg);
 	    festival.setFesDescription(fesDescription);
+	    
+	    System.out.println(festival);
 
 	    // FestivalService 객체를 생성하여 메서드 호출
 	    FestivalService festivalService = new FestivalService();
@@ -74,10 +92,13 @@ public class FestivalwriteController extends HttpServlet {
 
 	    // 결과에 따른 처리
 	    if (result > 0) {
-	        response.sendRedirect("/festival/list");  // 성공 시 축제 목록 페이지로 이동
+	    	HttpSession session = request.getSession();
+	    	session.setAttribute("alertMsg", "글 작성에 성공했습니다.");
+	    	response.sendRedirect(request.getContextPath());
+	        //response.sendRedirect("/festivalList");  // 성공 시 축제 목록 페이지로 이동
 	    } else {
-	        request.setAttribute("errorMessage", "글 작성에 실패했습니다.");
-	        request.getRequestDispatcher("/festival/write.jsp").forward(request, response);  // 실패 시 작성 페이지로 이동
+	    	request.setAttribute("errorMessage", "글 작성에 실패했습니다.");
+	        request.getRequestDispatcher("/writecontext").forward(request, response);  // 실패 시 작성 페이지로 이동
 	    }
 	}
 }

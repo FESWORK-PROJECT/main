@@ -12,8 +12,6 @@ public class Festival {
 	private int fesLike;
 	private String fesAdd;
 	private String fesImg;
-	private	String fesTitle;
-	private String status;
 	private String fesDescription;
 	
 	
@@ -35,8 +33,6 @@ public class Festival {
 		this.fesLike = fesLike;
 		this.fesAdd = fesAdd;
 		this.fesImg = fesImg;
-		this.fesTitle = fesTitle;
-		this.status = status;
 		this.fesDescription = fesDescription;
 	}
 
@@ -95,23 +91,20 @@ public class Festival {
 	public void setFesImg(String fesImg) {
 		this.fesImg = fesImg;
 	}
-	public String getFesTitle() {
-		return fesTitle;
-	}
-	public void setFesTitle(String fesTitle) {
-		this.fesTitle = fesTitle;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
 	public String getFesDescription() {
 		return fesDescription;
 	}
 	public void setFesDescription(String fesDescription) {
 		this.fesDescription = fesDescription;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Festival [festivalNo=" + festivalNo + ", memId=" + memId + ", localCode=" + localCode
+				+ ", festivalName=" + festivalName + ", openDate=" + openDate + ", closeDate=" + closeDate
+				+ ", fesLike=" + fesLike + ", fesAdd=" + fesAdd + ", fesImg=" + fesImg 
+				+   ", fesDescription=" + fesDescription + "]";
 	}
 	
 	

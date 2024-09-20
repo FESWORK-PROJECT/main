@@ -6,9 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>축제 홍보 페이지</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
 <style>
 #part1{
     color: yellow;
@@ -63,7 +65,8 @@
 }
 table {
     border-collapse: collapse;
-    width: 100%;
+    text-align: center;
+    width: 80%;
 }
 th, td {
     border: none; /* 테두리 제거 */
@@ -165,9 +168,11 @@ tbody{
 #img{
     width: 150px; height: 100px;
 }
-#center{
-    text-align: center;
-    font-size: 10px;
+#center1{
+    width: 120px;
+}
+#center2{
+    width: 120px;
 }
 #des{
     text-align: left;
@@ -218,11 +223,11 @@ tbody{
     	<table>
         <thead>
             <tr>
-                <th id="center">번호</th>
+                <th id="center1">번호</th>
                 <th id="center">사진</th>
                 <th id="center">축제 이름</th>
-                <th id="center">시작 날짜</th>
-                <th id="center">종료 날짜</th>
+                <th id="center2">시작 날짜</th>
+                <th id="center2">종료 날짜</th>
                 <th id="center">설명</th>
             </tr>
         </thead>
