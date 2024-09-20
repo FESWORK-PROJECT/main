@@ -60,23 +60,24 @@
     	SELECT * FROM FESTIVAL
     	WHERE FESTIVAL_NO = #{festivalNo}
     </select>
+    
     <select id="getFestivalSearch" resultMap="InformationResultSet">
     	  SELECT * FROM FESTIVAL
         WHERE FESTIVAL_NAME LIKE '%' || #{festivalName} || '%'
     </select>
     
-    
-    
     <update id="toggleLike" >
      UPDATE FESTIVAL
-    	SET FES_LIKE = FES_LIKE + CASE WHEN #{isLiked} 
-    	THEN 1 ELSE -1 END
+    	SET FES_LIKE = FES_LIKE + #{isLiked}
     	WHERE FESTIVAL_NO = #{festivalNo}
     </update>
     
+    
+    
+    
+    
+    
   
-    
-    
     
     
     

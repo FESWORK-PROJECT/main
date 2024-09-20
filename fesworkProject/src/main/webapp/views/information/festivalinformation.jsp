@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -395,7 +395,6 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
 <body>
-
  	<jsp:include page="../common/header.jsp"/>
          
             <br>
@@ -512,7 +511,7 @@
 
                             <div id="fesvival-post1">
                      			<c:forEach var="l" items="${ lList}">	
-                                <div><img src="${l.fesImage}"></div>
+                                <div><a href="detailFes?festivalNo=${l.festivalNo }"><img src="${l.fesImage}"></a></div>
                                 </c:forEach>
                                 </div>
                             
@@ -581,28 +580,7 @@
                                             <!--// 축제일순 -->
                                        </c:otherwise>
                                             </c:choose>
-                                            <!-- 인기순 -->
-                                            <div class="tab_cont" aria-expanded="false" role="application" style="display: none;">
-                                                <p class="blind">인기순 리스트</p>
-                                                <ul class="other_festival_ul" id="fstvlLikeOrderList">
-                                                    <li>    
-                                                        <a href="">
-                                                            <div class="other_festival_img">
-                                                                <img src="" alt=""><!--이미지 자리-->
-                                                            </div>
-                                                            <div class="sing_area">
-                                                                <div><!--축제 테마 자리--></div>
-                                                            </div>
-                                                            <div class="other_festival_content">
-                                                                <strong><!--축제명--></strong>
-                                                                <div class="date"><!--축제 기간--></div>
-                                                                <div class="ioc"><!--축제 지역코드?--></div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <!--// 인기순 -->
+                                   
                                         </div>
                                     </div>
                                 </div>
@@ -614,8 +592,7 @@
                         <jsp:include page="../common/footer.jsp"/>       
 
                         <script>
-              
-                            document.addEventListener('DOMContentLoaded', function() {
+                           		document.addEventListener('DOMContentLoaded', function() {
                                 const btnDate = document.getElementById('btnDate');
                                 const btnLike = document.getElementById('btnLike');
 
@@ -625,30 +602,21 @@
                                 btnLike.addEventListener('click',function(){
                                     fesWorkList('likeSort');
                                 });
-
-
                                 function fesWorkList(sortOrder) {
                                     fetch('list/wntyFstvlList.do?sortOrder='+sortOrder)
                                     .then(response => response.json())
                                     .then(data => updateFestivalList(data))
                                     .catch(error => console.error('Error:', error));
-                                
                                 }
-                                
                                 function updateFestivalList(fesData){
                                     const list = document.getElementById('fstvlList');
-
                                     list.innerHTML = '';
-                                    
-                                    
-
                                     fesData.forEach(fList =>{
                                         const listItem = document.createElement('li');
                                         listItem.innerHTML = '<a href="">' + 
                                                             '<div class="other_festival_img">' + 
                                                                  '<img src="' + fList.fesImage + '">' +
                                                                '</div>' +
-                                                 
                                                            '<div class="other_festival_content">' + 
                                                                 '<strong>' + fList.festivalName +'</strong>'+ 
                                                                '<div class="date">'+fList.openDate+'~'+ fList.closeDate+'</div>' +
