@@ -1,5 +1,6 @@
 package com.feswork.member.model.dao;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -31,7 +32,7 @@ public class MemberDao {
 
 	public int updateMember(SqlSession sqlSession, Member m) {
 		
-		System.out.println("dao가받은 m"+m);
+//		System.out.println("dao가받은 m"+m);
 		int result = sqlSession.update("memberMapper.updateMember", m);
 		
 		return result;
@@ -54,6 +55,23 @@ public class MemberDao {
 		int result = sqlSession.update("memberMapper.modifyPwd", memberMap);
 		
 		return result;
+	}
+
+	public Member findId(SqlSession sqlSession, Member m) {
+
+		Member memId = sqlSession.selectOne("memberMapper.findId", m);
+		
+//		System.out.println("dao에서 받은 memid: "+memId);
+		
+		return memId;
+	}
+
+	public Member findPwd(SqlSession sqlSession, Member m) {
+		Member memPwd = sqlSession.selectOne("memberMapper.findPwd", m);
+		
+		System.out.println("dao에서 받은 memPwd: "+memPwd);
+		
+		return memPwd;
 	}
 
 	
