@@ -1,27 +1,23 @@
-package com.feswork.search.controller;
+package com.feswork.member.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.feswork.search.service.FestivalService;
 
 /**
- * Servlet implementation class searchController
+ * Servlet implementation class LikeListPageController
  */
-@WebServlet("/search.fe")
-public class searchController extends HttpServlet {
+@WebServlet("/likeListPage.me")
+public class LikeListPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public searchController() {
+    public LikeListPageController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,24 +26,7 @@ public class searchController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-//		String search = request.getParameter("search");
-//		
-//		Festival festival = new FestivalService().searchCheck(search);
-//		
-//		HttpSession session = request.getSession();
-//		
-//		if(festival != null) {
-//			session.setAttribute("festival", festival);
-//			session.setAttribute();
-//			response.sendRedirect( request.getContextPath() );
-//		} else {
-//			session.setAttribute();
-//			response.sendRedirect( request.getContextPath() );
-//		}
-//		
-//				
-//		
+		request.getRequestDispatcher("views/member/likeList.jsp").forward(request, response);
 	}
 
 	/**
