@@ -94,11 +94,11 @@
         	<c:choose>
         		<c:when test="${ empty loginMember }">
         			<!-- 로그인 안된 상태 -->
-		            <a href="<%= contextPath %>/views/member/loginForm.jsp">로그인/회원가입</a>
+		            <a href="<%= contextPath %>/loginPage.me">로그인/회원가입</a>
         		</c:when>
         		<c:otherwise>
         			<!-- 로그인 성공 -->
-        			<a href="<%= contextPath %>/views/member/myPage.jsp">마이페이지</a>
+        			<a href="<%= contextPath %>/mypagePage.me">마이페이지</a>
         			<a href="<%= contextPath %>/logout.me">로그아웃</a>
         		</c:otherwise>
         	</c:choose>

@@ -81,7 +81,7 @@
             <img src="#" alt="로고">
             <h2>아이디 찾기</h2>
             <div id="table">
-                <form action="<%= contextPath %>/findId" method="post">
+                <form action="<%= contextPath %>/findId.me" method="post">
                     <table >
                         <tr>
                             <td colspan="3">이름</td>

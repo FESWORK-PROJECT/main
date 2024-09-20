@@ -80,7 +80,7 @@
             <img src="#" alt="로고">
             <h2>비밀번호 찾기</h2>
             <div id="table">
-                <form action="<%= contextPath %>/findPassword" method="post">
+                <form action="<%= contextPath %>/findPassword.me" method="post">
                     <table >
                         <tr>
                             <td colspan="3">아이디</td>

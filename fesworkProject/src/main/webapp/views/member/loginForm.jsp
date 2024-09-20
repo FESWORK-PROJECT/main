@@ -112,10 +112,10 @@
                         </tr>
                         <tr align="center">
                             <td>
-                                <a href="findIdForm.jsp">아이디찾기</a>
+                                <a href="<%=contextPath %>/findIdPage.me">아이디찾기</a>
                             </td>
                             <td>
-                                <a href="findPasswordForm.jsp">비밀번호찾기</a>
+                                <a href="<%=contextPath %>/findPasswordPage.me">비밀번호찾기</a>
                             </td>
                         </tr>
                         <tr align="center">

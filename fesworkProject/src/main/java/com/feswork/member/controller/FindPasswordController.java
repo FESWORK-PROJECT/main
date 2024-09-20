@@ -14,7 +14,7 @@ import com.feswork.member.service.MemberService;
 /**
  * Servlet implementation class FindPasswordController
  */
-@WebServlet("/findPassword")
+@WebServlet("/findPassword.me")
 public class FindPasswordController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -48,7 +48,7 @@ public class FindPasswordController extends HttpServlet {
 			String findPwd = memPwd.getMemberPwd();
 			HttpSession session = request.getSession();
 			session.setAttribute("alertMsg", "비밀번호는 "+ findPwd + " 입니다.");
-			response.sendRedirect( request.getContextPath()+"/views/member/findPasswordForm.jsp");
+			response.sendRedirect( request.getContextPath()+"/views/member/loginForm.jsp");
 		} else {
 			HttpSession session = request.getSession();
 			session.setAttribute("alertMsg", "가입하신 정보가 없습니다. 정확히 입력했는지 다시 확인해주세요.");
