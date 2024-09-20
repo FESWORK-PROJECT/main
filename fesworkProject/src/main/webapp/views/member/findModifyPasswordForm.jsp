@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기 페이지</title>
+<title>비밀번호 찾기 페이지</title>
 <style>
 
     body{
@@ -56,7 +56,7 @@
     table input {
         width: 280px;
         border-radius: 5px;
-        background-color: #f1f0f3bb;
+        background-color: #fbfafcbb;
     }
 
     table button {
@@ -71,7 +71,7 @@
    		 font-size: 40px;
    		 margin: 0px;
     }
-	
+    
 </style>
 
 </head>
@@ -86,16 +86,24 @@
             <a href="<%=contextPath %>">
             	<img src="<%=contextPath %>/resources/images/feswork_logo_full.png" alt="로고" width="200px">
            	</a> 
-            <p class="member-title">아이디 찾기</p>
+            <p class="member-title">비밀번호 변경</p>
             <div id="table">
-                <form action="<%= contextPath %>/findId.me" method="post">
+                <form action="<%= contextPath %>/modify.me" method="post">
                     <table >
+                        <tr>
+                            <td colspan="3">아이디</td>
+                        </tr>
+                        <tr align="center">
+                            <td colspan="3">
+                                <input type="text" name="memberId" id="memberId">
+                            </td>
+                        </tr>
                         <tr>
                             <td colspan="3">이름</td>
                         </tr>
                         <tr align="center">
                             <td colspan="3">
-                                <input type="text" name="memberName">
+                                <input type="text" name="memberName" id="memberName">
                             </td>
                         </tr>
                         <tr>
@@ -103,7 +111,7 @@
                         </tr>
                         <tr align="center">
                             <td colspan="3">
-                                <input type="email" name="email">
+                                <input type="email" name="email" id="email">
                             </td>
                         </tr>
                         <tr>
@@ -111,7 +119,7 @@
                         </tr>
                         <tr align="center">
                             <td colspan="3">
-                                <button type="submit">아이디 찾기</button>
+                                <button type="submit">비밀번호 찾기</button>
                             </td>
                         </tr>
                         
