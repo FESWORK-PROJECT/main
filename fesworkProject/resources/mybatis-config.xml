@@ -12,6 +12,7 @@
 	 	<typeAlias type="com.feswork.member.model.vo.Member" alias="Member" />
 	 	<typeAlias type="com.feswork.information.model.vo.Information" alias="Information"/>
 	 	<typeAlias type="com.feswork.theme.model.vo.Theme" alias="Theme" />
+	 	<typeAlias type="com.feswork.review.model.vo.Review" alias="Review"/>
 	 </typeAliases>
 	
 	<environments default="develop">
@@ -29,5 +30,6 @@
 	<mappers>
    		 <mapper resource="/mapper/information-mapper.xml"/>
    		 <mapper resource="/mapper/member-mapper.xml"/>
+   		  <mapper resource="/mapper/review-mapper.xml"/>
 	</mappers>
 </configuration>

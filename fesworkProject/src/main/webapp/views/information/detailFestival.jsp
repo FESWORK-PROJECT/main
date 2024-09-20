@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${iBoard.festivalName} - 축제 소개</title>
     <style>
-        body {
+   <%--      body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
@@ -158,47 +159,211 @@
 
     <div align="center">
         <a href="" id="reviewmore">후기 보기</a>
-    </div>
+    </div> --%>
+        <style>
+        .detail-contents{
+            /* border: 1px solid red; */
+            height: 800px;
+            display: flex;
+        }
 
+        .detail-contents > *{
+            /* border: 1px solid red; */
+            height: 100%;
+        }
+
+        .detail-leftContent, .detail-rightContent{
+            width: 20%;
+        }
+
+        .detail-centerContent{
+            width: 60%;
+            display: flex;
+            justify-content: center;
+            background-color: #9394c48a;
+        }
+
+        .festival-detail{
+            /* border: 1px solid red; */
+            border-radius: 20px;
+            margin-top: 30px;
+            width: 400px;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgb(255, 255, 255);
+            
+        }
+
+        .festival-image-box{
+            margin-top: 20px;
+        }
+
+        .festival-title{
+            margin-top: 10px;
+            color: #23044bc9 ;
+            font-size: 30px;
+            font-weight: 700;
+            padding-right: 32px;
+        }
+
+        .festival-info-box {
+            margin-top: 10px;
+            width: 80%;
+            
+        }
+
+        .festival-info-box > span{
+            margin-left: 2px;
+            color: aliceblue;
+            background-color: #5658b58a;
+            padding: 3px;
+            font-weight: 700;
+        }
+
+        .festival-info-box th{
+
+            color: aliceblue;
+            background-color: #5658b58a;
+            padding: 3px;
+            font-weight: 700;
+            width: 40px;
+  
+        }
+
+        .festival-info-box td{
+            word-break:keep-all;
+
+        }
+
+        .festival-intro{
+            margin-top: 10px;
+            width: 74%;
+            padding: 10px;
+            background-color: rgb(229, 223, 231);
+            word-break:keep-all;
+        }
+        
+        
+             #reviewmore {
+            display: inline-block;
+            background-color: #35096ebb;
+            color: white;
+            font-size: larger;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+     
+        
+        
+        </style>
+
+</head>
+<body>
+    
+    <jsp:include page="../common/header.jsp"/>
+    
+    
+    <div class="detail-contents">
+        <div class="detail-leftContent"></div>
+        
+        <div class="detail-centerContent">
+            <div class="festival-detail">
+                <div class="festival-image-box">
+                    <img src="${iBoard.fesImage}" width="300px">
+                </div>
+                <div class="festival-title">
+                    <button id="btnLike" class="off" value="좋아요"> ♡ </button>
+                    <%-- <button id="btnLike" class="on" value="좋아요" style="display:none;"> ♥ </button> --%>
+                   
+                    <span>${iBoard.festivalName}</span>
+                	
+                	<div id="likeCount">
+                	  <span><small>&nbsp; ${iBoard.fesLike}</small></span>
+                	</div>
+                	
+                </div>
+                <div class="festival-info-box">
+                    <hr color="#5658b58a"><br>
+                    <span>기간</span> <b>${iBoard.openDate} ~ ${iBoard.closeDate}</b> <br><br>
+                        <table>
+                            <tr>
+                                <th>
+                                    주소
+                                </th>
+                                <td>
+                                   ${iBoard.fesAdd}
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                    <span>축제 개요</span>
+                </div>
+                <div class="festival-intro">
+                 ${iBoard.fesDescription}
+                </div>
+            </div>
+        </div>
+        <div class="detail-rightContent"></div>
+    </div>
+    
+        <div align="center">
+        <a href="boardList?festivalNo=${iBoard.festivalNo}" id="reviewmore">후기 보기</a>
+    	</div> 
+    	
+    	<br><br>
+    
     <jsp:include page="../common/footer.jsp"/>
 
     <script>
     $(document).ready(function() {
-    	 let like = false;
-    		
+    	 let liked = false;
+    	 const festivalNo = ${iBoard.fesLike}
+    	
     	$('#btnLike').on('click',function(){
     	     const festivalNo = '${iBoard.festivalNo}'; // 축제 번호
-    	     const likeCountElement = $('#likeCount');
+    	     const likeCountElement = $('#likeCount small'); // 좋아요 수를 표시하는 요소
     	     let likeCount = parseInt(likeCountElement.text());
+    	     
+    	     liked = !liked; // 추가된 코드 클릭 시 true로 변함... 
     	     
     	     $.ajax({
     	    	url: 'likeFestival',
     	    	type: 'get',
     	        data: {
                     festivalNo: festivalNo,
-                    isLiked: !like
+                    isLiked: liked		// 현재 상태 반전
                 },
-    	    	 
                 success: function(response) {
                 	if (response.success) {
                 		
-                	isLiked = !like;
-                    likeCount += like ? 1 : -1; // 좋아요 수 증가/감소
+                    likeCount += liked ? 1 : -1; // 좋아요 수 증가/감소
                     likeCountElement.text(likeCount);	
-                    $('#festivalImage').attr('src', like ? 'resources/images/free-icon-heart-shape-outline-25424.png' : 'resources/images/free-icon-love-icon-12280650.png');
+                    
+                    // 버튼 상태변경
+                   /* 
+                    $('#btnNoLike.off').toggle(); // off 버튼 숨기긱 
+                    $('#btnLike.on').toggle();
+                	*/
+                	
+                	if(liked) {                		
+                		$("#btnLike").text('♥');
+                	} else {
+                		$("#btnLike").text('♡');
+                	}
                 	}else{
-            
                 	  alert('문제가 발생했습니다. 다시 시도해 주세요.');
                 	}
-                
                 },
                 error: function() {
                     alert('서버와의 연결에 문제가 발생했습니다.');
                 }
                 	 
     	     });
-    	    
-    		
     	});
     });
         

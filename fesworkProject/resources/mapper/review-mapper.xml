@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reviewMapper">
+	<resultMap id = "ReviewResultSet" type="Review">
+		<result column="RV_NO" property="rvNo"/>
+		<result column="FESTIVAL_NO" property="festivalNo"/>
+		<result column="MEM_ID" property="memId"/>
+		<result column="RV_TITLE" property="rvTitle"/>
+		<result column="RV_CONTENT" property="rvContent"/>
+		<result column="RV_IMG" property="rvImg"/>
+		<result column="RV_DATE" property="rvDate"/>
+		<result column="RV_COUNT" property="rvCount"/>
+	</resultMap> 
+	
+	
+	<select id="getBoardList" resultMap="ReviewResultSet">
+    SELECT *
+    FROM RV 
+    JOIN FESTIVAL ON RV.FESTIVAL_NO = FESTIVAL.FESTIVAL_NO
+    WHERE FESTIVAL.FESTIVAL_NO = #{festivalNo}
+	</select>
+	
+	
+	
+	<insert id="insertReview">
+		
+				INSERT INTO RV(MEM_NO
+							 , MEM_ID
+							 , MEM_PASSWORD
+							 , EMAIL
+							 , MEM_NAME
+							 , BIRTH
+							 , GENDER
+							 , PHONE
+							 , MEM_LEVEL
+							 , SIGNUP_DATE
+							 , RESIGN_DATE)
+			VALUES ( MEMBER_SEQ.NEXTVAL
+				   , #{memberId}
+				   , #{memberPwd}
+				   , #{email}
+				   , #{memberName}
+				   , #{birth}
+				   , #{gender}
+				   , #{phone}
+				   , '회원'
+				   , SYSDATE
+				   , NULL			)
+	
+	</insert>
+	
+	
+</mapper>
+
+
