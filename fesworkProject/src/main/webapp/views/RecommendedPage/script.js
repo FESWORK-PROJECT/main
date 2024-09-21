@@ -15,7 +15,7 @@ function recommendFestival() {
     const themes = formData.getAll('theme');
     console.log("축제테마: ", themes.join(", "));
 
-    window.location.href = 'index1.html'; 
+    window.location.href = 'age.jsp'; 
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -31,14 +31,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (festivalIndex < festivals.length) {
                     var festival = festivals[festivalIndex];
                     if (rowIndex === 0) {
-                        // 이미지 설정
+                       
                         cell.querySelector('img').src = festival.imageUrl;
                         cell.querySelector('img').alt = festival.name;
                     } else if (rowIndex === 1) {
-                        // 축제 이름 설정
+                  
                         cell.textContent = festival.name;
                     } else if (rowIndex === 2) {
-                        // 추가 정보 설정 (예: 날짜)
+                 
                         cell.textContent = festival.date;
                     }
                  
@@ -48,5 +48,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
 
