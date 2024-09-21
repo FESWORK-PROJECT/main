@@ -30,6 +30,7 @@
 	<mappers>
    		 <mapper resource="/mapper/information-mapper.xml"/>
    		 <mapper resource="/mapper/member-mapper.xml"/>
-   		  <mapper resource="/mapper/review-mapper.xml"/>
+   		 <mapper resource="/mapper/RecommendedPage.xml" />
+   		 <mapper resource="/mapper/review-mapper.xml"/>
 	</mappers>
 </configuration>
