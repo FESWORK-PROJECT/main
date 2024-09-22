@@ -99,11 +99,7 @@
         font-size: 12px;
     }
 
-    .member-title {
-   		 font-family: "Dongle", sans-serif;
-   		 font-size: 40px;
-   		 margin: 0px;
-    }
+   
     
 </style>
 </head>
@@ -113,11 +109,8 @@
     <div class="outer">
         <div class="content" id="contentLeft"></div>
         <div class="content" id="contentCenter">
-            <a href="<%=contextPath %>">
-            	<img src="<%=contextPath %>/resources/images/feswork_logo_full.png" alt="로고" width="200px">
-           	</a> 
-            <p class="member-title">마이페이지</p>
-            <br>
+            <h2>마이페이지</h2>
+            <br><br>
             <div class="container-group">
                 <a href="<%= contextPath %>/likeListPage.me"><div class="img-container"><img src="<%= contextPath %>/resources/images/likeList.png">나의축제</div></a>
                 <a href="<%= contextPath %>/modifyMemberPage.me"><div class="img-container"><img src="<%= contextPath %>/resources/images/updateInfo.png">회원정보수정</div></a>

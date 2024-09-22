@@ -73,12 +73,6 @@
         text-decoration: none;
         color:#35096ebb;
     }
-    
-    .member-title {
-   		 font-family: "Dongle", sans-serif;
-   		 font-size: 40px;
-   		 margin: 0px;
-    }
 </style>
 
 </head>
@@ -89,10 +83,8 @@
     <div class="outer">
         <div class="content" id="contentLeft"></div>
         <div class="content" id="contentCenter">
-        	<a href="<%=contextPath %>">
-            	<img src="<%=contextPath %>/resources/images/feswork_logo_full.png" alt="로고" width="200px">
-           	</a> 
-            <p class="member-title">로그인</p>
+            <img src="#" alt="로고">
+            <h2>로그인</h2>
             <div id="table-container">
                 <form action="<%= contextPath %>/login.me" method="post">
                     <table >

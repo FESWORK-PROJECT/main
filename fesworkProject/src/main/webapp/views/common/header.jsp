@@ -72,10 +72,11 @@
     <!-- 상단 메뉴 -->
     <div class="header">
         <div class="navi">
-            <a href="<%=contextPath %>">
-            	<img src="<%=contextPath %>/resources/images/feswork_logo_full.png" width="110px" height="100px">
-            </a>
-            <a href="<%=contextPath%>/introducePage.intro">소개</a>
+            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_e2b3015d-7660-4355-8d27-e0b67ea23ef9_1.png" width="80px" height="80px">
+           
+
+
+            <a href="<%= contextPath %>/introduce">소개</a>
             <a href="<%=contextPath%>/information">축제정보</a>
             <a href="<%= contextPath %>/views/promo/promo.jsp">축제홍보</a>
         </div>

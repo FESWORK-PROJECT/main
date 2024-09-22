@@ -65,13 +65,7 @@
         color: aliceblue;
         border-radius: 5px;
     }
-    
-    .member-title {
-   		 font-family: "Dongle", sans-serif;
-   		 font-size: 40px;
-   		 margin: 0px;
-    }
-    
+
 </style>
 
 </head>
@@ -83,10 +77,8 @@
         
         <div class="content" id="contentLeft"></div>
         <div class="content" id="contentCenter">
-            <a href="<%=contextPath %>">
-            	<img src="<%=contextPath %>/resources/images/feswork_logo_full.png" alt="로고" width="200px">
-           	</a> 
-            <p class="member-title">비밀번호 찾기</p>
+            <img src="#" alt="로고">
+            <h2>비밀번호 찾기</h2>
             <div id="table">
                 <form action="<%= contextPath %>/findPassword.me" method="post">
                     <table >
