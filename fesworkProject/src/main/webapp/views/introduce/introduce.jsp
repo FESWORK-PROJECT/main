@@ -72,7 +72,36 @@
         background-attachment:local;
     }
 
-    
+    #goToIndex{
+            position: fixed;
+            right: 60px;
+            bottom: 60px;
+            width: 100px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            background-color: rgba(53, 9, 110, 0.7);
+            font-size: 20px;
+            text-align: center;
+            line-height: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #goToIndex>*{
+            text-decoration-line: none;
+            color: #e5dee6;
+        }
+
+        #goToIndex:hover{
+            background-color: #8d4992;
+            
+        }
+
+        #goToIndex>*:hover{
+            
+            color: #461236;
+        }
 </style>
 </head>
 <body>
@@ -103,6 +132,10 @@
         <div class="intro_box box_type4">
             수진바라기 종군 /ㅇ_ㅇ .jpg
         </div>
+    </div>
+
+    <div id="goToIndex">
+        <a href="http://localhost:8282/feswork/introducePage.intro">▲ Top</a>
     </div>
 </body>
 </html>
