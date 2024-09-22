@@ -1,5 +1,6 @@
 package com.feswork.member.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -106,6 +107,29 @@ public class MemberService {
 		sqlSession.close();
 		
 		return result;
+	}
+
+	public Member findId(Member m) {
+		
+		SqlSession sqlSession = MybatisTemplate.getSqlSession();
+		
+		Member memId = mDao.findId(sqlSession, m);
+		
+//		System.out.println("service에서 받은 memid: "+memId);
+
+		
+		return memId;
+	}
+
+	public Member findPwd(Member m) {
+		SqlSession sqlSession = MybatisTemplate.getSqlSession();
+		
+		Member memPwd = mDao.findPwd(sqlSession, m);
+		
+		System.out.println("service에서 받은 memPwd: "+memPwd);
+
+		
+		return memPwd;
 	}
 
 

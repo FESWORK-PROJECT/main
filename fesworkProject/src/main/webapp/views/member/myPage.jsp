@@ -99,7 +99,11 @@
         font-size: 12px;
     }
 
-   
+    .member-title {
+   		 font-family: "Dongle", sans-serif;
+   		 font-size: 40px;
+   		 margin: 0px;
+    }
     
 </style>
 </head>
@@ -109,12 +113,15 @@
     <div class="outer">
         <div class="content" id="contentLeft"></div>
         <div class="content" id="contentCenter">
-            <h2>마이페이지</h2>
-            <br><br>
+            <a href="<%=contextPath %>">
+            	<img src="<%=contextPath %>/resources/images/feswork_logo_full.png" alt="로고" width="200px">
+           	</a> 
+            <p class="member-title">마이페이지</p>
+            <br>
             <div class="container-group">
-                <a href="<%= contextPath %>/views/member/likeList.jsp"><div class="img-container"><img src="<%= contextPath %>/resources/images/likeList.png">나의축제</div></a>
-                <a href="<%= contextPath %>/views/member/modifyForm.jsp"><div class="img-container"><img src="<%= contextPath %>/resources/images/updateInfo.png">회원정보수정</div></a>
-                <a href="<%= contextPath %>/views/member/myPost.jsp"><div class="img-container"><img src="<%= contextPath %>/resources/images/post.png">게시글관리</div></a>
+                <a href="<%= contextPath %>/likeListPage.me"><div class="img-container"><img src="<%= contextPath %>/resources/images/likeList.png">나의축제</div></a>
+                <a href="<%= contextPath %>/modifyMemberPage.me"><div class="img-container"><img src="<%= contextPath %>/resources/images/updateInfo.png">회원정보수정</div></a>
+                <a href="<%= contextPath %>/myPostPage.me"><div class="img-container"><img src="<%= contextPath %>/resources/images/post.png">게시글관리</div></a>
             </div>
             <div class="button-group">
                 <button type="button" type="button" data-toggle="modal" data-target="#deleteMemberModal">회원탈퇴</button>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -62,17 +63,22 @@
     <div class="outer">
         <br><br>
         <div class="innerOuter" style="padding: 5% 10%">
-            <h2>축제 후기 등록 게시판</h2>
+            <h2>축제 후기 게시판 </h2>
             <br>
-
-            <a href="" class="btn btn-secondary" style="float:right">글쓰기</a>
+				
+				<%--로그인 시에만 해당 화면이 보이게 만들기--%>
+			 <c:if test="${not empty loginMember}">
+            <a href="enrollForm?festivalNo=${r.festivalNo}" class="btn btn-secondary" style="float:right">글쓰기</a>
+            </c:if>
+            
+            
             <div style="float:right; margin-right: 10px;">
                 <button class="btn btn-outline-primary sortBtn" onclick="sortByViews()">조회수 정렬</button>
                 <button class="btn btn-outline-primary sortBtn" onclick="sortByDate()">작성일 정렬</button>
             </div>
             <br><br>
-            
             <table id="boardList" class="table table-hover" align="center">
+               
                 <thead>
                     <th>글번호</th>
                     <th>제목</th>
@@ -83,46 +89,17 @@
                 </thead>
 
                 <tbody>
+                	<c:forEach var="r" items="${rList}">
                     <tr onclick="location.href='/viewPost?id=5'">
-                        <td>5</td>
-                        <td><a href="/viewPost?id=5">마지막 공지사항 제목</a></td>
-                        <td>admin</td>
-                        <td>10</td>
-                        <td>2024-04-01</td>
+                        <td>${r.rvNo}</td>
+                        <td><a href="/viewPost?id=5">${r.rvTitle}</a></td>
+                        <td>${r.memId}</td>
+                        <td>${r.rvCount}</td>
+                        <td>${r.rvDate}</td>
+                        
                         <td>■</td>
                     </tr>
-                    <tr onclick="location.href='/viewPost?id=4'">
-                        <td>4</td>
-                        <td><a href="/viewPost?id=4">공지사항 제목 4</a></td>
-                        <td>admin</td>
-                        <td>10</td>
-                        <td>2024-03-21</td>
-                        <td>■</td>
-                    </tr>
-                    <tr onclick="location.href='/viewPost?id=3'">
-                        <td>3</td>
-                        <td><a href="/viewPost?id=3">공지사항 제목 3</a></td>
-                        <td>admin</td>
-                        <td>30</td>
-                        <td>2024-03-07</td>
-                        <td></td>
-                    </tr>
-                    <tr onclick="location.href='/viewPost?id=2'">
-                        <td>2</td>
-                        <td><a href="/viewPost?id=2">공지사항 제목 2</a></td>
-                        <td>admin</td>
-                        <td>50</td>
-                        <td>2024-02-22</td>
-                        <td></td>
-                    </tr>
-                    <tr onclick="location.href='/viewPost?id=1'">
-                        <td>1</td>
-                        <td><a href="/viewPost?id=1">공지사항 제목 1</a></td>
-                        <td>admin</td>
-                        <td>130</td>
-                        <td>2024-01-07</td>
-                        <td></td>
-                    </tr>                                        
+                   </c:forEach>
                 </tbody>
             </table>
             <br>
@@ -130,7 +107,7 @@
             <div id="pagingArea">
                 <ul class="pagination">
                     <li class="page-item"><a href="" class="page-link">Prev</a></li>
-                    <li class="page-item"><a href="" class="page-link">1</a></li>
+                    <li class="page-item" name="cpage"><a href="" class="page-link">1</a></li>
                     <li class="page-item"><a href="" class="page-link">2</a></li>
                     <li class="page-item"><a href="" class="page-link">3</a></li>
                     <li class="page-item"><a href="" class="page-link">4</a></li>

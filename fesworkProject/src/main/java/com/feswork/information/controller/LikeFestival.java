@@ -34,31 +34,19 @@ public class LikeFestival extends HttpServlet {
 		 boolean isLiked = Boolean.parseBoolean(request.getParameter("isLiked"));
 		
 		 int result  = new InformationService().toggleLike(festivalNo, isLiked);
-		 response.setContentType("text/plain");
+		
+		 response.setContentType("application/json");
+		 PrintWriter out = response.getWriter();
 		 
 		 
 		 System.out.println("festivalNo: " + festivalNo);
 		 System.out.println("isLiked: " + isLiked);
 		 
-		   response.setContentType("application/json");
-		   PrintWriter out = response.getWriter();
-		    
 		    if (result > 0) {
 		        out.print("{\"success\": true}");
 		    } else {
 		        out.print("{\"success\": false}");
 		    }
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		
-		
-		
-		
 	}
 
 	/**
