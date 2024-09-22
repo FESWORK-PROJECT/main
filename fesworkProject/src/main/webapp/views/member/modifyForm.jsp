@@ -92,7 +92,11 @@
         color: #6b6b6b;
     }
 
-    
+    .member-title {
+   		 font-family: "Dongle", sans-serif;
+   		 font-size: 40px;
+   		 margin: 0px;
+    }
 </style>
 </head>
 <body>
@@ -100,8 +104,10 @@
     <div class="outer">
         <div class="content" id="contentLeft"></div>
         <div class="content" id="contentCenter">
-            <h2>정보수정</h2>
-        
+        	<a href="<%=contextPath %>">
+            	<img src="<%=contextPath %>/resources/images/feswork_logo_full.png" alt="로고" width="200px">
+           	</a> 
+            <p class="member-title">정보수정</p>
             <form action="<%= contextPath %>/modifyMember.me" method="post">
             <div class="modify-container">
             	아이디: <input type="memberId" name="memberId" value="${loginMember.memberId}"  readonly>
