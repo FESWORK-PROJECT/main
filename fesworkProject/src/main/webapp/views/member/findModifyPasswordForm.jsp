@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기 페이지</title>
+<title>비밀번호 찾기 페이지</title>
 <style>
 
     body{
@@ -56,7 +56,7 @@
     table input {
         width: 280px;
         border-radius: 5px;
-        background-color: #f1f0f3bb;
+        background-color: #fbfafcbb;
     }
 
     table button {
@@ -71,7 +71,23 @@
    		 font-size: 40px;
    		 margin: 0px;
     }
-	
+    
+        .modify-btn {
+        background-color: #35096ebb;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 10px 0px;
+    }
+    
+    #idInputBox{
+    	background-color: rgb(156, 156, 156);
+    }
+    
 </style>
 
 </head>
@@ -86,41 +102,52 @@
             <a href="<%=contextPath %>">
             	<img src="<%=contextPath %>/resources/images/feswork_logo_full.png" alt="로고" width="200px">
            	</a> 
-            <p class="member-title">아이디 찾기</p>
+            <p class="member-title">비밀번호 변경</p>
             <div id="table">
-                <form action="<%= contextPath %>/findId.me" method="post">
+                <form action="<%= contextPath %>/findPasswordModify.me" method="post">
                     <table >
-                        <tr>
-                            <td colspan="3">이름</td>
+                    	<tr >
+                            <td colspan="3">비밀번호를 변경할 아이디</td>
                         </tr>
                         <tr align="center">
                             <td colspan="3">
-                                <input type="text" name="memberName">
+                                <input type="text" id="idInputBox" name="memberId" value="${ findId }" readonly>
                             </td>
-                        </tr>
                         <tr>
-                            <td colspan="3">이메일</td>
+                            <td colspan="3">변경할 비밀번호: </td>
                         </tr>
                         <tr align="center">
                             <td colspan="3">
-                                <input type="email" name="email">
+                                <input type="password" name="newPwd" >
                             </td>
                         </tr>
                         <tr>
-                            <td></td>
+                            <td colspan="3">변경할 비밀번호 확인: </td>
                         </tr>
                         <tr align="center">
                             <td colspan="3">
-                                <button type="submit">아이디 찾기</button>
+                                <input type="password" name="newPwdCheck">
                             </td>
                         </tr>
-                        
+
                     </table>
+                    <button class="modify-btn" onclick="return pwdCheck()">비밀번호 변경</button>
                 </form>
             </div>
         </div>
         <div class="content" id="contentRight"></div>
     </div>
+	<script>
+		function pwdCheck() {
+			const pwd = document.querySelector("input[name=newPwd]").value;
+			const pwdCheck = document.querySelector("input[name=newPwdCheck]").value;
+	
+			if (pwd != pwdCheck) {
+				alert("비밀번호와 비밀번호 확인 입력값이 다릅니다.");
+				return false;
+			}
+		}
+	</script>
 
 
 </body>
