@@ -92,7 +92,7 @@
 		}
 
         .festival-title {
-            font-size: 2.5em; /* 텍스트 크기 조정 */
+            font-size: 2em; /* 텍스트 크기 조정 */
     		font-weight: bold; /* 굵게 설정 */
     		font-family: "Dongle", sans-serif;    		
         }
@@ -102,11 +102,19 @@
         .events-section {
             display: flex;
             justify-content: space-between;
-            width: 90%;
+            width: 100%;
+            color:#5658b5b3;
+            font-family: "Dongle", sans-serif;
+            /* border: 1px solid red; */
         }
 
         .event-category {
-            width: 45%;
+            width: 49%;
+            /* border: 1px solid black; */
+            display: flex;
+        	justify-content: center;
+        	flex-direction: column;
+        	align-items: center;
         }
 
         .event-category h2 {
@@ -114,9 +122,11 @@
         }
 
         .event-list {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            width: 97%;
+        	display: flex;
+        	justify-content: center;
+        	font-size: 20px;
+            /* border: 1px solid blue; */
         }
 
         .event-list div {
@@ -126,6 +136,26 @@
         .event-list img {
             width: 100%;
             border-radius: 5px;
+        }
+        .event-category img{
+            width: 100%;
+            height: 100px;
+            border: 1px solid pink;
+        }
+
+        .opening-title{
+            font-size: 20px;
+            color: #5658b5b3;
+        }
+        .festival-open a{
+            text-decoration: none;
+        }
+        .pre-title{
+            font-size: 20px;
+            color: #5658b5b3;
+        }
+        .festival-pre a{
+            text-decoration: none;
         }
         
         /* slider__wrap */
@@ -230,32 +260,6 @@
 		    object-fit: cover; /* 비율을 유지하며 잘라내기 */
 		    border-radius: 20px;
 		}
-
-        .events-section{
-            /*border: 1px solid red;*/
-            width: 100%;
-            color:#5658b5b3;
-            font-family: "Dongle", sans-serif;
-        }
-        .event-category{
-        	/*border: 1px solid black;*/
-        	width: 49%;
-        	display: flex;
-        	justify-content: center;
-        	flex-direction: column;
-        	align-items: center;
-        }
-        .event-list{
-        	/*border: 1px solid blue;*/
-        	width: 97%;
-        	display: flex;
-        	justify-content: center;
-        	font-size: 20px;
-        }
-        .event-category img{
-            width: 100%;
-            height: 100px;
-        }
 
         .cokcok{
             background-color: #5658b58a;
@@ -392,42 +396,17 @@
             <div class="events-section">
                 <div class="event-category">
                     <h2>진행중</h2>
-                    <div class="event-list">
-                        <div class="event-img">
-                            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_527be805-75fb-4361-8e7f-6883c1a00f1e_1.jpg" alt="Event 1">
-                            <p>2024 통영 한산대첩 축제</p>
-                        </div>
-                        <div>
-                            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_3d256b24-1de7-4187-91d7-62de19a65315_1.jpg" alt="Event 2">
-                            <p>2024 춘천 마임 축제</p>
-                        </div>
-                        <div>
-                            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_d6a40a6c-2fb2-4d12-9093-b437539b83c9_1.jpg" alt="Event 3">
-                            <p>광주 프린지 페스티벌</p>
-                        </div>
+                    <div class="event-list" id="event">
                     </div>
                 </div>
 
                 <div class="event-category">
                     <h2>진행예정</h2>
-                    <div class="event-list">
-                        
-                        <div>
-                            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_9f520936-3791-4612-9137-7e04f40d9c8d_1.jpg" alt="Event 4">
-                            <p>2024 서울세계불꽃축제</p>
-                        </div>
-                        <div>
-                            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_f84c717a-ec29-48f7-8980-4b33e3a346b8_1.jpg" alt="Event 5">
-                            <p>2024 부산 바다 축제</p>
-                        </div>
-                        <div>
-                            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_576bdc2a-8371-4313-9d31-558e983e75e8_1.jpg" alt="Event 6">
-                            <p>2024 한강 사랑 페스티벌</p>
-                        </div>
+                    <div class="event-list" id="event-pre">
                     </div>
                 </div>
             </div>
-                </div>
+            </div>
 
 			</div>
 			
@@ -491,7 +470,17 @@
 			        }
 			        const data = await response.json();
 			        console.log(data);
+			        
+			    	/*데이터를 DOM에 추가하는 로직
+			        const festivalsSlide = document.getElementById('sliderInner');
+			        festivalsSlide.innerHTML = ''; // 기존 내용 초기화
+			        data.forEach(festival => {
+			            const festivalElement2 = createSlideElement(slide.fesImage, slide.festivalName, slide.festivalNo);
+			            festivalsSlide.appendChild(festivalElement2);
+			        }); */
+			        
 			        return data;
+			        
 			    } catch (error) {
 			        console.error('There has been a problem with your fetch operation:', error);
 			        return []; // 에러가 발생하면 빈 배열 반환
@@ -499,16 +488,15 @@
 			}
 
 			function createSlideElement(fesImage, festivalName, festivalNo) {
-			    const slide = document.createElement('div');
-			    slide.classList.add('slider');
-			    slide.classList.add('hidden');  // 기본적으로 슬라이드를 숨김
-			    const festivalNoAsNumber = Number(festivalNo);
-			    console.log(festivalNoAsNumber);
-			    slide.innerHTML = '<a href="detailFes?festivalNo=' + festivalNoAsNumber + '">'+
+			    const slides = document.createElement('div');
+			    slides.classList.add('slider');
+			    slides.classList.add('hidden');  // 기본적으로 슬라이드를 숨김
+			    slides.innerHTML = '<a href="detailFes?festivalNo=' + festivalNo + '">' +
 			    				   '<img src="' + fesImage + '" alt="Festival Image" style="width: 300px; height: 300px;">'+
-			    				   '<div class="slideTitle">' + festivalName + '</div>' +
+			    				   '<div class="slideTitle">' + festivalName + '</div>'+
 			    				   '</a>';
-			    return slide;
+			    				  
+			    return slides;
 			}
 
 			async function loadSlides() {
@@ -548,14 +536,96 @@
 
 			// 페이지 로드 시 슬라이드 로드
 			window.onload = loadSlides;
-
-
+			</script>
+			
+			<script>
+			async function openList() {
+			    try {
+			        const response = await fetch('/feswork/Opening');
+			        if (!response.ok) {
+			            throw new Error('Network response was not ok');
+			        }
+			        const contentType = response.headers.get("content-type");
+			        if (!contentType || !contentType.includes("application/json")) {
+			            throw new Error("Expected JSON but received " + contentType);
+			        }
+			        const data = await response.json();
+			        console.log(data);
+			
+			        // 데이터를 DOM에 추가하는 로직
+			        const festivalsContainer3 = document.getElementById('event');
+			        festivalsContainer3.innerHTML = ''; // 기존 내용 초기화
+			        data.forEach(festival => {
+			            const festivalElement3 = createFestivalOpen(festival.fesImage, festival.festivalName, festival.festivalNo);
+			            festivalsContainer3.appendChild(festivalElement3);
+			        });
+			
+			    } catch (error) {
+			        console.error('There has been a problem with your fetch operation:', error);
+			    }
+			}
+			
+			function createFestivalOpen(fesImage, festivalName, festivalNo) { // 함수 이름 변경
+			    const open = document.createElement('div');
+			    open.classList.add('festival-open'); // 클래스 추가
+			    open.innerHTML = '<a href="detailFes?festivalNo=' + festivalNo + '">' +
+			                        '<img src="' + fesImage + '" alt="Festival Image"; style="width: 150px; height: 100px;">' +
+			                        '<div class="opening-title">' + festivalName + '</div>' +
+			                        '</a>';
+			    return open;
+			}
+			
+			// 페이지 로드 시 open 함수 호출
+			$(document).ready(function() {
+				openList();
+			});
+			</script>
+			
+			<script>
+			async function preList() {
+			    try {
+			        const response = await fetch('/feswork/Pre');
+			        if (!response.ok) {
+			            throw new Error('Network response was not ok');
+			        }
+			        const contentType = response.headers.get("content-type");
+			        if (!contentType || !contentType.includes("application/json")) {
+			            throw new Error("Expected JSON but received " + contentType);
+			        }
+			        const data = await response.json();
+			        console.log(data);
+			
+			        // 데이터를 DOM에 추가하는 로직
+			        const festivalsContainer4 = document.getElementById('event-pre');
+			        festivalsContainer4.innerHTML = ''; // 기존 내용 초기화
+			        data.forEach(festival => {
+			            const festivalElement4 = createFestivalPre(festival.fesImage, festival.festivalName, festival.festivalNo);
+			            festivalsContainer4.appendChild(festivalElement4);
+			        });
+			
+			    } catch (error) {
+			        console.error('There has been a problem with your fetch operation:', error);
+			    }
+			}
+			
+			function createFestivalPre(fesImage, festivalName, festivalNo) { // 함수 이름 변경
+			    const pre = document.createElement('div');
+			    pre.classList.add('festival-pre'); // 클래스 추가
+			    pre.innerHTML = '<a href="detailFes?festivalNo=' + festivalNo + '">' +
+			                        '<img src="' + fesImage + '" alt="Festival Image"; style="width: 150px; height: 100px;">' +
+			                        '<div class="pre-title">' + festivalName + '</div>' +
+			                        '</a>';
+			    return pre;
+			}
+			
+			// 페이지 로드 시 open 함수 호출
+			$(document).ready(function() {
+				preList();
+			});
 			</script>
             
         </div>
-        </div>
-        </div>
-    </div>
+     
         <jsp:include page="common/footer.jsp"/>
         
 		

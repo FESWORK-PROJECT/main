@@ -9,7 +9,16 @@ import com.feswork.slide.model.vo.Slide;
 public class SlideDao {
 
 	public static List<Slide> getAllSlides(SqlSession sqlsession) {
-		 return sqlsession.selectList("slideMapper.getAllSlides");
+		 List<Slide> slides = null;
+		 
+		 try {
+			 slides = sqlsession.selectList("slideMapper.getAllSlides");
+			 System.out.println("mapper에서 반환받은: " + slides);
+		 } catch (Exception e) {
+			 e.printStackTrace();
+		 }
+		 
+		 return slides;
 	}
 
 	public static List<Slide> selectTopFestivals(SqlSession sqlsession) {
@@ -23,6 +32,32 @@ public class SlideDao {
 	    }
 
 	    return topLike;
+	}
+
+	public static List<Slide> selectOpenFestivals(SqlSession sqlsession) {
+		List<Slide> open = null;
+
+	    try {
+	        open = sqlsession.selectList("slideMapper.openingFestivals");
+	        System.out.println("mapper에서 반환받은: " + open);
+	    } catch (Exception e) {
+	        e.printStackTrace(); // 예외 발생 시 로그 출력
+	    }
+
+	    return open;
+	}
+
+	public static List<Slide> selectPreFestivals(SqlSession sqlsession) {
+		List<Slide> pre = null;
+
+	    try {
+	        pre = sqlsession.selectList("slideMapper.preFestivals");
+	        System.out.println("mapper에서 반환받은: " + pre);
+	    } catch (Exception e) {
+	        e.printStackTrace(); // 예외 발생 시 로그 출력
+	    }
+
+	    return pre;
 	}
 
 }

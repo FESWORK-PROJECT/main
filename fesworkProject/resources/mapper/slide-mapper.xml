@@ -25,7 +25,9 @@
 	</resultMap>
 	
 	<select id="getAllSlides" resultMap="slideResultSet">
-		SELECT *
+		SELECT FESTIVAL_NO,
+			   FESTIVAL_NAME,
+			   FES_IMAGE
 		FROM FESTIVAL
 	</select>
 	
@@ -34,9 +36,33 @@
 		       FESTIVAL_NAME,
 		       FES_IMAGE,
 		       FES_ADD
-		FROM FESTIVAL
-		WHERE ROWNUM &lt;= 3
-		ORDER BY FES_LIKE DESC
+		FROM (SELECT *
+                FROM FESTIVAL
+                ORDER BY FES_LIKE DESC)
+		WHERE ROWNUM &lt; = 3
     </select>
+    
+    <select id="openingFestivals" resultMap = "slideResultSet">
+	    SELECT FESTIVAL_NO,
+	       	   FESTIVAL_NAME,
+	           FES_IMAGE
+	    FROM( SELECT *
+	          FROM FESTIVAL 
+	          WHERE SYSDATE &gt; open_date AND SYSDATE &lt; CLOSE_DATE
+	          ORDER BY CLOSE_DATE)
+		WHERE ROWNUM &lt; = 3
+	</select>
+	
+	<select id="preFestivals" resultMap = "slideResultSet">
+	   SELECT FESTIVAL_NO,
+	       	   FESTIVAL_NAME,
+	           FES_IMAGE,
+               OPEN_DATE
+	    FROM( SELECT *
+	          FROM FESTIVAL 
+	          WHERE SYSDATE &lt; open_date
+	          ORDER BY open_date)
+		WHERE ROWNUM &lt; = 3
+	</select>
 	
 </mapper>
