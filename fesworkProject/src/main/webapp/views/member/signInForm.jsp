@@ -157,7 +157,7 @@
          	<a href="<%=contextPath %>">
             	<img src="<%=contextPath %>/resources/images/feswork_logo_full.png" alt="로고" width="200px">
            	</a> 
-            <p class="member-title">로그인</p>
+            <p class="member-title">회원가입</p>
             <div class="signup-container">
                 <div class="input-group">
                     <input type="text" name="memberId" placeholder="아이디*" required>
