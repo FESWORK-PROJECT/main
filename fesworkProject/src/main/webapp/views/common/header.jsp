@@ -75,7 +75,7 @@
             <a href="<%=contextPath %>">
             	<img src="<%=contextPath %>/resources/images/feswork_logo_full.png" width="110px" height="100px">
             </a>
-            <a href="<%= contextPath %>/introduce">소개</a>
+            <a href="<%=contextPath%>/introducePage.intro">소개</a>
             <a href="<%=contextPath%>/information">축제정보</a>
             <a href="<%= contextPath %>/views/promo/promo.jsp">축제홍보</a>
         </div>
