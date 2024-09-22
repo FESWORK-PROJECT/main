@@ -139,12 +139,6 @@
         color: #b8bcbd;
     }
     
-    .member-title {
-   		 font-family: "Dongle", sans-serif;
-   		 font-size: 40px;
-   		 margin: 0px;
-    }    
-    
 </style>
 </head>
 <body>
@@ -154,10 +148,7 @@
         <div class="content" id="contentLeft"></div>
         <div class="content" id="contentCenter">
         <form action="<%= contextPath %>/singup.me" method="post">
-         	<a href="<%=contextPath %>">
-            	<img src="<%=contextPath %>/resources/images/feswork_logo_full.png" alt="로고" width="200px">
-           	</a> 
-            <p class="member-title">로그인</p>
+            <h2>회원가입</h2>
             <div class="signup-container">
                 <div class="input-group">
                     <input type="text" name="memberId" placeholder="아이디*" required>
