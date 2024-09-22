@@ -13,9 +13,7 @@
 		#gall{
 		    padding-left: 50px;
 		    font-size: 30px;
-		    background-color: #35096ebb;
-		    border-top: 2px solid black;
-		    border-bottom: 2px solid black;
+		    background-color: #5658b58a;
 		}
         #gall1{
             border-radius: 5px;
@@ -24,8 +22,7 @@
 		#ball{
 		    padding-left: 15px;
 		    font-size: 20px;
-		    background-color: #f6c7ff;
-		    border-bottom: 1px solid black;
+		    background-color: #5658b53b;
 		}
 		.box {
 		    width: 100px;
@@ -49,7 +46,8 @@
 		    font-size: 24px;
 		}
         table {
-            width: 70em;
+            border: 1px solid rgba(124, 124, 124, 0.89);
+            width: 50em;
             margin: auto;
             border-collapse: collapse;
         }
@@ -63,12 +61,14 @@
             resize: none;
         }
         .promo {
+            padding-left: 15px;
             height: 30px;
+            padding-bottom: 15px;
         }
         #sub {
 		    border: none;
-		    background-color: #35096ebb;
-		    margin-bottom: 200px;
+		    background-color: #ac7ee7bb;
+		    margin-bottom: 100px;
 		    width: 100px;
 		    height: 50px;
 		    border-radius: 5px;
@@ -78,21 +78,31 @@
             border: 1px solid lightblue;
         }
         #id{
-            background-color:  #f6c7ff;
+            background-color:   #5658b500;
             border: none;
         }
-        
+        #img{margin-top: 10px }
+        select{ border: 1px solid lightblue;
+        }
     </style>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
     <br><br><br><br>
 	<div>
+<<<<<<< HEAD
         <form action="<%= contextPath %>/festivalwrite" method="post" enctype="multipart/form-data">
             <table id="table"> 
                 <tr><td id="gall"><span >제목: 축제명으로 고정됩니다.</span></td></tr>
                 <tr><td id="ball"><input type="text" name="memId" id="id" value="${ loginMember.memberId }"></td></tr>
                 <tr><td>썸네일 이미지 <input type="file" name="fesImg" id=""></td></tr>
+=======
+        <form action="<%= contextPath %>/festivalwrite" method="post" enctype="multipart/form-data" id="main">
+            <table id="table"> 
+                <tr><td id="gall"><span >제목: 축제명으로 고정됩니다.</span></td></tr>
+                <tr><td id="ball"><input type="text" name="memId" id="id" value="${ loginMember.memberId }"></td></tr>
+                <tr><td class="promo">이미지 :<input type="file" name="fesImg" id="img"></td></tr>
+>>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
                 <tr><td class="promo">축제명 :  <input type="text" placeholder="제목을 입력하세요" name="festivalName" class="inputStyle" maxlength="40"></td></tr>
                 <tr><td class="promo">축제기간 :  <input type="date" name="openDate" class="inputStyle"><input type="date" name="closeDate" class="inputStyle"></td></tr>
                 <tr><td class="promo">축제장소 : 
@@ -119,7 +129,11 @@
                     <input type="hidden" name="fesAdd"/>
                    </td></tr>
                 <tr><td class="promo">축제 개요</td></tr>
+<<<<<<< HEAD
                 <tr><td><textarea placeholder="내용을 입력하세요" name="fesDescription"></textarea></td></tr>
+=======
+                <tr><td  class="promo"><textarea placeholder="내용을 입력하세요" name="fesDescription"></textarea></td></tr>
+>>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
 
             </table>
             <br>

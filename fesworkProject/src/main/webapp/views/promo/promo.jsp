@@ -21,16 +21,16 @@
     display: flex; /* Flexbox로 설정 */
     align-items: center; /* 수직 정렬 */
     justify-content: center; /* 수평 정렬 */
-    color: rgb(120, 120, 255);
+    color: #35096ebb;
     text-align: center;
-    font-size: 14px;
+    font-size: 25px;
     text-decoration: none;
     margin-top: auto;
     margin-bottom: auto;
     margin-right: 10px;
     width: 140px;
     height: 40px;
-    background-color: rgb(255, 255, 154);
+    background-color: rgb(252, 252, 252);
     border-radius: 10px;
     border: none;
     cursor: pointer;
@@ -39,10 +39,12 @@
     width: 600px;
 }
 #second{
+    font-family: "Dongle", sans-serif;
+    padding-left:150px;
     text-decoration: none;
     justify-content: space-between;
     display: flex;
-    background-color: rgb(253, 161, 253);
+    background-color: #5658b58a;
     margin-top: 50px;
     color: white;
     margin-bottom: 20px;
@@ -61,12 +63,16 @@
     background-color: #a575e44f; color: white;
 }
 #second-1{
+    text-align: center;
     margin-left: 20px;
 }
 table {
     border-collapse: collapse;
     text-align: center;
+<<<<<<< HEAD
     width: 80%;
+=======
+>>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
 }
 th, td {
     border: none; /* 테두리 제거 */
@@ -89,6 +95,7 @@ th, td {
     align-items: center;
 }
 #bottom-search1{
+    color: #fff9ff;
     border: 2px solid #35096ebb;
     width: 20em;
     height: 4em;
@@ -151,10 +158,6 @@ th, td {
 #imggg{
     width: 6em;height: 4em;
 }
-#pagination a,
-#pagination em {
-    font-size: 25px;
-}
 #cross-left{
     background-image: url("");background-size: cover; width: 20px;height: 20px;
 }
@@ -162,8 +165,12 @@ th, td {
     background-image: url("");background-size: cover;width: 20px;height: 20px;
 }
 tbody{
+<<<<<<< HEAD
     font-size: 12px;
     font-weight: 600;
+=======
+    font-size: 18px;font-weight: 600;
+>>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
 }
 #img{
     width: 150px; height: 100px;
@@ -184,6 +191,7 @@ tbody{
     <div class="carousel">
         <button class="arrow left-arrow" onclick="prevSlide()">&#9664;</button>
         <div class="slides">
+<<<<<<< HEAD
             <div class="slide active">
                 <a href="#"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_7be130ae-d136-45d7-9a5c-de3af5691c16_1.jpg" alt="Image 1" id="imgg"></a>
                 <div class="description">태안 빛축제</div> <!-- 설명 추가 -->
@@ -204,6 +212,24 @@ tbody{
                 <a href="#"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/04cf3274-b4bd-464b-acba-b89406600472_4.jpg" alt="Image 2" id="imgg"></a>
                 <div class="description">원주용수골가을꽃축제</div> <!-- 다른 설명 추가 -->
             </div>
+=======
+            <c:forEach var="festival" items="${festivalList}">
+                <c:choose>
+                    <c:when test="${festival.festivalName == '태안 빛축제' || 
+                                   festival.festivalName == '부평풍물대축제' || 
+                                   festival.festivalName == '제주광어대축제' || 
+                                   festival.festivalName == '원주용수골가을꽃축제' || 
+                                   festival.festivalName == '송월동 동화마을 코스튬 페스티벌'}">
+                        <div class="slide ${festival.festivalName == '태안 빛축제' ? 'active' : ''}">
+                            <a href="detailFes?festivalNo=${festival.festivalNo}">
+                                <img src="${festival.fesImg}" alt="${festival.festivalName}" id="imgg">
+                            </a>
+                            <div class="description">${festival.festivalName}</div>
+                        </div>
+                    </c:when>
+                </c:choose>
+            </c:forEach>
+>>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
         </div>
         <button class="arrow right-arrow" onclick="nextSlide()">&#9654;</button>
     </div>
@@ -232,19 +258,33 @@ tbody{
             </tr>
         </thead>
         <tbody>
+<<<<<<< HEAD
             <c:forEach var="festival" items="${festivalList}">
                 <tr>
                     <td>${festival.festivalNo}</td>
                     <td>
                     	<img src="${festival.fesImg}" id="img" />
+=======
+            <c:forEach var="festival" items="${festivalList}" varStatus="status">
+                <tr style="cursor: pointer; background-color: ${status.index % 2 == 0 ? '#d4d5fc8a' : '#fff9ff'}" 
+                    onclick="location.href='detailFes?festivalNo=${festival.festivalNo}'">
+                    <td>${festival.festivalNo}</td>
+                    <td>
+                        <img src="${festival.fesImg}" id="img" />
+>>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
                     </td>
                     <td>${festival.festivalName}</td>
                     <td id="center">${festival.openDate}</td>
                     <td id="center">${festival.closeDate}</td>
                     <td id="des">${festival.fesDescription}</td>
                 </tr>
+<<<<<<< HEAD
 		     </c:forEach>
 		 </tbody>
+=======
+            </c:forEach>
+        </tbody>
+>>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
 		 </table>
 		</c:if>		
 		<c:if test="${empty festivalList}">
@@ -253,6 +293,7 @@ tbody{
 
 
     </div>
+<<<<<<< HEAD
     <div id="pagingArea">
                 <ul class="pagination">
                 	<c:choose>
@@ -286,6 +327,9 @@ tbody{
                     </c:choose>
                 </ul>
             </div>
+=======
+
+>>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
     <script>
         let currentSlide = 1;
 		let currentPage = 1;

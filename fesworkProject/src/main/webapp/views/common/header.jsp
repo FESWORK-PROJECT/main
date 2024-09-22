@@ -72,6 +72,7 @@
     <!-- 상단 메뉴 -->
     <div class="header">
         <div class="navi">
+<<<<<<< HEAD
             <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_e2b3015d-7660-4355-8d27-e0b67ea23ef9_1.png" width="80px" height="80px">
            
 
@@ -79,6 +80,14 @@
             <a href="<%= contextPath %>/information">축제정보</a>
             <a href="<%= contextPath %>/festivalList">축제홍보</a>
 
+=======
+            <a href="<%=contextPath %>">
+            	<img src="<%=contextPath %>/resources/images/feswork_logo_full.png" width="110px" height="100px">
+            </a>
+            <a href="<%=contextPath%>/introducePage.intro">소개</a>
+            <a href="<%=contextPath%>/information">축제정보</a>
+            <a href="<%= contextPath %>/festivalList">축제홍보</a>
+>>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
         </div>
 
         <form class="search" action="/keyword.fe" method="get">

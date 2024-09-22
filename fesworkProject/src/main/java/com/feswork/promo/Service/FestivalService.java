@@ -16,5 +16,12 @@ public class FestivalService {
     public int insertFestival(Festival festival) {
         return festivalDao.insertFestival(festival);
     }
+<<<<<<< HEAD
+=======
+
+    public List<Festival> getMyFestival(String memId) {
+        return festivalDao.selectMyFestivals(memId);
+    }
+>>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
     
 }

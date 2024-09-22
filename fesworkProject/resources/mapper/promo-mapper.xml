@@ -19,17 +19,43 @@
     </resultMap>
 
     <select id="firstboard" resultMap="promoResultSet">
+<<<<<<< HEAD
     	SELECT * FROM Festival
 	</select>
 
 	<insert id="insertBoard">
         INSERT INTO FESTIVAL (FESTIVAL_NO, FESTIVAL_NAME, MEM_ID, OPEN_DATE, CLOSE_DATE, FES_DESCRIPTION, FES_IMAGE)
         VALUES (SEQ_RV_NO.NEXTVAL, #{festivalName}, #{memId}, #{openDate}, #{closeDate}, #{fesDescription}, #{fesImg});
+=======
+       SELECT * FROM Festival
+   </select>
+
+   <insert id="insertBoard">
+        INSERT INTO FESTIVAL (FESTIVAL_NO,
+                        MEM_ID,
+                        FES_IMAGE,
+                        FESTIVAL_NAME,
+                        OPEN_DATE,
+                        CLOSE_DATE,
+                        LOCAL_CODE,
+                        FES_ADD,
+                        FES_DESCRIPTION)
+                    VALUES (FNO.NEXTVAL,
+                     #{memId},
+                     #{fesImg},
+                     #{festivalName},
+                     #{openDate},
+                     #{closeDate},
+                     #{localCode},
+                     #{fesAdd},
+                     #{fesDescription})
+>>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
     </insert>
 
     <!-- SELECT Query for Specific Festival -->
     <select id="selectBoard" resultMap="promoResultSet">
         SELECT FESTIVAL_NO
+<<<<<<< HEAD
              , FES_TITLE
              , MEM_ID
              , TO_CHAR(OPEN_DATE, 'YYYY-MM-DD') "OPEN_DATE"
@@ -40,3 +66,13 @@
     </select>
 
 </mapper>
+=======
+             , FESTIVAL_NAME
+             , OPEN_DATE
+             , FES_IMAGE
+        FROM FESTIVAL
+        WHERE MEM_ID = #{memId}
+    </select>
+
+</mapper>
+>>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)

@@ -37,4 +37,20 @@ public class FestivalDao {
         return result;
     }
 
+<<<<<<< HEAD
+=======
+	public List<Festival> selectMyFestivals(String memId) {
+	    List<Festival> list = null;
+	    try(SqlSession session = MybatisTemplate.getSqlSession()) {
+	        list = session.selectList("festivalMapper.selectBoard", memId);  // memId를 전달
+	        System.out.println("조회된 축제 목록: " + list);
+	    } catch(Exception e) {
+	        e.printStackTrace();
+	    }
+	    return list;
+	}
+	
+	
+
+>>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
 }

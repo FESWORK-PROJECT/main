@@ -39,6 +39,9 @@ th{
 #count{
     width:80px
 }
+#img{
+    width: 150px; height: 100px;
+}
 </style>
 </head>
 <body>
@@ -54,6 +57,7 @@ th{
                 <th>첨부파일</th>
             </thead>
             <tbody>
+<<<<<<< HEAD
 	            <c:forEach var="festival" items="${festivalList}">
 	               <tr>
 	                 <td>${ festival.festivalNo }</td>
@@ -63,6 +67,21 @@ th{
 	                 <td>${ festival.fesImg }</td>
 	               </tr>
 			     </c:forEach>
+=======
+                <c:if test="loginMember.memberId" >
+	            <c:forEach var="f" items="${festivalList}">
+	               <tr>
+	                 <td>${ f.festivalNo }</td>
+	                 <td>${ f.festivalName }</td>
+	                 <td>${ f.fesLike }</td>
+	                 <td>${ f.openDate }</td>
+	                 <td>
+                        <img src="${f.fesImg}" id="img" />
+                    </td>
+	               </tr>
+			     </c:forEach>
+                </c:if>
+>>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
             </tbody>
         </table>
     </div>

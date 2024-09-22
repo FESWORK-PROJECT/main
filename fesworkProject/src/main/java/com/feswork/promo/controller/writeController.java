@@ -38,7 +38,10 @@ public class writeController extends HttpServlet {
 
 	// POST 요청 처리
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
 		// POST 요청도 동일한 처리를 하므로 doGet 호출
+=======
+>>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
 		doGet(request, response);
 	}
 }
