@@ -17,9 +17,26 @@
 		<result column="FES_IMAGE" property="fesImage"/>
 	</resultMap>
 	
+	<resultMap id="simpleFestivalResultMap" type="Slide">
+	    <result column="FESTIVAL_NO" property="festivalNo" />
+	    <result column="FESTIVAL_NAME" property="festivalName" />
+	    <result column="FES_IMAGE" property="fesImage" />
+	    <result column="FES_ADD" property="fesAdd" />
+	</resultMap>
+	
 	<select id="getAllSlides" resultMap="slideResultSet">
 		SELECT *
 		FROM FESTIVAL
 	</select>
+	
+	<select id="selectTopFestivals" resultMap = "simpleFestivalResultMap">
+		SELECT FESTIVAL_NO,
+		       FESTIVAL_NAME,
+		       FES_IMAGE,
+		       FES_ADD
+		FROM FESTIVAL
+		WHERE ROWNUM &lt;= 3
+		ORDER BY FES_LIKE DESC
+    </select>
 	
 </mapper>

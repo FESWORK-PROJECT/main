@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 <style>
 		body {
-            
-            /*font-family: Arial, sans-serif;*/
+
             margin: 0;
             padding: 0;
             
@@ -20,8 +20,8 @@
 		/* 메인 컨텐츠 스타일 */
         .main-content {
             display: flex;
-            /*flex-direction: column;	*/
-            /* border: 1px solid red;         */
+            /*flex-direction: column;*/	
+            /* border: 1px solid red;          */
         }
 
         /* 지도와 축제 섹션 */
@@ -36,34 +36,67 @@
 
         .festival-section {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
             width: 50%;
-            padding-top: 20px;
             /* border: 1px solid red; */
-            align-content: flex-start;
-            /* gap: 0px 0px; */
-            /* justify-content: center; */
-
+            flex-direction: column;
+            text-align: center;
         }
 
         .festival {
             text-align: center;
+            align-items: center;
             /* margin: 0px 30px; */
-            /* border: 1px solid red; */
-            height: 250px;
+            /* border: 1px solid green; */
+            height: 350px;
+            display: flex;
+            flex-direction: column;
         }
-
-        .festival img {
-            width: 200px;
-            height: 150px;
+        
+        .festival-image{
+            display: flex;
+        }
+        
+        /* .festival-image * {
+        	display: flex;
+        	flex-wrap: wrap;
+            justify-content: space-around;
+            align-content: flex-start;
+            width: 50%;
+            height: 15px;
             border-radius: 10px;
-            
+			margin: 0 5px;
+            font-weight: 400;
+	        font-family: "Dongle", sans-serif;
+	        font-size: 15px;
+            border: 1px solid yellowgreen;
+        } */
+        
+        .festival-card {
+       	 	display: flex;
+            justify-content: center;
+            align-items: center;
+		    width: 250px;
+		    height: 250px;
+		    text-align: center;
+		    background-color: #fff; /* 기본 배경색 */
+            /* border: 1px solid black; */
+		}
+		
+		.festival-image .festival-card:hover {
+		    background-color: #e0e0e0; /* 호버 시 배경색 변화 */
+		}
+     
+        .festival-image a{
+			text-decoration : none;
+            color:  #35096ebb;
+		}
+
+        .festival-title {
+            font-size: 2.5em; /* 텍스트 크기 조정 */
+    		font-weight: bold; /* 굵게 설정 */
+    		font-family: "Dongle", sans-serif;    		
         }
 
-        .festival h4 {
-            margin: 10px 0 5px;
-        }
 
         /* 진행 중/예정된 축제 섹션 */
         .events-section {
@@ -97,42 +130,49 @@
         
         /* slider__wrap */
         .slide {
-            height: 500px;
+            height: 400px;
             text-align: center;
-            /*border: 1px solid black;*/ 
+            /* border: 1px solid black; */
+            margin-bottom: 20px;
+            margin-top: 10px; 
         }
 
         .slidecontent {
             width: 100%;
-            height: 500px;
+            height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
-            /*border: 4px solid yellow;*/
+            /* border: 4px solid yellow; */
         }
 
         .slider__img { /*이미지가 보이는 영역*/
             position: relative;
             width: 400px;
-            height: 500px;
+            height: 400px;
             overflow: hidden;
-            /*border: 4px solid green; */
+            /* border: 4px solid green; */
         }
 
         .slider__inner { /*전체 이미지를 감싸고 있는 부모 : 움직이는 영역*/
             display: flex;
             flex-wrap: wrap;
             width: 400px;
-            height: 500px;
+            height: 400px;
             transition: transform 0.5s ease-in-out;
-            /*border: 1px solid red; */
+            /* border: 1px solid red; */
+        }
+        
+        #sliderInner a {
+        	text-decoration: none;
         }
         
         .slider { /*개별적인 이미지*/
             position: relative;
             width: 400px;
+            height: 400px;
             flex-shrink: 0;
-            /*border: 3px solid blue; */
+            /* border: 3px solid blue; */
         }
        
         .prev {
@@ -179,22 +219,21 @@
           /* align-items: flex-end; */
           color:#5658b5b3;
           font-weight: 900;
-          font-size: large;
           font-family: "Dongle", sans-serif;
-          font-size: 40px;
+          font-size: 35px;
                  
         }
         
         .slider img {
 		    width: 400px;      /* 원하는 너비 */
-		    height: 500px;     /* 원하는 높이 */
+		    height: 400px;     /* 원하는 높이 */
 		    object-fit: cover; /* 비율을 유지하며 잘라내기 */
-		    radius: 20px;
+		    border-radius: 20px;
 		}
 
         .events-section{
             /*border: 1px solid red;*/
-            width: 120%;
+            width: 100%;
             color:#5658b5b3;
             font-family: "Dongle", sans-serif;
         }
@@ -319,44 +358,123 @@
                
             }
             </script>
-        </div> <!--width="400px"</div>-->
+        	</div> <!--width="400px"</div>-->
     
 
-        <!-- 축제 섹션 -->
-        <div class="festival-section">
-            <div class="festival"> 
-                <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_3a7630df-c1da-4c3c-a0c0-21923699b312_1.jpg" alt="홍성남당항 대하축제">
-                <h4>홍성남당항 대하축제</h4>
-                <p>충남 홍성군</p>
-            </div>
-            <div class="festival">
-                <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_7be130ae-d136-45d7-9a5c-de3af5691c16_1.jpg" alt="보령머드축제">
-                <h4>보령머드축제</h4>
-                <p>충남 보령시</p>
-            </div>
-            <div class="festival">
-                <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_765890a8-4873-46bc-9f1f-56bf680e12cf_1.jpg" alt="태안 빛축제">
-                <h4>태안 빛축제</h4>
-                <p>충남 태안시</p>
-            </div>
-
-            <!-- 이미지 슬라이드 섹션-->
-            <div class="slide">
-			    <main id="main">
-			        <div class="slider__wrap">
-			            <div class="slidecontent">
-			                <div class="click"><a href="#" class="prev" title="이전이미지" onclick="prevSlide()">&lt;</a></div>
-			                <div class="slider__img">
-			                    <div class="slider__inner" id="sliderInner">
-			                         <!-- 슬라이드 이미지들이 여기에 추가될 것입니다 -->
-			                    </div>
-			                </div>
-			                <div class="click"><a href="#" class="next" title="다음이미지" onclick="nextSlide()">&gt;</a></div>
-			            </div>
-			            <div class="slidetitle"></div>
+			<!-- 축제 섹션 -->
+			<div class="festival-section">
+			    <div class="festival">
+			        <div class="festival-title">인기 Top 3</div>
+			        <div class="festival-image" id="festivals">
+			            <!-- 축제 정보가 이곳에 AJAX로 로드 -->
 			        </div>
-			    </main>
+                     <!-- 이미지 슬라이드 섹션-->
+                    <div class="slide">
+                        <hr>
+                                    <div class="slidecontent">
+                                        <div class="click"><a href="#" class="prev" title="이전이미지" onclick="prevSlide()">&lt;</a></div>
+                                        <div class="slider__img">
+                                            <div class="slider__inner" id="sliderInner">
+                                                <!-- 슬라이드 이미지들이 여기에 추가될 것입니다 -->
+                                            </div>
+                                        </div>
+                                        <div class="click"><a href="#" class="next" title="다음이미지" onclick="nextSlide()">&gt;</a></div>
+                                    </div>
+                                    <div class="slidetitle"></div>
+                               
+                            
+                       </div>
+                        <!-- 축제콕콕 배너-->
+            <div class="cokcok">
+                <a href="<%= contextPath %>/views/RecommendedPage/survey.jsp">나만의 축제를 추천해드려요 - click !</a>
+            </div>
+            <!-- 진행 중/예정된 축제 섹션 -->
+            <div class="events-section">
+                <div class="event-category">
+                    <h2>진행중</h2>
+                    <div class="event-list">
+                        <div class="event-img">
+                            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_527be805-75fb-4361-8e7f-6883c1a00f1e_1.jpg" alt="Event 1">
+                            <p>2024 통영 한산대첩 축제</p>
+                        </div>
+                        <div>
+                            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_3d256b24-1de7-4187-91d7-62de19a65315_1.jpg" alt="Event 2">
+                            <p>2024 춘천 마임 축제</p>
+                        </div>
+                        <div>
+                            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_d6a40a6c-2fb2-4d12-9093-b437539b83c9_1.jpg" alt="Event 3">
+                            <p>광주 프린지 페스티벌</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-category">
+                    <h2>진행예정</h2>
+                    <div class="event-list">
+                        
+                        <div>
+                            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_9f520936-3791-4612-9137-7e04f40d9c8d_1.jpg" alt="Event 4">
+                            <p>2024 서울세계불꽃축제</p>
+                        </div>
+                        <div>
+                            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_f84c717a-ec29-48f7-8980-4b33e3a346b8_1.jpg" alt="Event 5">
+                            <p>2024 부산 바다 축제</p>
+                        </div>
+                        <div>
+                            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_576bdc2a-8371-4313-9d31-558e983e75e8_1.jpg" alt="Event 6">
+                            <p>2024 한강 사랑 페스티벌</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+
 			</div>
+			
+			<script>
+			async function likeTopList() {
+			    try {
+			        const response = await fetch('/feswork/topLike');
+			        if (!response.ok) {
+			            throw new Error('Network response was not ok');
+			        }
+			        const contentType = response.headers.get("content-type");
+			        if (!contentType || !contentType.includes("application/json")) {
+			            throw new Error("Expected JSON but received " + contentType);
+			        }
+			        const data = await response.json();
+			        console.log(data);
+			
+			        // 데이터를 DOM에 추가하는 로직
+			        const festivalsContainer = document.getElementById('festivals');
+			        festivalsContainer.innerHTML = ''; // 기존 내용 초기화
+			        data.forEach(festival => {
+			            const festivalElement = createFestivalCard(festival.fesImage, festival.festivalName, festival.festivalNo);
+			            festivalsContainer.appendChild(festivalElement);
+			        });
+			
+			    } catch (error) {
+			        console.error('There has been a problem with your fetch operation:', error);
+			    }
+			}
+			
+			function createFestivalCard(fesImage, festivalName, festivalNo) { // 함수 이름 변경
+			    const topLike = document.createElement('div');
+			    topLike.classList.add('festival-card'); // 클래스 추가
+			    topLike.innerHTML = '<a href="detailFes?festivalNo=' + festivalNo + '">' +
+			                        '<img src="' + fesImage + '" alt="Festival Image"; style="width: 150px; height: 150px;">' +
+			                        '<div class="festival-title">' + festivalName + '</div>' +
+			                        '</a>';
+			    return topLike;
+			}
+			
+			// 페이지 로드 시 likeTopList 함수 호출
+			$(document).ready(function() {
+			    likeTopList();
+			});
+			</script>
+
+           
 			<script>
 			let currentSlide = 0;
 			let slides = [];
@@ -380,11 +498,16 @@
 			    }
 			}
 
-			function createSlideElement(fesImage, festivalName) {
+			function createSlideElement(fesImage, festivalName, festivalNo) {
 			    const slide = document.createElement('div');
 			    slide.classList.add('slider');
 			    slide.classList.add('hidden');  // 기본적으로 슬라이드를 숨김
-			    slide.innerHTML = '<img src="' + fesImage + '" alt="Festival Image" style="width: 400px; height: 400px;"><div class="slidetitle">' + festivalName + '</div>';
+			    const festivalNoAsNumber = Number(festivalNo);
+			    console.log(festivalNoAsNumber);
+			    slide.innerHTML = '<a href="detailFes?festivalNo=' + festivalNoAsNumber + '">'+
+			    				   '<img src="' + fesImage + '" alt="Festival Image" style="width: 300px; height: 300px;">'+
+			    				   '<div class="slideTitle">' + festivalName + '</div>' +
+			    				   '</a>';
 			    return slide;
 			}
 
@@ -428,49 +551,7 @@
 
 
 			</script>
-            <!-- 축제콕콕 배너-->
-            <div class="cokcok">
-                <a href="<%= contextPath %>/views/RecommendedPage/survey.jsp">나만의 축제를 추천해드려요 - click !</a>
-            </div>
-            <!-- 진행 중/예정된 축제 섹션 -->
-            <div class="events-section">
-                <div class="event-category">
-                    <h2>진행중</h2>
-                    <div class="event-list">
-                        <div class="event-img">
-                            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_527be805-75fb-4361-8e7f-6883c1a00f1e_1.jpg" alt="Event 1">
-                            <p>2024 통영 한산대첩 축제</p>
-                        </div>
-                        <div>
-                            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_3d256b24-1de7-4187-91d7-62de19a65315_1.jpg" alt="Event 2">
-                            <p>2024 춘천 마임 축제</p>
-                        </div>
-                        <div>
-                            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_d6a40a6c-2fb2-4d12-9093-b437539b83c9_1.jpg" alt="Event 3">
-                            <p>광주 프린지 페스티벌</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="event-category">
-                    <h2>진행예정</h2>
-                    <div class="event-list">
-                        
-                        <div>
-                            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_9f520936-3791-4612-9137-7e04f40d9c8d_1.jpg" alt="Event 4">
-                            <p>2024 서울세계불꽃축제</p>
-                        </div>
-                        <div>
-                            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_f84c717a-ec29-48f7-8980-4b33e3a346b8_1.jpg" alt="Event 5">
-                            <p>2024 부산 바다 축제</p>
-                        </div>
-                        <div>
-                            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_576bdc2a-8371-4313-9d31-558e983e75e8_1.jpg" alt="Event 6">
-                            <p>2024 한강 사랑 페스티벌</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
         </div>
         </div>

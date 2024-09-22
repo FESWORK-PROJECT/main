@@ -32,4 +32,22 @@ public class slideService {
 		
 	}
 
+	public static List<Slide> selectTopFestivals() {
+		SqlSession sqlsession = MybatisTemplate.getSqlSession();
+	     
+		 List<Slide> topLike = null;
+	     
+		 try {
+	     
+			 topLike = SlideDao.selectTopFestivals(sqlsession); // DAO에서 데이터를 가져옴
+			 System.out.println("서비스에서반환받은"+topLike);
+	        
+		 } finally {
+	     
+			 sqlsession.close(); // 세션 닫기
+	        
+		 }
+	        return topLike;
+	}
+
 }
