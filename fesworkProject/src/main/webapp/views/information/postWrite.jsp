@@ -68,7 +68,7 @@
     <h3>축제 후기 작성</h3>
     <br>
     <div class="container">
-    <form action="<%= request.getContextPath() %>/insert" method="post" enctype="multipart/form-data">
+    <form action="insertBoard" method="post" enctype="multipart/form-data">
     <input type="hidden" name="festivalNo" value="${festivalNo}"> <!-- festivalNo 추가 -->
     
     <label for="rvTitle">제목</label>
