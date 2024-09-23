@@ -3,35 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-<<<<<<< HEAD
-   <settings>
-      <setting name="jdbcTypeForNull" value="NULL" />
-       <setting name="logImpl" value="STDOUT_LOGGING"/>
-   </settings>
-   
-   <typeAliases>
-       <typeAlias type="com.feswork.member.model.vo.Member" alias="Member" />
-       <typeAlias type="com.feswork.information.model.vo.Information" alias="Information" />
-       <typeAlias type="com.feswork.promo.model.vo.Festival" alias="Festival"/>
-    </typeAliases>
-   
-   <environments default="develop">
-      <environment id="develop">
-         <transactionManager type="JDBC" />
-         <dataSource type="POOLED">
-            <property name="driver" value="oracle.jdbc.driver.OracleDriver" />
-            <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-            <property name="username" value="C##FESWORK" />
-            <property name="password" value="FESWORK"/>
-         </dataSource>
-      </environment>
-   </environments>
-   <mappers>
-          <mapper resource="/mapper/information-mapper.xml"/>
-          <mapper resource="/mapper/member-mapper.xml"/>
-          <mapper resource="/mapper/promo-mapper.xml"/>
-   </mappers>
-=======
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL" />
 		 <setting name="logImpl" value="STDOUT_LOGGING"/>
@@ -65,5 +36,4 @@
 		 <mapper resource="/mapper/slide-mapper.xml" />
 		 <mapper resource="/mapper/promo-mapper.xml"/>
 	</mappers>
->>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
 </configuration>

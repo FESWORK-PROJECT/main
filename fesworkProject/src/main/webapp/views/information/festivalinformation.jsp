@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -47,7 +47,7 @@
 
         .search-bar button {
             padding: 10px 20px;
-            background-color: #6CC04A;
+            background-color: Purple;
             color: white;
             border: none;
             cursor: pointer;
@@ -104,19 +104,29 @@
 
         .blind{ display: none;}
        
-       
-        #fesvival-post1{
-            display: flex; 
-            height:250px;
-            justify-content: center; /* 가로 중앙 정렬 */
-        }
-        #fesvival-post1 div{
-            background-size: cover;
-            width: 210px;     
-            margin: 10px;
-            display: block;
-        }
+       #fesvival-post1 {
+    display: flex;
+    flex-wrap: wrap; /* 줄 바꿈을 허용 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    gap: 10px; /* 요소들 간의 간격 설정 */
+}
 
+#fesvival-post1 > div {
+    width: 210px;  /* 이미지 컨테이너의 너비 설정 */
+    height: 250px; /* 이미지 컨테이너의 높이 설정 */
+    overflow: hidden; /* 이미지가 컨테이너를 넘지 않도록 설정 */
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    background-color: #ddd; /* 배경색 설정 (선택 사항) */
+    border-radius: 5px; /* 둥근 모서리 (선택 사항) */
+}
+
+#fesvival-post1 img {
+    max-width: 100%;  /* 컨테이너 너비에 맞게 이미지 크기 조절 */
+    max-height: 100%; /* 컨테이너 높이에 맞게 이미지 크기 조절 */
+    object-fit: cover; /* 이미지 비율 유지하면서 컨테이너를 채우도록 설정 */
+}   
         #fesvival-post2{
             display: grid;
             grid-template-columns: repeat(4, 1fr); /* 4개의 열 */
@@ -269,24 +279,24 @@
             padding: 40px;
         }
     
-        #more_festival {
-        display: none;
-        margin: 0;
-        padding: 0;
-      }
+	        #more_festival {
+	        display: none;
+	        margin: 0;
+	        padding: 0;
+	        }
 
-     #morediv {
-     margin-bottom: 10px;
-    }
+	     #morediv {
+	     margin-bottom: 10px;
+	    }
 
-    .footer {
-    margin-top: 10px;
-    padding-top: 10px;
-    }
+	    .footer {
+	    margin-top: 10px;
+	    padding-top: 10px;
+	    }
     
 	    .tab_cont_area {
         padding: 20px;
-    }
+   		 }
 
     .other_festival_ul {
         display: grid;
@@ -295,9 +305,9 @@
         list-style-type: none; /* 기본 리스트 스타일 제거 */
         padding: 0;
         margin: 0;
-    }
+   		 }
 
-    .other_festival_ul li {
+    	.other_festival_ul li {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -307,41 +317,149 @@
         border-radius: 5px; /* 테두리 둥글게 설정 (선택 사항) */
         overflow: hidden; /* 이미지가 범위를 넘어가지 않도록 설정 */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 (선택 사항) */
-    }
+   		 }
+	
+.other_festival_img {
+    width: 200px; /* 부모 요소의 너비에 맞게 조정 */
+    height: 200px; /* 고정 높이 설정 */
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    overflow: hidden; /* 이미지가 부모 요소를 넘지 않도록 설정 */
+    background-color: #f9f9f9; /* 배경 색상 (선택 사항) */
+}
 
-    .other_festival_img {
-        width: 200px; /* 부모 요소의 너비에 맞게 조정 */
-        height: 200px; /* 고정 높이 설정 */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden; /* 이미지가 부모 요소를 넘지 않도록 설정 */
-    }
-
-    .other_festival_img img {
-        width: 100%;
-        height: 100%;
-         
-    }
+.other_festival_img img {
+    max-width: 100%; /* 너비를 부모 요소에 맞게 조정 */
+    max-height: 100%; /* 높이를 부모 요소에 맞게 조정 */
+    object-fit: cover; /* 이미지 비율을 유지하면서 부모 요소에 맞게 잘림 */
+}
 
     .sing_area, .other_festival_content {
         padding: 10px;
         
-    }
-    
-    a {
-    	text-decoration:none;
-    }
-                </style>
+    } 
+    /* 검색 결과 없음 스타일링 */
+		.no-results {
+		    text-align: center;
+		    padding: 50px;
+		    background-color: #f9f9f9;
+		    border: 1px solid #ddd;
+		    border-radius: 10px;
+		    margin: 20px auto;
+		    max-width: 600px;
+		}
+		
+		.no-results__image {
+		    margin-bottom: 20px;
+		}
+		
+		.no-results__image img {
+		    max-width: 150px;
+		    height: auto;
+		}
+		
+		.no-results__message {
+		    color: #555;
+		}
+		
+		.no-results__title {
+		    font-size: 24px;
+		    color: #333;
+		    font-weight: bold;
+		    margin-bottom: 10px;
+		}
+		
+		.no-results__description {
+		    font-size: 16px;
+		    color: #777;
+		}
+		
+		<!--a 태그 밑줄 제거 및 스타일 적용-->
+		.other_festival_ul a {
+    	text-decoration: none; 
+    	color: black;
+    	transition: color 0.4s;
+   
+		}
+		.other_festival_ul a:hover {
+    	color: Purple; 
+    	
+		}
+		
 
+
+	button {
+    padding: 8px 15px; /* Reduced padding */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    color: white; /* Text color */
+    font-size: 14px; /* Smaller font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth background color transition */
+    flex: 1; /* Make buttons grow equally */
+    min-width: 100px; /* Reduced minimum width */
+	}
+	
+	button[type="reset"] {
+	    background-color: #9b59b6; /* Light purple */
+	}
+	
+	button[type="submit"].btn_search {
+	    background-color: #8e44ad; /* Darker purple */
+	}
+	
+	button[type="reset"]:hover {
+	    background-color: #a57cb2; /* Slightly lighter on hover */
+	}
+	
+	button[type="submit"].btn_search:hover {
+	    background-color: #732d91;    
+	}
+	
+
+	
+	.tab_area li {
+	    list-style: none; /* 리스트 스타일 제거 */
+	    margin: 0 10px; /* 버튼 간격 */
+	}
+	
+	.tab_area button:hover {
+	    background-color: #8e44ad; /* 호버 시 색상 변화 */
+	}
+	
+	.tab_area button.active {
+	    background-color: #732d91; /* 선택된 버튼 색상 */
+	    transform: scale(1.05); /* 선택된 버튼 크기 증가 */
+	}
+	
+	
+
+	.tab_area button:hover {
+	    background-color: #8e44ad; /* 호버 시 색상 변화 */
+	}
+	.tab_area button {
+    border-radius: 5px; /* 둥근 모서리 */
+    background-color: #9b59b6; /* 버튼 배경색 */
+    color: white; /* 텍스트 색상 */
+    font-size: 16px; /* 폰트 크기 */
+    cursor: pointer; /* 포인터 커서 */
+    transition: background-color 0.3s, transform 0.2s; /* 부드러운 전환 효과 */
+	}    
+	
+	.other_festival_ul a {
+    text-decoration: none; /* Remove underline */
+    color: black; /* Default text color */
+    transition: color 0.3s; /* Smooth transition */
+	}
+	
+	
+    </style>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
 <body>
-
  	<jsp:include page="../common/header.jsp"/>
-         
             <br>
-
     <main role="main" id="mainTab" >
         <div class="wrap">
             <!--조건부 검색 section : 컨텐츠 그룹화 -->
@@ -349,7 +467,7 @@
                 <div class="inner">
                     <div class="blind">검색영역</div>
                     
-                    <form action="searchRequest" name="festivalSearch" id="festivalSearch">
+                    <form action="searchRequest" name="festivalSearch" id="festivalSearch"  onsubmit="return validateForm()">
                         <fieldset>
                             <legend class="blind">축제 검색</legend>
                         <div class="search_box_wrap">
@@ -357,8 +475,6 @@
                                 <label for="search_Date" style="display: none;">시기선택</label>
                                 <select name="searchDate" id="searchDate">
                                         <option value="">시기</option>
-                                        <option value="A">개최중</option>
-                                        <option value="B">개최예정</option>
                                         <option value="01">1월</option>
                                         <option value="02">2월</option>
                                         <option value="03">3월</option>
@@ -421,13 +537,13 @@
                                <select name="searchCate" id="searchCate" title="카테고리 선택">
                                        <option value="">카테고리</option>
                                    
-                                       <option value="전통">전통</option>
+                                       <option value="tradition">전통</option>
                                    
-                                       <option value="음식">음식</option>
+                                       <option value="food">음식</option>
                                    
-                                       <option value="문화">문화</option>
+                                       <option value="culture">문화</option>
                                    
-                                       <option value="체험">체험</option>
+                                       <option value="experience">체험</option>
                                    
                                        <option value="미디어아트">미디어아트</option>
                                    
@@ -435,17 +551,15 @@
                                </select>
                            </div>
 
-                           <div class="btn_box">
-                            <button type="reset">
-                                <span>초기화</span></button>
-                            <button class="btn_search" id="btnSearch" type="submit"><span>검색</span>
-                            </button>
-                            
-                        </div>
-                 
-                        <div class= "serchinput">
-                            <input type="text" value="검색" id="searchinput">
-                        </div>
+							 <div class="btn_box">
+							    <button type="reset">
+							        <span>초기화</span>
+							    </button>
+							    
+							    <button class="btn_search" id="btnSearch" type="submit">
+							        <span>검색</span>
+							    </button>
+							</div>
                     </form>
 
                         </div> 
@@ -453,12 +567,10 @@
                         <br><br>
 
                             <div id="fesvival-post1">
-                     
-                                <div style="background-image: url(resources/urbanbrush-20180824005523160427.png);"></div>
-                                <div style="background-image: url(resources/해운대모래축제-포스터.jpg);"></div>
-                                <div style="background-image: url(resources/1404859143246_PicsArt_1404833148597.png);"></div>
-                                <div style="background-image: url(resources/redheartemoji1.jpg);"></div>
-                            </div>
+                     			<c:forEach var="l" items="${ lList}">	
+                                <div><a href="detailFes?festivalNo=${l.festivalNo }"><img src="${l.fesImage}"></a></div>
+                                </c:forEach>
+                                </div>
                             
                             <br>
                             <hr size="1" color="green">                          
@@ -470,14 +582,24 @@
                                 <div class="inner">
                                     <div class="other_festival" role="application">
                                         <div class="blind">페스티벌 검색 리스트</div>
+                                      <c:choose>
+                                      
+                                      <c:when test="${ empty fList  }">
                                         <!-- 검색 결과 없음 -->
-                                        <div class="no_list" style="display: none;" id="divNoData">
-                                            <div class="no_img"></div>
-                                            <strong>검색결과가 없습니다</strong>
-                                            <p>찾으시는 축제를 다시 검색해 주세요</p>
-                                        </div>
+                                   <!-- 검색 결과 없음 -->
+											<div class="no-results">
+											    <div class="no-results__image">
+											        <img src="resources/images/free-icon-cry-1463950.png" alt="No Results">
+											    </div>
+											    <div class="no-results__message">
+											        <strong class="no-results__title">검색결과가 없습니다</strong>
+											        <p class="no-results__description">찾으시는 축제를 다시 검색해 주세요</p>
+											    </div>
+											</div>
                                         <!-- //검색 결과 없음 -->
-                    
+                                        
+                   						</c:when>
+                   						<c:otherwise>
                                         <div class="festival_ul_top" id="festival_ul_top" style="">
                                             <ul class="tab_area">
                                                 <li id="tabFstvlList" class="active">
@@ -498,7 +620,7 @@
                                                 <ul class="other_festival_ul" id="fstvlList">
                                                     	<c:forEach var="f" items="${fList}">
                                                     <li>    
-                                                        <a href="">
+                                                        <a href="detailFes?festivalNo=${f.festivalNo }">
                                                             <div class="other_festival_img">
                                                                 <img src="${f.fesImage}"><!--이미지 자리-->
                                                             </div>
@@ -514,29 +636,9 @@
                                                 </ul>
                                             </div>
                                             <!--// 축제일순 -->
-                                       
-                                            <!-- 인기순 -->
-                                            <div class="tab_cont" aria-expanded="false" role="application" style="display: none;">
-                                                <p class="blind">인기순 리스트</p>
-                                                <ul class="other_festival_ul" id="fstvlLikeOrderList">
-                                                    <li>    
-                                                        <a href="">
-                                                            <div class="other_festival_img">
-                                                                <img src="" alt=""><!--이미지 자리-->
-                                                            </div>
-                                                            <div class="sing_area">
-                                                                <div><!--축제 테마 자리--></div>
-                                                            </div>
-                                                            <div class="other_festival_content">
-                                                                <strong><!--축제명--></strong>
-                                                                <div class="date"><!--축제 기간--></div>
-                                                                <div class="ioc"><!--축제 지역코드?--></div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <!--// 인기순 -->
+                                       </c:otherwise>
+                                            </c:choose>
+                                   
                                         </div>
                                     </div>
                                 </div>
@@ -548,8 +650,7 @@
                         <jsp:include page="../common/footer.jsp"/>       
 
                         <script>
-              
-                            document.addEventListener('DOMContentLoaded', function() {
+                           		document.addEventListener('DOMContentLoaded', function() {
                                 const btnDate = document.getElementById('btnDate');
                                 const btnLike = document.getElementById('btnLike');
 
@@ -559,30 +660,26 @@
                                 btnLike.addEventListener('click',function(){
                                     fesWorkList('likeSort');
                                 });
-
-
                                 function fesWorkList(sortOrder) {
                                     fetch('list/wntyFstvlList.do?sortOrder='+sortOrder)
                                     .then(response => response.json())
                                     .then(data => updateFestivalList(data))
                                     .catch(error => console.error('Error:', error));
-                                
                                 }
+                                
+
+                            
+                                
                                 
                                 function updateFestivalList(fesData){
                                     const list = document.getElementById('fstvlList');
-
                                     list.innerHTML = '';
-                                    
-                                    
-
                                     fesData.forEach(fList =>{
                                         const listItem = document.createElement('li');
                                         listItem.innerHTML = '<a href="">' + 
                                                             '<div class="other_festival_img">' + 
                                                                  '<img src="' + fList.fesImage + '">' +
                                                                '</div>' +
-                                                 
                                                            '<div class="other_festival_content">' + 
                                                                 '<strong>' + fList.festivalName +'</strong>'+ 
                                                                '<div class="date">'+fList.openDate+'~'+ fList.closeDate+'</div>' +
@@ -594,5 +691,19 @@
                                 }
                             });
                         </script>
+                        
+                        <script>
+function validateForm() {
+    const searchDate = document.getElementById('searchDate').value;
+    const searchArea = document.getElementById('searchArea').value;
+    const searchCate = document.getElementById('searchCate').value;
+
+    if (searchDate === "" || searchArea === "" || searchCate === "") {
+        alert("모든 항목을 선택해 주세요."); 
+        return false; 
+    }
+    return true; 
+}
+</script>
 </body>
 </html>

@@ -14,8 +14,15 @@ public class Information {
 	private	String fesDescription;
 	private String fesAdd;
 	private String fesImage;
+	private String themeCode;
 	
 	
+	public String getThemeCode() {
+		return themeCode;
+	}
+	public void setThemeCode(String themeCode) {
+		this.themeCode = themeCode;
+	}
 	public Information(){
 		
 	}

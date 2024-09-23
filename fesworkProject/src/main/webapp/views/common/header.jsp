@@ -72,50 +72,45 @@
     <!-- 상단 메뉴 -->
     <div class="header">
         <div class="navi">
-<<<<<<< HEAD
-            <img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_e2b3015d-7660-4355-8d27-e0b67ea23ef9_1.png" width="80px" height="80px">
-           
-
-            <a href="<%= contextPath %>/introduce">소개</a>
-            <a href="<%= contextPath %>/information">축제정보</a>
-            <a href="<%= contextPath %>/festivalList">축제홍보</a>
-
-=======
             <a href="<%=contextPath %>">
             	<img src="<%=contextPath %>/resources/images/feswork_logo_full.png" width="110px" height="100px">
             </a>
             <a href="<%=contextPath%>/introducePage.intro">소개</a>
             <a href="<%=contextPath%>/information">축제정보</a>
             <a href="<%= contextPath %>/festivalList">축제홍보</a>
->>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
         </div>
-
-        <form class="search" action="/keyword.fe" method="get">
-            <input class="keyword" type="text" placeholder="검색" value="" name="search" autocomplete="off">
+      <!--   <div class="search">
+            <input type="text" placeholder="검색">
+            <button>검색</button>
+			불필요한 기능인거 같아서 일단 주석 처리만 했습니다.
+        </div> -->
+        
+        <form class="search" action="search" method="get">
+            <input class="keyword" type="text" placeholder="검색" value="" name="festivalName" autocomplete="off">
             <button class="searchBtn" type="submit">검색</button>
         </form>
         <div>
-           <c:choose>
-              <c:when test="${ empty loginMember }">
-                 <!-- 로그인 안된 상태 -->
-                  <a href="<%= contextPath %>/views/member/loginForm.jsp">로그인/회원가입</a>
-              </c:when>
-              <c:otherwise>
-                 <!-- 로그인 성공 -->
-                 <a href="<%= contextPath %>/views/member/myPage.jsp">마이페이지</a>
-                 <a href="<%= contextPath %>/logout.me">로그아웃</a>
-              </c:otherwise>
-           </c:choose>
+        	<c:choose>
+        		<c:when test="${ empty loginMember }">
+        			<!-- 로그인 안된 상태 -->
+		            <a href="<%= contextPath %>/loginPage.me">로그인/회원가입</a>
+        		</c:when>
+        		<c:otherwise>
+        			<!-- 로그인 성공 -->
+        			<a href="<%= contextPath %>/mypagePage.me">마이페이지</a>
+        			<a href="<%= contextPath %>/logout.me">로그아웃</a>
+        		</c:otherwise>
+        	</c:choose>
         </div>
     </div>
     <script>
     const Searching = Search.prototype;
     
     function Search(){
-       this.keyword = document.querySelector('input[name = "search"]');
-       this.engine = document.querySelector();
-       this.button = document.querySelector('.searchBtn');
-       this.form
+    	this.keyword = document.querySelector('input[name = "search"]');
+    	this.engine = document.querySelector();
+    	this.button = document.querySelector('.searchBtn');
+    	this.form
     }
     </script>
 </body>

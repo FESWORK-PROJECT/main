@@ -73,6 +73,12 @@
         text-decoration: none;
         color:#35096ebb;
     }
+    
+    .member-title {
+   		 font-family: "Dongle", sans-serif;
+   		 font-size: 40px;
+   		 margin: 0px;
+    }
 </style>
 
 </head>
@@ -83,8 +89,10 @@
     <div class="outer">
         <div class="content" id="contentLeft"></div>
         <div class="content" id="contentCenter">
-            <img src="#" alt="로고">
-            <h2>로그인</h2>
+        	<a href="<%=contextPath %>">
+            	<img src="<%=contextPath %>/resources/images/feswork_logo_full.png" alt="로고" width="200px">
+           	</a> 
+            <p class="member-title">로그인</p>
             <div id="table-container">
                 <form action="<%= contextPath %>/login.me" method="post">
                     <table >
@@ -112,10 +120,10 @@
                         </tr>
                         <tr align="center">
                             <td>
-                                <a href="<%= contextPath %>/findIdForm.jsp">아이디찾기</a>
+                                <a href="<%=contextPath %>/findIdPage.me">아이디찾기</a>
                             </td>
                             <td>
-                                <a href="<%= contextPath %>/findPasswordForm.jsp">비밀번호찾기</a>
+                                <a href="<%=contextPath %>/findPasswordPage.me">비밀번호찾기</a>
                             </td>
                         </tr>
                         <tr align="center">

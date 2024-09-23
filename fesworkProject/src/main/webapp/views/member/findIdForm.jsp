@@ -65,8 +65,13 @@
         color: aliceblue;
         border-radius: 5px;
     }
-
-
+    
+    .member-title {
+   		 font-family: "Dongle", sans-serif;
+   		 font-size: 40px;
+   		 margin: 0px;
+    }
+	
 </style>
 
 </head>
@@ -78,17 +83,19 @@
         
         <div class="content" id="contentLeft"></div>
         <div class="content" id="contentCenter">
-            <img src="#" alt="로고">
-            <h2>아이디 찾기</h2>
+            <a href="<%=contextPath %>">
+            	<img src="<%=contextPath %>/resources/images/feswork_logo_full.png" alt="로고" width="200px">
+           	</a> 
+            <p class="member-title">아이디 찾기</p>
             <div id="table">
-                <form action="어디로보낼지정하자" method="post">
+                <form action="<%= contextPath %>/findId.me" method="post">
                     <table >
                         <tr>
                             <td colspan="3">이름</td>
                         </tr>
                         <tr align="center">
                             <td colspan="3">
-                                <input type="password" name="userPwd" id="userPwd">
+                                <input type="text" name="memberName">
                             </td>
                         </tr>
                         <tr>
@@ -96,7 +103,7 @@
                         </tr>
                         <tr align="center">
                             <td colspan="3">
-                                <input type="password" name="userPwd" id="userPwd">
+                                <input type="email" name="email">
                             </td>
                         </tr>
                         <tr>

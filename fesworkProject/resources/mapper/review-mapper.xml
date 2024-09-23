@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reviewMapper">
+	<resultMap id = "ReviewResultSet" type="Review">
+		<result column="RV_NO" property="rvNo"/>
+		<result column="FESTIVAL_NO" property="festivalNo"/>
+		<result column="MEM_ID" property="memId"/>
+		<result column="RV_TITLE" property="rvTitle"/>
+		<result column="RV_CONTENT" property="rvContent"/>
+		<result column="RV_IMG" property="rvImg"/>
+		<result column="RV_DATE" property="rvDate"/>
+		<result column="RV_COUNT" property="rvCount"/>
+	</resultMap> 
+	
+	
+	<select id="getBoardList" resultMap="ReviewResultSet">
+    SELECT *
+    FROM RV 
+    JOIN FESTIVAL ON RV.FESTIVAL_NO = FESTIVAL.FESTIVAL_NO
+    WHERE FESTIVAL.FESTIVAL_NO = #{festivalNo}
+	</select>
+	
+	<!-- 게시글 수 조회 -->
+	<select id="selectListCount" resultType="_int">
+    SELECT COUNT(*) 
+    FROM RV 
+    JOIN FESTIVAL ON RV.FESTIVAL_NO = FESTIVAL.FESTIVAL_NO
+    WHERE FESTIVAL.FESTIVAL_NO = #{festivalNo}
+</select>
+	
+	<!--조회수 증가 시키기-->
+	<update id="increaseCount">
+		UPDATE BOARD
+		   SET COUNT = COUNT + 1
+		 WHERE BOARD_NO = #{boardNo} AND STATUS = 'Y'
+	</update>
+	
+	<insert id="insertReview">
+				INSERT INTO RV(RV_NO
+							 , FESTIVAL_NO
+							 , MEM_ID
+							 , RV_TITLE
+							 , RV_CONTENT
+							 , RV_IMG
+							 , RV_COUNT
+							 , RV_DATE
+							 )
+			VALUES ( RNO.NEXTVAL
+				   , #{festivalNo}
+				   , #{memId}
+				   , #{rvTitle}
+				   , #{rvContent}
+				   , #{rvImg}
+				   , 0
+				   , SYSDATE
+				   			)
+	
+	</insert>
+	
+	
+</mapper>
+
+
