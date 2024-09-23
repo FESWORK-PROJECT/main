@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -57,15 +57,15 @@
 </head>
 <body>
 <% 
-	String contextPath = request.getContextPath(); 
+   String contextPath = request.getContextPath(); 
 
-	String alertMsg = (String)session.getAttribute("alertMsg");
+   String alertMsg = (String)session.getAttribute("alertMsg");
 %>
 <% if (alertMsg != null) { %>
-	<script>
-		alert("<%= alertMsg %>");
-	</script>
-	<% session.removeAttribute("alertMsg"); %>
+   <script>
+      alert("<%= alertMsg %>");
+   </script>
+   <% session.removeAttribute("alertMsg"); %>
 <% } %>
 
 
@@ -77,7 +77,7 @@
             </a>
             <a href="<%=contextPath%>/introducePage.intro">소개</a>
             <a href="<%=contextPath%>/information">축제정보</a>
-            <a href="<%= contextPath %>/views/promo/promo.jsp">축제홍보</a>
+            <a href="<%= contextPath %>/festivalList">축제홍보</a>
         </div>
       <!--   <div class="search">
             <input type="text" placeholder="검색">

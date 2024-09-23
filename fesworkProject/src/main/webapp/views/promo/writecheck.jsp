@@ -39,35 +39,38 @@ th{
 #count{
     width:80px
 }
+#img{
+    width: 150px; height: 100px;
+}
 </style>
 </head>
 <body>
-	<jsp:include page="../common/header.jsp"/>
+	<%-- <jsp:include page="../common/header.jsp"/> --%>
+	<%@ include file="../common/header.jsp" %>
 	<div id="board">
         <p> ${ loginMember.memberId } 님의 글 목록</p>
         <table id="board2" border= "">
         	<thead>
                 <th>글번호</th>
                 <th>제목</th>
-                <th>작성자</th>
                 <th>조회수</th>
-                <th>작성일</th>
+                <th>오픈날짜</th>
                 <th>첨부파일</th>
             </thead>
             <tbody>
-                <%-- for(Board b : list ) {} --%>
-                	<c:forEach var="m" items="${ list }">
-	                    <tr>
-	                        <td>${ m.memberId }</td>
-	                        <td>${ m.memberName }</td>
-	                        <td>${ m.email }</td>
-	                        <td>${ m.birth }</td>
-	                        <td>${ m.gender }</td>
-	                        <td>
-	                        	<c:if test="${ not empty m.phone }">■</c:if>
-	                        </td>
-	                    </tr>
-                    </c:forEach>
+                <c:if test="${ not empty loginMember.memberId }" >
+	            <c:forEach var="f" items="${MyFestival}">
+	               <tr>
+	                 <td>${ f.festivalNo }</td>
+	                 <td>${ f.festivalName }</td>
+	                 <td>${ f.fesLike }</td>
+	                 <td>${ f.openDate }</td>
+	                 <td>
+                        <img src="${f.fesImg}" id="img" />
+                    </td>
+	               </tr>
+			     </c:forEach>
+                </c:if>
             </tbody>
         </table>
     </div>

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>축제 홍보 페이지</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 <style>
@@ -19,16 +19,16 @@
     display: flex; /* Flexbox로 설정 */
     align-items: center; /* 수직 정렬 */
     justify-content: center; /* 수평 정렬 */
-    color: rgb(120, 120, 255);
+    color: #35096ebb;
     text-align: center;
-    font-size: 14px;
+    font-size: 25px;
     text-decoration: none;
     margin-top: auto;
     margin-bottom: auto;
     margin-right: 10px;
     width: 140px;
     height: 40px;
-    background-color: rgb(255, 255, 154);
+    background-color: rgb(252, 252, 252);
     border-radius: 10px;
     border: none;
     cursor: pointer;
@@ -37,10 +37,12 @@
     width: 600px;
 }
 #second{
+    font-family: "Dongle", sans-serif;
+    padding-left:150px;
     text-decoration: none;
     justify-content: space-between;
     display: flex;
-    background-color: rgb(253, 161, 253);
+    background-color: #5658b58a;
     margin-top: 50px;
     color: white;
     margin-bottom: 20px;
@@ -59,11 +61,12 @@
     background-color: #a575e44f; color: white;
 }
 #second-1{
+    text-align: center;
     margin-left: 20px;
 }
 table {
     border-collapse: collapse;
-    width: 100%;
+    text-align: center;
 }
 th, td {
     border: none; /* 테두리 제거 */
@@ -86,6 +89,7 @@ th, td {
     align-items: center;
 }
 #bottom-search1{
+    color: #fff9ff;
     border: 2px solid #35096ebb;
     width: 20em;
     height: 4em;
@@ -122,13 +126,14 @@ th, td {
     margin-top: 200px;position: relative;width: 400px; margin: 0 auto; text-align: center; 
 }
 .description{
-    border-radius: 10px;background-color: #35096ebb;margin-top: 20px;
+    border-radius: 0px 0px 10px 10px;background-color: #35096ebb;
     margin-bottom: 20px;color: yellow;padding: auto;font-size: 20px;
 }
 .slide {
     display: none;opacity: 0;transition: opacity 0.5s ease-in-out;
 }
 .slide.active {
+    margin-top: 20px;
     display: block;opacity: 1;
 }
 .arrow {
@@ -147,15 +152,26 @@ th, td {
 #imggg{
     width: 6em;height: 4em;
 }
-#pagination a,
-#pagination em {
-    font-size: 25px;
-}
 #cross-left{
     background-image: url("");background-size: cover; width: 20px;height: 20px;
 }
 #cross-right{
     background-image: url("");background-size: cover;width: 20px;height: 20px;
+}
+tbody{
+    font-size: 18px;font-weight: 600;
+}
+#img{
+    width: 150px; height: 100px;
+}
+#center1{
+    width: 120px;
+}
+#center2{
+    width: 120px;
+}
+#des{
+    text-align: left;
 }
 </style>
 </head>
@@ -164,31 +180,22 @@ th, td {
     <div class="carousel">
         <button class="arrow left-arrow" onclick="prevSlide()">&#9664;</button>
         <div class="slides">
-            <div class="slide active">
-                <div class="description">${ loginMember.memberId }</div>
-                <a href="#"><img src="" alt="Image 1" id="imgg"></a>
-                <div class="description">고양 푸드 앤 비어 페스티벌</div> <!-- 설명 추가 -->
-            </div>
-            <div class="slide">
-                <div class="description">${ loginMember.memberId }</div>
-                <a href="#"><img src="" alt="Image 2" id="imgg"></a>
-                <div class="description">턴업</div> <!-- 다른 설명 추가 -->
-            </div>
-            <div class="slide">
-                <div class="description">${ loginMember.memberId }</div>
-                <a href="#"><img src="" alt="Image 2" id="imgg"></a>
-                <div class="description">턴다운</div> <!-- 다른 설명 추가 -->
-            </div>
-            <div class="slide">
-                <div class="description">${ loginMember.memberId }</div>
-                <a href="#"><img src="" alt="Image 2" id="imgg"></a>
-                <div class="description">턴레프트</div> <!-- 다른 설명 추가 -->
-            </div>
-            <div class="slide">
-                <div class="description">${ loginMember.memberId }님이 홍보한</div>
-                <a href="#"><img src="" alt="Image 2" id="imgg"></a>
-                <div class="description">턴라이트</div> <!-- 다른 설명 추가 -->
-            </div>
+            <c:forEach var="festival" items="${festivalList}">
+                <c:choose>
+                    <c:when test="${festival.festivalName == '태안 빛축제' || 
+                                   festival.festivalName == '부평풍물대축제' || 
+                                   festival.festivalName == '제주광어대축제' || 
+                                   festival.festivalName == '원주용수골가을꽃축제' || 
+                                   festival.festivalName == '송월동 동화마을 코스튬 페스티벌'}">
+                        <div class="slide ${festival.festivalName == '태안 빛축제' ? 'active' : ''}">
+                            <a href="detailFes?festivalNo=${festival.festivalNo}">
+                                <img src="${festival.fesImg}" alt="${festival.festivalName}" id="imgg">
+                            </a>
+                            <div class="description">${festival.festivalName}</div>
+                        </div>
+                    </c:when>
+                </c:choose>
+            </c:forEach>
         </div>
         <button class="arrow right-arrow" onclick="nextSlide()">&#9654;</button>
     </div>
@@ -197,135 +204,51 @@ th, td {
         <div id="second-2">
             <%-- 로그인 시에만 글쓰기 버튼 표시 --%>
             <c:if test = "${ not empty loginMember }">
-            	<a href="writecheck.jsp" class="write" >내 작성글 보기</a>
-            	<a href="promowrite.jsp" class="write" >홍보글 등록</a>
+            	<a href="writePage" class="write" >내 작성글 보기</a>
+            	<a href="writecontext" class="write" >홍보글 등록</a>
             </c:if>
         </div>
     </div>
 
     <div>
-        <table id="docu" border="">
-            <tbody>
-                <tr id="color1">
-                    <th >번호</th>
-                    <th id="img3">이미지</th>
-                    <th id="title">제목</th>
-                    <th>작성자</th>
-                    <th>작성일</th>
-                    <th>추천수</th>
-                    <th>조회수</th>
+        <c:if test="${not empty festivalList}">
+    	<table>
+        <thead>
+            <tr>
+                <th id="center1">번호</th>
+                <th id="center">사진</th>
+                <th id="center">축제 이름</th>
+                <th id="center2">시작 날짜</th>
+                <th id="center2">종료 날짜</th>
+                <th id="center">설명</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="festival" items="${festivalList}" varStatus="status">
+                <tr style="cursor: pointer; background-color: ${status.index % 2 == 0 ? '#d4d5fc8a' : '#fff9ff'}" 
+                    onclick="location.href='detailFes?festivalNo=${festival.festivalNo}'">
+                    <td>${festival.festivalNo}</td>
+                    <td>
+                        <img src="${festival.fesImg}" id="img" />
+                    </td>
+                    <td>${festival.festivalName}</td>
+                    <td id="center">${festival.openDate}</td>
+                    <td id="center">${festival.closeDate}</td>
+                    <td id="des">${festival.fesDescription}</td>
                 </tr>
-                <tr id="color2">
-                    <th>1</th>
-                    <th id="img3"><img src="" id="imggg"></th>
-                    <th>구리시 어쩌구 저쩌구</th>
-                    <th>허완</th>
-                    <th>2024-08-13</th>
-                    <th>25</th>
-                    <th>1855</th>
-                </tr>
-                <tr id="color3">
-                    <th>2</th>
-                    <th id="img3"><img src="" id="imggg"></th>
-                    <th>서울시 어쩌구 저쩌구</th>
-                    <th>김인창</th>
-                    <th>2024-09-03</th>
-                    <th>20</th>
-                    <th>1444</th>
-                </tr>
-                <tr id="color2">
-                    <th>3</th>
-                    <th id="img3"><img src="" id="imggg"></th>
-                    <th>서울시 동작구</th>
-                    <th>양민욱</th>
-                    <th>2024-09-02</th>
-                    <th>18</th>
-                    <th>18</th>
-                </tr>
-                <tr id="color3">
-                    <th>3</th>
-                    <th id="img3"><img src="" id="imggg"></th>
-                    <th>서울시 동작구</th>
-                    <th>양민욱</th>
-                    <th>2024-09-02</th>
-                    <th>18</th>
-                    <th>18</th>
-                </tr>
-                <tr id="color2">
-                    <th>3</th>
-                    <th id="img3"><img src="" id="imggg"></th>
-                    <th>서울시 동작구</th>
-                    <th>양민욱</th>
-                    <th>2024-09-02</th>
-                    <th>18</th>
-                    <th>18</th>
-                </tr>
-                <tr id="color3">
-                    <th>3</th>
-                    <th id="img3"><img src="" id="imggg"></th>
-                    <th>서울시 동작구</th>
-                    <th>양민욱</th>
-                    <th>2024-09-02</th>
-                    <th>18</th>
-                    <th>18</th>
-                </tr>
-                <tr id="color2">
-                    <th>3</th>
-                    <th id="img3"><img src="" id="imggg"></th>
-                    <th>서울시 동작구</th>
-                    <th>양민욱</th>
-                    <th>2024-09-02</th>
-                    <th>18</th>
-                    <th>18</th>
-                </tr>
-                <tr id="color3">
-                    <th>3</th>
-                    <th id="img3"><img src="" id="imggg"></th>
-                    <th>서울시 동작구</th>
-                    <th>양민욱</th>
-                    <th>2024-09-02</th>
-                    <th>18</th>
-                    <th>18</th>
-                </tr>
-            </tbody>
-        </table>
+            </c:forEach>
+        </tbody>
+		 </table>
+		</c:if>		
+		<c:if test="${empty festivalList}">
+		    <p>축제 목록이 없습니다.</p>
+		</c:if>
+
 
     </div>
-    <div id="pagingArea">
-                <ul class="pagination">
-                	<c:choose>
-                		<c:when test="${ pi.currentPage eq 1 }">
-	                    	<li class="page-item disabled">
-	                    		<a href="#" class="page-link">Prev</a>
-	                    	</li>
-	                    </c:when>
-	                    <c:otherwise>
-	                    	<li class="page-item">
-	                    		<a href="list?cpage=${ pi.currentPage - 1 }" class="page-link">Prev</a>
-	                    	</li>
-	                    </c:otherwise>
-                    </c:choose>
-                    <c:forEach var="i" begin="${ pi.startPage }" end="${ pi.endPage }">
-                    	<li class="page-item">
-                    		<a href="list?cpage=${ i }" class="page-link">${ i }</a>
-                    	</li>
-                    </c:forEach>
-                    <c:choose>
-                		<c:when test="${ pi.currentPage eq pi.maxPage }">
-                			<li class="page-item disabled">
-                				<a href="#" class="page-link">Next</a>
-                			</li>
-                		</c:when>
-                		<c:otherwise>
-                			<li class="page-item">
-                				<a href="list?cpage=${ pi.currentPage + 1 }" class="page-link">Next</a>
-                			</li>
-                		</c:otherwise>
-                    </c:choose>
-                </ul>
-            </div>
+
     <script>
-        let currentSlide = 0;
+        let currentSlide = 1;
 		let currentPage = 1;
 		const totalPages = 5;
 
@@ -365,6 +288,15 @@ th, td {
 	        showPage(currentPage);
 	    }
 	}
+    </script>
+    <script>
+    	$(function(){
+    		
+    		<!-- 게시글 목록의 행을 클릭했을 때 detail 요청을 하도록 -->
+    		$("#boardList>tbody>tr").click(function(){
+    			location.href = 'detail?bno=' + $(this).children(".bno").text();
+    		});
+    	});
     </script>
 
 <jsp:include page="../common/footer.jsp"/>
