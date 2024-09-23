@@ -40,6 +40,14 @@ public class ReviewService {
 		return result;
 	}
 
+	public int selectListCount(String festivalNo) {
+		
+		SqlSession sqlSession = MybatisTemplate.getSqlSession();
+		int result = rDao.selectListCount(sqlSession, festivalNo);
+		sqlSession.close();
+		return result;
+	}
+
 
 
 }

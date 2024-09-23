@@ -32,12 +32,19 @@ public class InsertBoard extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String festivalNo = request.getParameter("festivalNo");
+		String memId = request.getParameter("memId");
 		String rvTitle = request.getParameter("rvTitle");
 		String rvContent = request.getParameter("rvContent");
 		String rvImg = request.getParameter("rvImg");
 		
+		
 		HashMap rv = new HashMap();
 		
+		System.out.println(festivalNo + " 확인용 ");
+		
+		rv.put("festivalNo", festivalNo);
+		rv.put("memId", memId);
 		rv.put("rvTitle", rvTitle);
 		rv.put("rvContent", rvContent);
 		rv.put("rvImg", rvImg);
@@ -46,20 +53,8 @@ public class InsertBoard extends HttpServlet {
 		int result = new ReviewService().insertReview(rv);
 		
 		if(result > 0){
-			
-			request.setAttribute("rv", rv);
-			
-			
+			request.getRequestDispatcher("views/information/boardList.jsp").forward(request, response);	
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 
 	/**

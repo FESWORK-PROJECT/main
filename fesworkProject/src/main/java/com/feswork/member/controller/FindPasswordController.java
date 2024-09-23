@@ -46,9 +46,11 @@ public class FindPasswordController extends HttpServlet {
 		
 		if(memPwd != null) {
 			String findPwd = memPwd.getMemberPwd();
+			String findId = memPwd.getMemberId();
 			HttpSession session = request.getSession();
-			session.setAttribute("alertMsg", "비밀번호는 "+ findPwd + " 입니다.");
-			response.sendRedirect( request.getContextPath()+"/views/member/loginForm.jsp");
+			session.setAttribute("findId", findId);
+			session.setAttribute("findPwd", findPwd);
+			request.getRequestDispatcher("views/member/findModifyPasswordForm.jsp").forward(request, response);
 		} else {
 			HttpSession session = request.getSession();
 			session.setAttribute("alertMsg", "가입하신 정보가 없습니다. 정확히 입력했는지 다시 확인해주세요.");

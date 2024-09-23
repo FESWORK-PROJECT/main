@@ -61,7 +61,8 @@
 	<!-- 정보수정 기능 쿼리문 -->
 	<update id="updateMember" parameterType="Member">
 		UPDATE MEMBER
-			SET EMAIL = #{ email }
+			SET MEM_NAME = #{ memberName }
+			  , EMAIL = #{ email }
 			  , BIRTH = #{ birth }
 			  , PHONE = #{ phone } 		
 		WHERE MEM_ID = #{ memberId } AND RESIGN_DATE IS NULL
@@ -97,7 +98,7 @@
 	
 	<!-- 비밀번호 찾기 기능 쿼리문 -->
 	<select id="findPwd" resultMap="memberResultSet">
-		SELECT MEM_PASSWORD
+		SELECT *
 			FROM MEMBER
 		WHERE MEM_ID = #{ memberId } AND MEM_NAME = #{ memberName} AND EMAIL = #{ email } AND RESIGN_DATE IS NULL 
 	</select>
