@@ -35,13 +35,6 @@ public class ReviewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	
-	}
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	String festivalNo = request.getParameter("festivalNo");
 		
 		String strCpage = request.getParameter("cpage");
@@ -77,6 +70,13 @@ public class ReviewController extends HttpServlet {
 		        request.setAttribute("errorMsg", "요청이 실패했습니다");
 		        request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		    }    
+	}
+	
+	
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 }
 

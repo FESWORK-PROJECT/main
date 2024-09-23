@@ -26,9 +26,11 @@ public class PostWriter extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String festivalNo = request.getParameter("festivalNo");		
+		request.setAttribute("festivalNo", festivalNo);
 		request.getRequestDispatcher("views/information/postWrite.jsp").forward(request, response);
+		// 작성자 포스팅이 해당 축제에 맞게 올라가게 설정...
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

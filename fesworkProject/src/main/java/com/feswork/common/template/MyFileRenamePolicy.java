@@ -34,7 +34,6 @@ public class MyFileRenamePolicy implements FileRenamePolicy {
 		String changeName = currentTime + randNum + ext;	// -> 024091206000013123.jpg
 		
 		return new File(orgFile.getParent(), changeName);	// new File(원본파일 디렉토리, 변경할 파일명)
-		
 	}
 	
 	
