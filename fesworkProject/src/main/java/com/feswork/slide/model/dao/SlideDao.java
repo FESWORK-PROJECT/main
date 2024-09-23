@@ -59,5 +59,17 @@ public class SlideDao {
 
 	    return pre;
 	}
+	
+	public static List<Slide> getFestivalByLocalCode(SqlSession sqlsession, String localCode){
+		List<Slide> land = null;
 
+	    try {
+	        land = sqlsession.selectList("slideMapper.getFestivalByLocalCode", localCode);
+	        System.out.println("mapper에서 반환받은: " + land);
+	    } catch (Exception e) {
+	        e.printStackTrace(); // 예외 발생 시 로그 출력
+	    }
+
+	    return land;
+	}
 }
