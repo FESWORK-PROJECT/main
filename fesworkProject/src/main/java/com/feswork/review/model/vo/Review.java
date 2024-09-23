@@ -27,7 +27,6 @@ public class Review {
 	
 	public Review(int rvNo, int festivalNo, String memId, String rvTitle, String rvContent, String rvImg,
 			java.sql.Date rvDate, int rvCount) {
-		super();
 		this.rvNo = rvNo;
 		this.festivalNo = festivalNo;
 		this.memId = memId;
