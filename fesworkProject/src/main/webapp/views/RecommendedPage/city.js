@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const festivalData = {
       '서울': [
         { image: 'https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_3a7630df-c1da-4c3c-a0c0-21923699b312_1.jpg', name: '서울 등축제', info: '매년 11월 개최' },
-        { image: 'https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_edf65db1-8c43-4cf8-b1f7-098fa7e4250f_1.png', name: '서울 불꽃축제', info: '매년 10월 개최' },
-        { image: 'https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_3a7630df-c1da-4c3c-a0c0-21923699b312_1.jpg', name: '서울 등축제', info: '매년 11월 개최' },
+        { image: 'https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_c9d13813-7b3c-49d0-be55-f934f1e0abaf_1.jpg', name: '창덕궁 달빛기행', info: '매년 10월 개최' },
+        { image: 'https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_32efce47-9085-4c4c-b0db-7bca0c8739f4_1.JPG', name: '서울 등축제', info: '매년 11월 개최' },
         { image: 'https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_e4351add-7b59-4842-b3b5-c38062b47c7c_1.jpg', name: '서울 불꽃축제', info: '매년 10월 개최' },
         { image: 'https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_3a7630df-c1da-4c3c-a0c0-21923699b312_1.jpg', name: '서울 등축제', info: '매년 11월 개최' },
         { image: 'https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_edf65db1-8c43-4cf8-b1f7-098fa7e4250f_1.png', name: '서울 불꽃축제', info: '매년 10월 개최' }
@@ -68,6 +68,12 @@ document.addEventListener('DOMContentLoaded', function() {
           } else {
             item.style.display = 'none'; // 데이터가 없는 경우 숨기기
           }
+           const selectBtn = document.querySelector('.select-btn');
+   selectBtn.addEventListener('click', function() {
+     // survey.jsp 페이지로 이동
+     //window.location.href = '/views/RecommendedPage/survey.jsp';
+     window.location.href = 'survey.jsp';
+   });
         });
       });
     });
