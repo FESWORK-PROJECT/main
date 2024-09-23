@@ -14,6 +14,7 @@
 	 	<typeAlias type="com.feswork.theme.model.vo.Theme" alias="Theme" />
 	 	<typeAlias type="com.feswork.review.model.vo.Review" alias="Review"/>
 	 	<typeAlias type="com.feswork.slide.model.vo.Slide" alias="Slide" />
+	 	<typeAlias type="com.feswork.promo.model.vo.Festival" alias="Festival"/>
 	 </typeAliases>
 	
 	<environments default="develop">
@@ -33,5 +34,6 @@
    		 <mapper resource="/mapper/RecommendedPage.xml" />
    		 <mapper resource="/mapper/review-mapper.xml"/>
 		 <mapper resource="/mapper/slide-mapper.xml" />
+		 <mapper resource="/mapper/promo-mapper.xml"/>
 	</mappers>
 </configuration>

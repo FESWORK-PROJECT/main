@@ -256,19 +256,14 @@
             border-radius: 5px;
             margin-top: 20px;
         }
-
-     
-        
-        
         </style>
-
 </head>
-<body>
+<body align="center">
     
     <jsp:include page="../common/header.jsp"/>
     
     
-    <div class="detail-contents">
+    <div class="detail-contents" align="center">
         <div class="detail-leftContent"></div>
         
         <div class="detail-centerContent">
@@ -282,7 +277,7 @@
                    
                     <span>${iBoard.festivalName}</span>
                 	
-                	<div id="likeCount">
+                	<div id="likeCount" align="left">
                 	  <span><small>&nbsp; ${iBoard.fesLike}</small></span>
                 	</div>
                 	

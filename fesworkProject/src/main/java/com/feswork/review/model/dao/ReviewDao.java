@@ -20,6 +20,11 @@ public class ReviewDao {
 		return sqlSession.insert("reviewMapper.insertReview",rv);
 		
 	}
+
+	public int selectListCount(SqlSession sqlSession, String festivalNo) {
+		
+		return sqlSession.selectOne("reviewMapper.selectListCount",festivalNo);
+	}
 	
 	
 	
