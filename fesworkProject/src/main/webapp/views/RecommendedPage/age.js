@@ -68,6 +68,12 @@ document.addEventListener('DOMContentLoaded', function() {
           } else {
             item.style.display = 'none'; // 데이터가 없는 경우 숨기기
           }
+           const selectBtn = document.querySelector('.select-btn');
+   selectBtn.addEventListener('click', function() {
+     // survey.jsp 페이지로 이동
+     //window.location.href = '/views/RecommendedPage/survey.jsp';
+     window.location.href = 'survey.jsp';
+   });
         });
       });
     });
