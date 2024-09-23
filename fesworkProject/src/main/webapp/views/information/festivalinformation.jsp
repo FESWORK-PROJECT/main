@@ -319,37 +319,37 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 (선택 사항) */
    		 }
 	
-.other_festival_img {
-    width: 200px; /* 부모 요소의 너비에 맞게 조정 */
-    height: 200px; /* 고정 높이 설정 */
-    display: flex;
-    justify-content: center; /* 수평 가운데 정렬 */
-    align-items: center; /* 수직 가운데 정렬 */
-    overflow: hidden; /* 이미지가 부모 요소를 넘지 않도록 설정 */
-    background-color: #f9f9f9; /* 배경 색상 (선택 사항) */
-}
-
-.other_festival_img img {
-    max-width: 100%; /* 너비를 부모 요소에 맞게 조정 */
-    max-height: 100%; /* 높이를 부모 요소에 맞게 조정 */
-    object-fit: cover; /* 이미지 비율을 유지하면서 부모 요소에 맞게 잘림 */
-}
-
-    .sing_area, .other_festival_content {
-        padding: 10px;
-        
-    } 
-    /* 검색 결과 없음 스타일링 */
-		.no-results {
-		    text-align: center;
-		    padding: 50px;
-		    background-color: #f9f9f9;
-		    border: 1px solid #ddd;
-		    border-radius: 10px;
-		    margin: 20px auto;
-		    max-width: 600px;
+		.other_festival_img {
+		    width: 200px; /* 부모 요소의 너비에 맞게 조정 */
+		    height: 200px; /* 고정 높이 설정 */
+		    display: flex;
+		    justify-content: center; /* 수평 가운데 정렬 */
+		    align-items: center; /* 수직 가운데 정렬 */
+		    overflow: hidden; /* 이미지가 부모 요소를 넘지 않도록 설정 */
+		    background-color: #f9f9f9; /* 배경 색상 (선택 사항) */
 		}
-		
+
+		.other_festival_img img {
+		    max-width: 100%; /* 너비를 부모 요소에 맞게 조정 */
+		    max-height: 100%; /* 높이를 부모 요소에 맞게 조정 */
+		    object-fit: cover; /* 이미지 비율을 유지하면서 부모 요소에 맞게 잘림 */
+		}
+
+	    .sing_area, .other_festival_content {
+	        padding: 10px;
+	        
+	    } 
+	    /* 검색 결과 없음 스타일링 */
+			.no-results {
+			    text-align: center;
+			    padding: 50px;
+			    background-color: #f9f9f9;
+			    border: 1px solid #ddd;
+			    border-radius: 10px;
+			    margin: 20px auto;
+			    max-width: 600px;
+			}
+			
 		.no-results__image {
 		    margin-bottom: 20px;
 		}

@@ -86,4 +86,22 @@ public class slideService {
 		 }
 	        return pre;
 	}
+	
+	public static List<Slide> getFestivalByLocalCode(String localCode) {
+		SqlSession sqlsession = MybatisTemplate.getSqlSession();
+	     
+		 List<Slide> land = null;
+	     
+		 try {
+	     
+			 land = SlideDao.getFestivalByLocalCode(sqlsession, localCode); // DAO에서 데이터를 가져옴
+			 System.out.println("서비스에서반환받은"+land);
+	        
+		 } finally {
+	     
+			 sqlsession.close(); // 세션 닫기
+	        
+		 }
+	        return land;
+	}
 }

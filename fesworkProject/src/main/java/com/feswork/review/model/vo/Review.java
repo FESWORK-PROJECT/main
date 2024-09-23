@@ -36,6 +36,14 @@ public class Review {
 		this.rvDate = rvDate;
 		this.rvCount = rvCount;
 	}
+	public Review(int festivalNo, String memId, 
+			String rvTitle, String rvContent, String rvImg) {
+		this.festivalNo = festivalNo;
+		this.memId = memId;
+		this.rvTitle = rvTitle;
+		this.rvContent = rvContent;
+		this.rvImg = rvImg;
+	}
 	public int Date() {
 		return rvNo;
 	}

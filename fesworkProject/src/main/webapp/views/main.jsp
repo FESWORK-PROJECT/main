@@ -140,18 +140,19 @@
         .event-category img{
             width: 100%;
             height: 100px;
-            border: 1px solid pink;
+            margin: 2px;
+            /* border: 1px solid pink; */
         }
 
         .opening-title{
-            font-size: 20px;
+            font-size: 25px;
             color: #5658b5b3;
         }
         .festival-open a{
             text-decoration: none;
         }
         .pre-title{
-            font-size: 20px;
+            font-size: 25px;
             color: #5658b5b3;
         }
         .festival-pre a{
@@ -243,11 +244,11 @@
         
         }
     
-        .slidetitle {
+        .slideTitle {
           /* display:flex; */
           /* justify-content: center; */
           /* align-items: flex-end; */
-          color:#5658b5b3;
+          color:#35096ebb;
           font-weight: 900;
           font-family: "Dongle", sans-serif;
           font-size: 35px;

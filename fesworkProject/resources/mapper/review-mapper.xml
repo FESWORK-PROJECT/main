@@ -22,20 +22,12 @@
     WHERE FESTIVAL.FESTIVAL_NO = #{festivalNo}
 	</select>
 	
-	<!-- 게시글 수 조회 -->
 	<select id="selectListCount" resultType="_int">
-    SELECT COUNT(*) 
-    FROM RV 
-    JOIN FESTIVAL ON RV.FESTIVAL_NO = FESTIVAL.FESTIVAL_NO
-    WHERE FESTIVAL.FESTIVAL_NO = #{festivalNo}
-</select>
+ 			SELECT COUNT(*)
+ 			FROM RV
+ 			WHERE FESTIVAL_NO = #{festivalNo} 		
+	</select>
 	
-	<!--조회수 증가 시키기-->
-	<update id="increaseCount">
-		UPDATE BOARD
-		   SET COUNT = COUNT + 1
-		 WHERE BOARD_NO = #{boardNo} AND STATUS = 'Y'
-	</update>
 	
 	<insert id="insertReview">
 				INSERT INTO RV(RV_NO
@@ -52,10 +44,10 @@
 				   , #{memId}
 				   , #{rvTitle}
 				   , #{rvContent}
-				   , #{rvImg}
+				   , #{rvImg}				   
 				   , 0
 				   , SYSDATE
-				   			)
+				  	)
 	
 	</insert>
 	
