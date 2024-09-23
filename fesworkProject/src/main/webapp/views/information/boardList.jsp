@@ -114,8 +114,6 @@
             </table>
             <br>
             
-         
-            
              <div id="pagingArea">
     <ul class="pagination">
         <c:choose>

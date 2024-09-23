@@ -31,8 +31,8 @@
     
      <select id="selectSortLike" resultMap="InformationResultSet">
         SELECT * FROM FESTIVAL 
-        WHERE CLOSE_DATE >= SYSDATE
-        ORDER BY FES_LIKE DESC
+        WHERE CLOSE_DATE >= SYSDATE AND MEM_ID = 'admin' 
+        ORDER BY FES_LIKE DESC 
     </select>
     
 	<select id="getSearchFestival" resultMap="InformationResultSet" parameterType="Theme">
@@ -50,7 +50,7 @@
 		    SELECT *
 		    FROM FESTIVAL
 		    WHERE EXTRACT(MONTH FROM OPEN_DATE) = EXTRACT(MONTH FROM SYSDATE)
-		    AND CLOSE_DATE >= SYSDATE 
+		    AND CLOSE_DATE >= SYSDATE AND MEM_ID = 'admin'
 		    ORDER BY FES_LIKE DESC
 		)
 		WHERE ROWNUM &lt;= 4

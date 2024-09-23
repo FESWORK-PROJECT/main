@@ -15,7 +15,7 @@ import com.feswork.review.service.ReviewService;
 /**
  * Servlet implementation class InsertBoard
  */
-@WebServlet("/insert")
+@WebServlet("/insertBoard")
 public class InsertBoard extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,6 +32,12 @@ public class InsertBoard extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String festivalNo = request.getParameter("festivalNo");
 		String memId = request.getParameter("memId");
 		String rvTitle = request.getParameter("rvTitle");
@@ -55,14 +61,6 @@ public class InsertBoard extends HttpServlet {
 		if(result > 0){
 			request.getRequestDispatcher("views/information/boardList.jsp").forward(request, response);	
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
