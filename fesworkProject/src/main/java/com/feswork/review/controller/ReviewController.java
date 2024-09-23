@@ -36,40 +36,48 @@ public class ReviewController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String festivalNo = request.getParameter("festivalNo");
-		String strCpage = request.getParameter("cpage");
-		
-		int cpage = 1;
-		if (strCpage != null) {
-			cpage = Integer.parseInt(strCpage);
-			request.setAttribute("cpage", cpage);
-		}
-		
-		ArrayList<Review> rList = new ReviewService().getBoardList(festivalNo);
-		
-		
-		// PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 5, 5);
-		
-		HttpSession session = request.getSession();
-		
-		if(rList != null){
-			session.setAttribute("rList", rList); 
-		
-			
-			request.getRequestDispatcher("views/information/boardList.jsp").forward(request, response);
-		}else {
-			request.setAttribute("errorMsg", "요청이 실패했습니다");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-		}	
-		
+	
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	String festivalNo = request.getParameter("festivalNo");
+		
+		String strCpage = request.getParameter("cpage");
+		int cpage = 1;
+		
+		//전체 게시글 수 조회 
+		int listCount = new ReviewService().selectListCount(festivalNo);
+		
+		// 게시글 정보 불러오기 
+		ArrayList<Review> rList = new ReviewService().getBoardList(festivalNo);
+		
+		//
+		if (strCpage != null) {
+			cpage = Integer.parseInt(strCpage);
+			request.setAttribute("cpage", cpage);
+		}    
+		
+		PageInfo pi = Pagination.getPageInfo(listCount, cpage, 5, 5);
+		
+		request.setAttribute("pi", pi);
+		    
+		    System.out.println("festivalNo: " + festivalNo); // 디버깅: festivalNo 출력
+		    System.out.println("cpage: " + cpage); // 수정된 부분: strCpage 대신 cpage 출력
+		    System.out.println("strCpage: " + strCpage); // strCpage의 값을 확인
+		    
+		    request.setAttribute("pi", pi);
+		    
+		    if (rList != null) {
+		        request.setAttribute("rList", rList); 
+		        request.setAttribute("festivalNo", festivalNo);
+		        request.getRequestDispatcher("views/information/boardList.jsp").forward(request, response);
+		    } else {
+		        request.setAttribute("errorMsg", "요청이 실패했습니다");
+		        request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		    }    
 	}
-
 }
+
+

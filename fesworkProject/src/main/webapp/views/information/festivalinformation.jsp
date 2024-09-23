@@ -47,7 +47,7 @@
 
         .search-bar button {
             padding: 10px 20px;
-            background-color: #6CC04A;
+            background-color: Purple;
             color: white;
             border: none;
             cursor: pointer;
@@ -126,14 +126,7 @@
     max-width: 100%;  /* 컨테이너 너비에 맞게 이미지 크기 조절 */
     max-height: 100%; /* 컨테이너 높이에 맞게 이미지 크기 조절 */
     object-fit: cover; /* 이미지 비율 유지하면서 컨테이너를 채우도록 설정 */
-}
-       
-    
-    
-    
-    
-    
-    
+}   
         #fesvival-post2{
             display: grid;
             grid-template-columns: repeat(4, 1fr); /* 4개의 열 */
@@ -286,24 +279,24 @@
             padding: 40px;
         }
     
-        #more_festival {
-        display: none;
-        margin: 0;
-        padding: 0;
-      }
+	        #more_festival {
+	        display: none;
+	        margin: 0;
+	        padding: 0;
+	        }
 
-     #morediv {
-     margin-bottom: 10px;
-    }
+	     #morediv {
+	     margin-bottom: 10px;
+	    }
 
-    .footer {
-    margin-top: 10px;
-    padding-top: 10px;
-    }
+	    .footer {
+	    margin-top: 10px;
+	    padding-top: 10px;
+	    }
     
 	    .tab_cont_area {
         padding: 20px;
-    }
+   		 }
 
     .other_festival_ul {
         display: grid;
@@ -312,9 +305,9 @@
         list-style-type: none; /* 기본 리스트 스타일 제거 */
         padding: 0;
         margin: 0;
-    }
+   		 }
 
-    .other_festival_ul li {
+    	.other_festival_ul li {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -324,33 +317,28 @@
         border-radius: 5px; /* 테두리 둥글게 설정 (선택 사항) */
         overflow: hidden; /* 이미지가 범위를 넘어가지 않도록 설정 */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 (선택 사항) */
-    }
+   		 }
+	
+.other_festival_img {
+    width: 200px; /* 부모 요소의 너비에 맞게 조정 */
+    height: 200px; /* 고정 높이 설정 */
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    overflow: hidden; /* 이미지가 부모 요소를 넘지 않도록 설정 */
+    background-color: #f9f9f9; /* 배경 색상 (선택 사항) */
+}
 
-    .other_festival_img {
-        width: 200px; /* 부모 요소의 너비에 맞게 조정 */
-        height: 200px; /* 고정 높이 설정 */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden; /* 이미지가 부모 요소를 넘지 않도록 설정 */
-    }
-
-    .other_festival_img img {
-        width: 100%;
-        height: 100%;
-         
-    }
+.other_festival_img img {
+    max-width: 100%; /* 너비를 부모 요소에 맞게 조정 */
+    max-height: 100%; /* 높이를 부모 요소에 맞게 조정 */
+    object-fit: cover; /* 이미지 비율을 유지하면서 부모 요소에 맞게 잘림 */
+}
 
     .sing_area, .other_festival_content {
         padding: 10px;
         
-    }
-    
-    a {
-    	text-decoration:none;
-    }
-    
-    
+    } 
     /* 검색 결과 없음 스타일링 */
 		.no-results {
 		    text-align: center;
@@ -386,19 +374,92 @@
 		    font-size: 16px;
 		    color: #777;
 		}
-    
-    
-    
-    
-                </style>
+		
+		<!--a 태그 밑줄 제거 및 스타일 적용-->
+		.other_festival_ul a {
+    	text-decoration: none; 
+    	color: black;
+    	transition: color 0.4s;
+   
+		}
+		.other_festival_ul a:hover {
+    	color: Purple; 
+    	
+		}
+		
 
+
+	button {
+    padding: 8px 15px; /* Reduced padding */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    color: white; /* Text color */
+    font-size: 14px; /* Smaller font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth background color transition */
+    flex: 1; /* Make buttons grow equally */
+    min-width: 100px; /* Reduced minimum width */
+	}
+	
+	button[type="reset"] {
+	    background-color: #9b59b6; /* Light purple */
+	}
+	
+	button[type="submit"].btn_search {
+	    background-color: #8e44ad; /* Darker purple */
+	}
+	
+	button[type="reset"]:hover {
+	    background-color: #a57cb2; /* Slightly lighter on hover */
+	}
+	
+	button[type="submit"].btn_search:hover {
+	    background-color: #732d91;    
+	}
+	
+
+	
+	.tab_area li {
+	    list-style: none; /* 리스트 스타일 제거 */
+	    margin: 0 10px; /* 버튼 간격 */
+	}
+	
+	.tab_area button:hover {
+	    background-color: #8e44ad; /* 호버 시 색상 변화 */
+	}
+	
+	.tab_area button.active {
+	    background-color: #732d91; /* 선택된 버튼 색상 */
+	    transform: scale(1.05); /* 선택된 버튼 크기 증가 */
+	}
+	
+	
+
+	.tab_area button:hover {
+	    background-color: #8e44ad; /* 호버 시 색상 변화 */
+	}
+	.tab_area button {
+    border-radius: 5px; /* 둥근 모서리 */
+    background-color: #9b59b6; /* 버튼 배경색 */
+    color: white; /* 텍스트 색상 */
+    font-size: 16px; /* 폰트 크기 */
+    cursor: pointer; /* 포인터 커서 */
+    transition: background-color 0.3s, transform 0.2s; /* 부드러운 전환 효과 */
+	}    
+	
+	.other_festival_ul a {
+    text-decoration: none; /* Remove underline */
+    color: black; /* Default text color */
+    transition: color 0.3s; /* Smooth transition */
+	}
+	
+	
+    </style>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
 <body>
  	<jsp:include page="../common/header.jsp"/>
-         
             <br>
-
     <main role="main" id="mainTab" >
         <div class="wrap">
             <!--조건부 검색 section : 컨텐츠 그룹화 -->
@@ -406,7 +467,7 @@
                 <div class="inner">
                     <div class="blind">검색영역</div>
                     
-                    <form action="searchRequest" name="festivalSearch" id="festivalSearch">
+                    <form action="searchRequest" name="festivalSearch" id="festivalSearch"  onsubmit="return validateForm()">
                         <fieldset>
                             <legend class="blind">축제 검색</legend>
                         <div class="search_box_wrap">
@@ -414,8 +475,6 @@
                                 <label for="search_Date" style="display: none;">시기선택</label>
                                 <select name="searchDate" id="searchDate">
                                         <option value="">시기</option>
-                                        <option value="A">개최중</option>
-                                        <option value="B">개최예정</option>
                                         <option value="01">1월</option>
                                         <option value="02">2월</option>
                                         <option value="03">3월</option>
@@ -492,17 +551,15 @@
                                </select>
                            </div>
 
-                           <div class="btn_box">
-                            <button type="reset">
-                                <span>초기화</span></button>
-                            <button class="btn_search" id="btnSearch" type="submit"><span>검색</span>
-                            </button>
-                            
-                        </div>
-                 
-                        <div class= "serchinput">
-                            <input type="text" value="검색" id="searchinput">
-                        </div>
+							 <div class="btn_box">
+							    <button type="reset">
+							        <span>초기화</span>
+							    </button>
+							    
+							    <button class="btn_search" id="btnSearch" type="submit">
+							        <span>검색</span>
+							    </button>
+							</div>
                     </form>
 
                         </div> 
@@ -540,6 +597,7 @@
 											    </div>
 											</div>
                                         <!-- //검색 결과 없음 -->
+                                        
                    						</c:when>
                    						<c:otherwise>
                                         <div class="festival_ul_top" id="festival_ul_top" style="">
@@ -608,6 +666,11 @@
                                     .then(data => updateFestivalList(data))
                                     .catch(error => console.error('Error:', error));
                                 }
+                                
+
+                            
+                                
+                                
                                 function updateFestivalList(fesData){
                                     const list = document.getElementById('fstvlList');
                                     list.innerHTML = '';
@@ -628,5 +691,19 @@
                                 }
                             });
                         </script>
+                        
+                        <script>
+function validateForm() {
+    const searchDate = document.getElementById('searchDate').value;
+    const searchArea = document.getElementById('searchArea').value;
+    const searchCate = document.getElementById('searchCate').value;
+
+    if (searchDate === "" || searchArea === "" || searchCate === "") {
+        alert("모든 항목을 선택해 주세요."); 
+        return false; 
+    }
+    return true; 
+}
+</script>
 </body>
 </html>
