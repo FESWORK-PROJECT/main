@@ -56,6 +56,7 @@
     </style>
 </head>
 <body>
+ <jsp:include page="../common/header.jsp"/>
 
 <div class="container">
     <h1>게시글 제목</h1>
@@ -64,8 +65,12 @@
     <div class="content">
         <p>여기에 게시글 내용이 들어갑니다. 게시글의 주요 내용을 서술하세요. 사용자에게 유용한 정보를 제공하는 것이 중요합니다.</p>
     </div>
-    <a href="index.html" class="back-button">뒤로가기</a>
+    <a href="../" class="back-button">뒤로가기</a>
 </div>
+
+ <jsp:include page="../common/footer.jsp"/>
+
+
 
 </body>
 </html>
