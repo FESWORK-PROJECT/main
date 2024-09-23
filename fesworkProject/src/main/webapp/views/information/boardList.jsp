@@ -195,10 +195,9 @@
         }
         
 	$(function(){
-    		
     		<!-- 게시글 목록의 행을 클릭했을 때 detail 요청을 하도록 -->
     		$("#boardList>tbody>tr").click(function(){
-    			location.href = 'detail?bno=' + $(this).children(".bno").text();
+    			location.href = 'detail.List?bno=' + $(this).children(".bno").text();
     		});
     	});
         
