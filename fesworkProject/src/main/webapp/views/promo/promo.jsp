@@ -65,6 +65,7 @@
     margin-left: 20px;
 }
 table {
+    font-size: 30px;
     border-collapse: collapse;
     text-align: center;
 }
