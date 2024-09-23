@@ -9,8 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    
 <style>
 #part1{
     color: yellow;
@@ -69,10 +67,6 @@
 table {
     border-collapse: collapse;
     text-align: center;
-<<<<<<< HEAD
-    width: 80%;
-=======
->>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
 }
 th, td {
     border: none; /* 테두리 제거 */
@@ -165,12 +159,7 @@ th, td {
     background-image: url("");background-size: cover;width: 20px;height: 20px;
 }
 tbody{
-<<<<<<< HEAD
-    font-size: 12px;
-    font-weight: 600;
-=======
     font-size: 18px;font-weight: 600;
->>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
 }
 #img{
     width: 150px; height: 100px;
@@ -191,28 +180,6 @@ tbody{
     <div class="carousel">
         <button class="arrow left-arrow" onclick="prevSlide()">&#9664;</button>
         <div class="slides">
-<<<<<<< HEAD
-            <div class="slide active">
-                <a href="#"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/300_7be130ae-d136-45d7-9a5c-de3af5691c16_1.jpg" alt="Image 1" id="imgg"></a>
-                <div class="description">태안 빛축제</div> <!-- 설명 추가 -->
-            </div>
-            <div class="slide">
-                <a href="#"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/3f9ff7c2-828e-40d1-8dca-88448590b1db_2.jpeg" alt="Image 2" id="imgg"></a>
-                <div class="description">송월동 동화마을 코스튬 페스티벌</div> <!-- 다른 설명 추가 -->
-            </div>
-            <div class="slide">
-                <a href="#"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/e7f655b5-b2d3-4923-90ba-6d7ce678b381_3.jpg" alt="Image 2" id="imgg"></a>
-                <div class="description">부평풍물대축제</div> <!-- 다른 설명 추가 -->
-            </div>
-            <div class="slide">
-                <a href="#"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/ef9e5602-4f91-4efc-8750-816bbe9ab6f5_3.jpg" alt="Image 2" id="imgg"></a>
-                <div class="description">정서진 피크닉 클래식</div> <!-- 다른 설명 추가 -->
-            </div>
-            <div class="slide">
-                <a href="#"><img src="https://kfescdn.visitkorea.or.kr/kfes/upload/contents/db/04cf3274-b4bd-464b-acba-b89406600472_4.jpg" alt="Image 2" id="imgg"></a>
-                <div class="description">원주용수골가을꽃축제</div> <!-- 다른 설명 추가 -->
-            </div>
-=======
             <c:forEach var="festival" items="${festivalList}">
                 <c:choose>
                     <c:when test="${festival.festivalName == '태안 빛축제' || 
@@ -229,7 +196,6 @@ tbody{
                     </c:when>
                 </c:choose>
             </c:forEach>
->>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
         </div>
         <button class="arrow right-arrow" onclick="nextSlide()">&#9654;</button>
     </div>
@@ -258,33 +224,20 @@ tbody{
             </tr>
         </thead>
         <tbody>
-<<<<<<< HEAD
-            <c:forEach var="festival" items="${festivalList}">
-                <tr>
-                    <td>${festival.festivalNo}</td>
-                    <td>
-                    	<img src="${festival.fesImg}" id="img" />
-=======
             <c:forEach var="festival" items="${festivalList}" varStatus="status">
                 <tr style="cursor: pointer; background-color: ${status.index % 2 == 0 ? '#d4d5fc8a' : '#fff9ff'}" 
                     onclick="location.href='detailFes?festivalNo=${festival.festivalNo}'">
                     <td>${festival.festivalNo}</td>
                     <td>
                         <img src="${festival.fesImg}" id="img" />
->>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
                     </td>
                     <td>${festival.festivalName}</td>
                     <td id="center">${festival.openDate}</td>
                     <td id="center">${festival.closeDate}</td>
                     <td id="des">${festival.fesDescription}</td>
                 </tr>
-<<<<<<< HEAD
-		     </c:forEach>
-		 </tbody>
-=======
             </c:forEach>
         </tbody>
->>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
 		 </table>
 		</c:if>		
 		<c:if test="${empty festivalList}">
@@ -293,43 +246,7 @@ tbody{
 
 
     </div>
-<<<<<<< HEAD
-    <div id="pagingArea">
-                <ul class="pagination">
-                	<c:choose>
-                		<c:when test="${ pi.currentPage eq 1 }">
-	                    	<li class="page-item disabled">
-	                    		<a href="#" class="page-link">Prev</a>
-	                    	</li>
-	                    </c:when>
-	                    <c:otherwise>
-	                    	<li class="page-item">
-	                    		<a href="festivalList?cpage=${ pi.currentPage - 1 }" class="page-link">Prev</a>
-	                    	</li>
-	                    </c:otherwise>
-                    </c:choose>
-                    <c:forEach var="i" begin="${ pi.startPage }" end="${ pi.endPage }">
-                    	<li class="page-item">
-                    		<a href="festivalList?cpage=${ i }" class="page-link">${ i }</a>
-                    	</li>
-                    </c:forEach>
-                    <c:choose>
-                		<c:when test="${ pi.currentPage eq pi.maxPage }">
-                			<li class="page-item disabled">
-                				<a href="#" class="page-link">Next</a>
-                			</li>
-                		</c:when>
-                		<c:otherwise>
-                			<li class="page-item">
-                				<a href="festivalList?cpage=${ pi.currentPage + 1 }" class="page-link">Next</a>
-                			</li>
-                		</c:otherwise>
-                    </c:choose>
-                </ul>
-            </div>
-=======
 
->>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
     <script>
         let currentSlide = 1;
 		let currentPage = 1;

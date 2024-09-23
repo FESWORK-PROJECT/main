@@ -52,7 +52,7 @@
             border-collapse: collapse;
         }
         textarea {
-            border: 1.5px rgb(68, 136, 244) solid;
+            border: 1.5px rgba(124, 124, 124, 0.89) solid;
             width: 700px;
             height: 200px;
             border-radius: 5px;
@@ -90,19 +90,11 @@
 	<%@ include file="../common/header.jsp" %>
     <br><br><br><br>
 	<div>
-<<<<<<< HEAD
-        <form action="<%= contextPath %>/festivalwrite" method="post" enctype="multipart/form-data">
-            <table id="table"> 
-                <tr><td id="gall"><span >제목: 축제명으로 고정됩니다.</span></td></tr>
-                <tr><td id="ball"><input type="text" name="memId" id="id" value="${ loginMember.memberId }"></td></tr>
-                <tr><td>썸네일 이미지 <input type="file" name="fesImg" id=""></td></tr>
-=======
         <form action="<%= contextPath %>/festivalwrite" method="post" enctype="multipart/form-data" id="main">
             <table id="table"> 
                 <tr><td id="gall"><span >제목: 축제명으로 고정됩니다.</span></td></tr>
                 <tr><td id="ball"><input type="text" name="memId" id="id" value="${ loginMember.memberId }"></td></tr>
                 <tr><td class="promo">이미지 :<input type="file" name="fesImg" id="img"></td></tr>
->>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
                 <tr><td class="promo">축제명 :  <input type="text" placeholder="제목을 입력하세요" name="festivalName" class="inputStyle" maxlength="40"></td></tr>
                 <tr><td class="promo">축제기간 :  <input type="date" name="openDate" class="inputStyle"><input type="date" name="closeDate" class="inputStyle"></td></tr>
                 <tr><td class="promo">축제장소 : 
@@ -129,11 +121,7 @@
                     <input type="hidden" name="fesAdd"/>
                    </td></tr>
                 <tr><td class="promo">축제 개요</td></tr>
-<<<<<<< HEAD
-                <tr><td><textarea placeholder="내용을 입력하세요" name="fesDescription"></textarea></td></tr>
-=======
                 <tr><td  class="promo"><textarea placeholder="내용을 입력하세요" name="fesDescription"></textarea></td></tr>
->>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
 
             </table>
             <br>

@@ -2,11 +2,13 @@ package com.feswork.promo.controller;
 
 import java.io.IOException;
 import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import com.feswork.promo.Service.FestivalService;
 import com.feswork.promo.model.vo.Festival;
 
@@ -38,10 +40,6 @@ public class writeController extends HttpServlet {
 
 	// POST 요청 처리
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
-		// POST 요청도 동일한 처리를 하므로 doGet 호출
-=======
->>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
 		doGet(request, response);
 	}
 }

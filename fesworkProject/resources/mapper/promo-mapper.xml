@@ -19,14 +19,6 @@
     </resultMap>
 
     <select id="firstboard" resultMap="promoResultSet">
-<<<<<<< HEAD
-    	SELECT * FROM Festival
-	</select>
-
-	<insert id="insertBoard">
-        INSERT INTO FESTIVAL (FESTIVAL_NO, FESTIVAL_NAME, MEM_ID, OPEN_DATE, CLOSE_DATE, FES_DESCRIPTION, FES_IMAGE)
-        VALUES (SEQ_RV_NO.NEXTVAL, #{festivalName}, #{memId}, #{openDate}, #{closeDate}, #{fesDescription}, #{fesImg});
-=======
        SELECT * FROM Festival
    </select>
 
@@ -49,24 +41,11 @@
                      #{localCode},
                      #{fesAdd},
                      #{fesDescription})
->>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
     </insert>
 
     <!-- SELECT Query for Specific Festival -->
     <select id="selectBoard" resultMap="promoResultSet">
         SELECT FESTIVAL_NO
-<<<<<<< HEAD
-             , FES_TITLE
-             , MEM_ID
-             , TO_CHAR(OPEN_DATE, 'YYYY-MM-DD') "OPEN_DATE"
-             , TO_CHAR(CLOSE_DATE, 'YYYY-MM-DD') "CLOSE_DATE"
-             , FES_DESCRIPTION
-        FROM FESTIVAL
-        WHERE FESTIVAL_NO = #{fes_No} AND STATUS = 'Y'
-    </select>
-
-</mapper>
-=======
              , FESTIVAL_NAME
              , OPEN_DATE
              , FES_IMAGE
@@ -75,4 +54,3 @@
     </select>
 
 </mapper>
->>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)

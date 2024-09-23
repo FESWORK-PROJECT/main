@@ -45,7 +45,8 @@ th{
 </style>
 </head>
 <body>
-	<jsp:include page="../common/header.jsp"/>
+	<%-- <jsp:include page="../common/header.jsp"/> --%>
+	<%@ include file="../common/header.jsp" %>
 	<div id="board">
         <p> ${ loginMember.memberId } 님의 글 목록</p>
         <table id="board2" border= "">
@@ -57,19 +58,8 @@ th{
                 <th>첨부파일</th>
             </thead>
             <tbody>
-<<<<<<< HEAD
-	            <c:forEach var="festival" items="${festivalList}">
-	               <tr>
-	                 <td>${ festival.festivalNo }</td>
-	                 <td>${ festival.festivalName }</td>
-	                 <td>${ festival.fesLike }</td>
-	                 <td>${ festival.openDate }</td>
-	                 <td>${ festival.fesImg }</td>
-	               </tr>
-			     </c:forEach>
-=======
-                <c:if test="loginMember.memberId" >
-	            <c:forEach var="f" items="${festivalList}">
+                <c:if test="${ not empty loginMember.memberId }" >
+	            <c:forEach var="f" items="${MyFestival}">
 	               <tr>
 	                 <td>${ f.festivalNo }</td>
 	                 <td>${ f.festivalName }</td>
@@ -81,7 +71,6 @@ th{
 	               </tr>
 			     </c:forEach>
                 </c:if>
->>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
             </tbody>
         </table>
     </div>

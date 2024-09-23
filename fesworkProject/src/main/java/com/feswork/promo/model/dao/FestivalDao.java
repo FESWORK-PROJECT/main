@@ -37,8 +37,6 @@ public class FestivalDao {
         return result;
     }
 
-<<<<<<< HEAD
-=======
 	public List<Festival> selectMyFestivals(String memId) {
 	    List<Festival> list = null;
 	    try(SqlSession session = MybatisTemplate.getSqlSession()) {
@@ -52,5 +50,5 @@ public class FestivalDao {
 	
 	
 
->>>>>>> 0d81bc0 (mybatis-config.xml promo-mapper 파일 코드 삽입 typeAlias,mapper resource)
 }
+
