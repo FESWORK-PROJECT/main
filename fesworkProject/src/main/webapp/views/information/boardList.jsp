@@ -68,7 +68,7 @@
     </style>
 </head>
 <body>
-    <jsp:include page="../common/header.jsp"/>
+     <%@ include file="../common/header.jsp" %>
 
     <div class="outer">
         <br><br>
@@ -98,19 +98,18 @@
                     <th>첨부파일</th>
                 </thead>
 
-                <tbody>
-                	<c:forEach var="r" items="${rList}">
-                    <tr onclick="location.href='/viewPost?id=5'">
-                        <td>${r.rvNo}</td>
-                        <td><a href="/viewPost?id=5">${r.rvTitle}</a></td>
-                        <td>${r.memId}</td>
-                        <td>${r.rvCount}</td>
-                        <td>${r.rvDate}</td>
-                        
-                        <td>■</td>
-                    </tr>
-                   </c:forEach>
-                </tbody>
+            <tbody>
+			    <c:forEach var="r" items="${rList}">
+			        <tr onclick="location.href='detail.List?rvNo=${r.rvNo}'">
+			            <td>${r.rvNo}</td>
+			            <td>${r.rvTitle}</td>
+			            <td>${r.memId}</td>
+			            <td>${r.rvCount}</td>
+			            <td>${r.rvDate}</td>
+			            <td>■</td>
+			        </tr>
+			    </c:forEach>
+			</tbody>
             </table>
             <br>
             
@@ -151,7 +150,8 @@
 </div>
             <br clear="both">
 
-            <form action="" id="searchForm">
+            <form action="searchServlet" id="searchForm">
+            	<input type="hidden" name="festivalNo" value="${festivalNo}"/>
                 <div class="select">
                     <select name="condition" id="" class="custom-select form-select">
                         <option value="writer">작성자</option>
@@ -167,20 +167,19 @@
             <br><br>
         </div>
         <br><br>
-    </div>
-
-     <jsp:include page="../common/footer.jsp"/>
+    </div> 
+     <%@ include file="../common/footer.jsp" %>
 
     <script>
     
     // cpage=1을 URL에 추가하는 스크립트
-    document.addEventListener('DOMContentLoaded', function() {
+/*     document.addEventListener('DOMContentLoaded', function() {
         const url = new URL(window.location.href);
         if (!url.searchParams.has('cpage')) {
             url.searchParams.set('cpage', '1');
             window.location.href = url.toString();
         }
-    });	
+    });	 */
     
     
     
@@ -194,12 +193,8 @@
             alert('작성일 정렬 기능을 구현하세요.');
         }
         
-	$(function(){
-    		<!-- 게시글 목록의 행을 클릭했을 때 detail 요청을 하도록 -->
-    		$("#boardList>tbody>tr").click(function(){
-    			location.href = 'detail.List?bno=' + $(this).children(".bno").text();
-    		});
-    	});
+	
+    
         
         
     </script>

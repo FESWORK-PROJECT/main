@@ -48,7 +48,6 @@ public class InformationDao {
 
 
 	public ArrayList<Information> getFestivalSearch(SqlSession sqlSession, String festivalName) {
-		
 		return (ArrayList)sqlSession.selectList("informationMapper.getFestivalSearch", festivalName);
 	}
 

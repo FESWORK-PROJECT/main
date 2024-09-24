@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -41,17 +42,32 @@
             border-radius: 8px;
             margin-bottom: 20px;
         }
-        .back-button {
+        .back-button, .edit-button, .delete-button {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #007BFF;
             color: white;
             text-decoration: none;
             border-radius: 5px;
+            margin-right: 10px;
             transition: background-color 0.3s;
+        }
+        .back-button {
+            background-color: #007BFF;
         }
         .back-button:hover {
             background-color: #0056b3;
+        }
+        .edit-button {
+            background-color: #28a745;
+        }
+        .edit-button:hover {
+            background-color: #218838;
+        }
+        .delete-button {
+            background-color: #dc3545;
+        }
+        .delete-button:hover {
+            background-color: #c82333;
         }
     </style>
 </head>
@@ -59,18 +75,27 @@
  <jsp:include page="../common/header.jsp"/>
 
 <div class="container">
-    <h1>게시글 제목</h1>
-    <p class="author">작성자: <strong>작성자 아이디</strong></p>
-    <img src="image_url.jpg" alt="게시글 이미지" class="image">
+    <h1>${rv.rvTitle}</h1>
+    <p class="author">작성자: <strong>${rv.memId}</strong></p>
+    <img src="<%=request.getContextPath()%>${rv.rvImg}" alt="게시글 이미지" class="image">
     <div class="content">
-        <p>여기에 게시글 내용이 들어갑니다. 게시글의 주요 내용을 서술하세요. 사용자에게 유용한 정보를 제공하는 것이 중요합니다.</p>
+        <p>${rv.rvContent}</p>
     </div>
-    <a href="../" class="back-button">뒤로가기</a>
+    
+    <a href="../feswork/boardList?festivalNo=${rv.festivalNo}&cpage=1" class="back-button">뒤로가기</a>
+ 	<c:choose>
+ 	
+    <c:when test="${loginMember.memberId eq rv.memId}">
+    <a href="updateReview1?rvNo=${rv.rvNo}" class="edit-button">수정하기</a>
+    <a href="deletePost.do?festivalNo=${rv.festivalNo}&rvNo=${rv.rvNo}" class="delete-button" onclick="return confirm('정말 삭제하시겠습니까?');">삭제하기</a>
+	</c:when>
+	
+	<c:otherwise>
+		
+	</c:otherwise>
+	</c:choose>	
 </div>
 
  <jsp:include page="../common/footer.jsp"/>
-
-
-
 </body>
 </html>

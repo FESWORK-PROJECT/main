@@ -19,6 +19,7 @@ public class MemberService {
 		Member loginMember = null;
 		
 		SqlSession sqlSession = MybatisTemplate.getSqlSession();
+		
 		loginMember = mDao.loginMember(sqlSession, m);
 		
 		sqlSession.close();

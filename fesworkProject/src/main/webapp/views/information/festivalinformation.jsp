@@ -220,7 +220,7 @@
                 pointer-events: none;
                 border: 6px solid transparent;
                 border-top-color: #333; 
-              
+          
             }
 
             .select_box select:hover, .select_date select:hover, 
@@ -257,9 +257,17 @@
        
                 gap: 10px; /* 요소들 간의 간격 조절 */
             }
+            
             .btn_box {
-
-                align-items: center;
+	            align-items: center;
+                
+            }
+            .btn_box > button {
+				height: 48px !important;
+				padding: 0px !important;
+				margin: 0px !important;
+				border-radius: 10px
+                
             }
             #more_festival{
                 display: grid;
@@ -453,6 +461,11 @@
     transition: color 0.3s; /* Smooth transition */
 	}
 	
+	li > a{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 	
     </style>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
