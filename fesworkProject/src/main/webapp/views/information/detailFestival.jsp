@@ -307,7 +307,7 @@
     </div>
     
         <div align="center">
-        <a href="boardList?festivalNo=${iBoard.festivalNo}" id="reviewmore">후기 보기</a>
+        <a href="boardList?festivalNo=${iBoard.festivalNo}&cpage=1" id="reviewmore">후기 보기</a>
     	</div> 
     	
     	<br><br>
@@ -362,9 +362,7 @@
     	});
     });
         
-        
-        
-        
+       
     </script>
 </body>
 </html>

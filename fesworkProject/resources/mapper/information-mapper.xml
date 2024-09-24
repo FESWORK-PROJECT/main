@@ -25,7 +25,7 @@
 	
   <select id="selectFestivalsOrderByDate" resultMap="InformationResultSet">
         SELECT * FROM FESTIVAL
-        WHERE CLOSE_DATE >= SYSDATE
+        WHERE CLOSE_DATE >= SYSDATE AND MEM_ID = 'admin'
         ORDER BY OPEN_DATE ASC
     </select>
     
@@ -71,6 +71,8 @@
     	SET FES_LIKE = FES_LIKE + #{isLiked}
     	WHERE FESTIVAL_NO = #{festivalNo}
     </update>
+    
+    
     
     
     

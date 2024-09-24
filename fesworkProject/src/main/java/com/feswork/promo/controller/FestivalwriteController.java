@@ -53,7 +53,6 @@ public class FestivalwriteController extends HttpServlet {
 				, new MyFileRenamePolicy());
 		
 		
-		
 	    // 폼에서 전송된 데이터 받기
 	    String festivalName = multipart.getParameter("festivalName");
 	    String memId = multipart.getParameter("memId");

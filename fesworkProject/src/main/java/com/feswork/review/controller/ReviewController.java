@@ -40,11 +40,6 @@ public class ReviewController extends HttpServlet {
 		String strCpage = request.getParameter("cpage");
 		int cpage = 1;
 		
-		//전체 게시글 수 조회 
-		int listCount = new ReviewService().selectListCount(festivalNo);
-		
-		// 게시글 정보 불러오기 
-		ArrayList<Review> rList = new ReviewService().getBoardList(festivalNo);
 		
 		//
 		if (strCpage != null) {
@@ -52,7 +47,14 @@ public class ReviewController extends HttpServlet {
 			request.setAttribute("cpage", cpage);
 		}    
 		
+		//전체 게시글 수 조회 
+		int listCount = new ReviewService().selectListCount(festivalNo);
+		
+		// 게시글 정보 불러오기 
 		PageInfo pi = Pagination.getPageInfo(listCount, cpage, 5, 5);
+		
+		ArrayList<Review> rList = new ReviewService().getBoardList(festivalNo, pi);
+		
 		
 		request.setAttribute("pi", pi);
 		    
