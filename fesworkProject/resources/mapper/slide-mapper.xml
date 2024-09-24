@@ -19,10 +19,15 @@
 	
 	<resultMap id="simpleFestivalResultMap" type="Slide">
 	    <result column="FESTIVAL_NO" property="festivalNo" />
-	    <result column="FESTIVAL_NAME" property="festivalName" />
-	    <result column="FES_IMAGE" property="fesImage" />
-	    <result column="FES_ADD" property="fesAdd" />
-	    <result column="MEM_ID" property="memId" />
+		<result column="MEM_ID" property="memId" />
+		<result column="LOCAL_CODE" property="localCode" />
+		<result column="FESTIVAL_NAME" property="festivalName" />
+		<result column="OPEN_DATE" property="openDate" />
+		<result column="CLOSE_DATE" property="closeDate" />
+		<result column="FES_LIKE" property="fesLike" />
+		<result column="FES_DESCRIPTION" property="fesDescription"/>
+		<result column="FES_ADD" property="fesAdd" />
+		<result column="FES_IMAGE" property="fesImage"/>
 	</resultMap>
 	
 	<select id="getAllSlides" resultMap="slideResultSet">
@@ -30,6 +35,7 @@
 			   FESTIVAL_NAME,
 			   FES_IMAGE
 		FROM FESTIVAL
+		WHERE MEM_ID = 'admin'
 	</select>
 	
 	<select id="selectTopFestivals" resultMap = "simpleFestivalResultMap">
@@ -51,7 +57,7 @@
 	          FROM FESTIVAL 
 	          WHERE SYSDATE &gt; open_date AND SYSDATE &lt; CLOSE_DATE
 	          ORDER BY CLOSE_DATE)
-		WHERE ROWNUM &lt; = 3
+		WHERE MEM_ID = 'admin' AND ROWNUM &lt; = 3
 	</select>
 	
 	<select id="preFestivals" resultMap = "slideResultSet">
@@ -63,7 +69,7 @@
 	          FROM FESTIVAL 
 	          WHERE SYSDATE &lt; open_date
 	          ORDER BY open_date)
-		WHERE ROWNUM &lt; = 3
+		WHERE MEM_ID = 'admin' AND ROWNUM &lt; = 3
 	</select>
 	
 	<select id="getFestivalByLocalCode" resultMap = "slideResultSet">
