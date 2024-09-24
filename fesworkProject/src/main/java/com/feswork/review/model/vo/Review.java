@@ -12,7 +12,16 @@ public class Review {
 	private	String rvImg;
 	private	Date rvDate;
 	private int rvCount;
+	private String status;
 	
+	
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public int getRvCount() {
 		return rvCount;
 	}
@@ -25,6 +34,22 @@ public class Review {
 	
 	public Review() {}
 	
+	
+	
+	
+	public Review(int rvNo, int festivalNo, String memId, String rvTitle, String rvContent, String rvImg,
+			java.sql.Date rvDate, int rvCount, String status) {
+		super();
+		this.rvNo = rvNo;
+		this.festivalNo = festivalNo;
+		this.memId = memId;
+		this.rvTitle = rvTitle;
+		this.rvContent = rvContent;
+		this.rvImg = rvImg;
+		this.rvDate = rvDate;
+		this.rvCount = rvCount;
+		this.status = status;
+	}
 	public Review(int rvNo, int festivalNo, String memId, String rvTitle, String rvContent, String rvImg,
 			java.sql.Date rvDate, int rvCount) {
 		this.rvNo = rvNo;
@@ -87,12 +112,14 @@ public class Review {
 		this.rvDate = rvDate;
 	}
 	
-	
 	@Override
 	public String toString() {
 		return "Review [rvNo=" + rvNo + ", festivalNo=" + festivalNo + ", memId=" + memId + ", rvTitle=" + rvTitle
-				+ ", rvContent=" + rvContent + ", rvImg=" + rvImg + ", rvDate=" + rvDate + "]";
+				+ ", rvContent=" + rvContent + ", rvImg=" + rvImg + ", rvDate=" + rvDate + ", rvCount=" + rvCount
+				+ ", status=" + status + "]";
 	}
+	
+	
 	
 	
 	

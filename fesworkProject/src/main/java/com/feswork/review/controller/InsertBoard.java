@@ -42,11 +42,10 @@ public class InsertBoard extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
 		request.setCharacterEncoding("UTF-8");
 
 		int maxSize = 10 * 1024 * 1024; 	// 10mbyte
-		String savePath = request.getSession().getServletContext().getRealPath("/resources/upfiles/");
+		String savePath = request.getSession().getServletContext().getRealPath("/resources/images/");
 		
 		MultipartRequest multipart = new MultipartRequest(request
 		, savePath
@@ -59,26 +58,25 @@ public class InsertBoard extends HttpServlet {
 		String memId = multipart.getParameter("memId");
 		String rvTitle = multipart.getParameter("rvTitle");
 		String rvContent = multipart.getParameter("rvContent");
-		String rvImg = multipart.getParameter("rvImg");
+		String rvImg = multipart.getFilesystemName("rvImg");
 		
 		HashMap rv = new HashMap();
 		rv.put("festivalNo", festivalNo);
 		rv.put("memId", memId);
 		rv.put("rvTitle", rvTitle);
 		rv.put("rvContent", rvContent);
-		rv.put("rvImg ", "resources/upfiles/"+rvImg );
+		rv.put("rvImg", "/resources/images/"+rvImg);
 	
 		System.out.println(festivalNo + " 확인용 ");
+		System.out.println(rv);
 		int result = new ReviewService().insertReview(rv);
 		
 		if(result > 0){
 			//request.getRequestDispatcher("boardList?festivalNo="+festivalNo+"&cpage=1").forward(request, response);
-			
+			request.getSession().setAttribute("alertMsg", "리뷰가 성공적으로 등록되었습니다.");
 			  String festivalNoEncoded = URLEncoder.encode(festivalNo, "UTF-8");
 			    String redirectUrl = "boardList?festivalNo=" + festivalNoEncoded + "&cpage=1";
 			    response.sendRedirect(redirectUrl);
-		
-		
 		}
 	}
 

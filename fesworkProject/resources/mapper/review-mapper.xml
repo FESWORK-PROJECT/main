@@ -12,6 +12,8 @@
 		<result column="RV_IMG" property="rvImg"/>
 		<result column="RV_DATE" property="rvDate"/>
 		<result column="RV_COUNT" property="rvCount"/>
+		<result column="RV_STATUS" property="status"/>
+		
 	</resultMap> 
 	
 	
@@ -19,15 +21,14 @@
     SELECT *
     FROM RV 
     JOIN FESTIVAL ON RV.FESTIVAL_NO = FESTIVAL.FESTIVAL_NO
-    WHERE FESTIVAL.FESTIVAL_NO = #{festivalNo}
+    WHERE FESTIVAL.FESTIVAL_NO = #{festivalNo} AND RV_STATUS = 'Y'
 	</select>
 	
 	<select id="selectListCount" resultType="_int">
  			SELECT COUNT(*)
  			FROM RV
- 			WHERE FESTIVAL_NO = #{festivalNo} 		
+ 			WHERE FESTIVAL_NO = #{festivalNo} AND RV_STATUS = 'Y'	
 	</select>
-	
 	
 	<insert id="insertReview">
 				INSERT INTO RV(RV_NO
@@ -38,6 +39,7 @@
 							 , RV_IMG
 							 , RV_COUNT
 							 , RV_DATE
+							 , RV_STATUS
 							 )
 			VALUES ( RNO.NEXTVAL
 				   , #{festivalNo}
@@ -47,11 +49,50 @@
 				   , #{rvImg}				   
 				   , 0
 				   , SYSDATE
+				   , 'Y'
 				  	)
-	
 	</insert>
 	
+	<select id="reviewDetail" resultMap="ReviewResultSet">
+			SELECT *
+ 			FROM RV
+ 			WHERE RV_NO = #{rvNo} AND RV_STATUS = 'Y'
+	</select>
 	
+	<update id="updateReview">
+		UPDATE RV
+ 		SET RV_TITLE = #{rvTitle},
+ 		RV_CONTENT = #{rvContent},
+ 		RV_DATE = SYSDATE
+		WHERE RV_NO = #{rvNo}
+	</update>
+		
+	<update id="deletePost">
+	UPDATE RV
+	SET  RV_STATUS = 'N'
+	WHERE RV_NO = #{rvNo}
+	</update>
+	
+	
+	<select id="searchByWriter" resultMap="ReviewResultSet">
+		SELECT * FROM RV
+		 WHERE (MEM_ID  LIKE '%'|| #{keyword} ||'%') AND FESTIVAL_NO = #{festivalNo}
+	
+	</select>
+	
+	<select id="searchByTitle" resultMap="ReviewResultSet">
+			
+			SELECT * FROM RV
+		    WHERE (RV_TITLE LIKE '%'|| #{keyword} ||'%') AND FESTIVAL_NO = #{festivalNo}
+	
+	</select>
+	
+	<select id="searchByContent" resultMap="ReviewResultSet">
+			SELECT * FROM RV
+		    WHERE (RV_CONTENT LIKE '%'|| #{keyword} ||'%') AND FESTIVAL_NO = #{festivalNo}
+	</select>
+
+			
 </mapper>
 
 

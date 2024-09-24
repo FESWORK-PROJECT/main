@@ -1,8 +1,6 @@
-package com.feswork.information.controller;
+package com.feswork.review.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,20 +8,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.feswork.information.model.vo.Information;
-import com.feswork.information.service.InformationService;
+import com.feswork.review.model.vo.Review;
+import com.feswork.review.service.ReviewService;
 
 /**
- * Servlet implementation class SearchKeywordFestival
+ * Servlet implementation class UpdateReview
  */
-@WebServlet("/search")
-public class SearchKeywordFestival extends HttpServlet {
+@WebServlet("/updateReview1")
+public class UpdateReviewForword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchKeywordFestival() {
+    public UpdateReviewForword() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,23 +30,20 @@ public class SearchKeywordFestival extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String festivalName = request.getParameter("festivalName");
-		
-		ArrayList<Information> sList = new InformationService().getFestivalSearch(festivalName);
 		HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8"); 
+		response.setContentType("text/html; charset=UTF-8");
+		String rvNo= request.getParameter("rvNo");
+		request.setAttribute("rvNo", rvNo);
+		Review rv = new ReviewService().reviewDetail(rvNo);
 		
-		if(sList != null){
-			session.setAttribute("fList", sList);
-			request.getRequestDispatcher("views/information/festivalinformation.jsp")
-			.forward(request, response);
-		}else {
-			
+		if(rv != null) {
+		request.setAttribute("rv", rv);
+		request.getRequestDispatcher("views/information/updateReview.jsp").forward(request, response);	
+		
 		}
-		
-		
-	}
-
+}
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

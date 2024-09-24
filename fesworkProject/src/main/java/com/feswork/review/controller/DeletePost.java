@@ -1,7 +1,7 @@
-package com.feswork.information.controller;
+package com.feswork.review.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,20 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.feswork.information.model.vo.Information;
-import com.feswork.information.service.InformationService;
+import com.feswork.review.service.ReviewService;
 
 /**
- * Servlet implementation class SearchKeywordFestival
+ * Servlet implementation class DeletePost
  */
-@WebServlet("/search")
-public class SearchKeywordFestival extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+@WebServlet("/deletePost.do")
+public class DeletePost extends HttpServlet {
+	private static final long serialVersionUID = 1L;   
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchKeywordFestival() {
+    public DeletePost() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,19 +30,20 @@ public class SearchKeywordFestival extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String festivalName = request.getParameter("festivalName");
-		
-		ArrayList<Information> sList = new InformationService().getFestivalSearch(festivalName);
 		HttpSession session = request.getSession();
+		String rvNo = request.getParameter("rvNo");
+		String festivalNo = request.getParameter("festivalNo");
 		
-		if(sList != null){
-			session.setAttribute("fList", sList);
-			request.getRequestDispatcher("views/information/festivalinformation.jsp")
-			.forward(request, response);
-		}else {
-			
+		System.out.println(rvNo);
+		int result = new ReviewService().deletePost(rvNo);
+		
+		if(result > 0){
+			// request.getRequestDispatcher(festivalNo);
+			session.setAttribute("alertMsg", "삭제 성공했습니다.");
+			String redirectUrl = "boardList?festivalNo=" + festivalNo + "&cpage=1";
+			response.sendRedirect(redirectUrl);
 		}
+		
 		
 		
 	}

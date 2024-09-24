@@ -81,8 +81,8 @@
     <textarea id="rvContent" name="rvContent" required placeholder="내용을 입력해주세요." style="resize: none;"></textarea>
 
     <label for="rvImg">이미지 업로드</label>
-    <input type="file" id="rvImg" name="rvImg" accept="image/*" required onchange="previewImage(event)">
-    
+    <input type="file" id="rvImg" name="rvImg" accept="image/*" onchange="previewImage(event)">
+    										
     <img id="image-preview" class="image-preview" src="#" alt="이미지 미리보기" style="display: none;">
 
     <button type="submit" class="submit-btn">게시글 등록</button>
