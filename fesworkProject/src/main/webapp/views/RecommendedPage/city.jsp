@@ -54,7 +54,7 @@
         
         <div class="text1">
           <div class="recent-festivals">
-            <h2>연령대별 최근 선호 축제:</h2>
+            <h2>도시별 최근 선호 축제:</h2>
           </div>
           <div id="footer1">
             <a href="<%= contextPath %>/views/RecommendedPage/gender.jsp">성별</a> |
