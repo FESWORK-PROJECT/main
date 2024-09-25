@@ -112,6 +112,10 @@
     	this.button = document.querySelector('.searchBtn');
     	this.form
     }
+    
+    onload = () => {
+    	document.title = 'Feswork';
+    }
     </script>
 </body>
 </html>
