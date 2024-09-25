@@ -50,11 +50,11 @@ public class FindIdController extends HttpServlet {
 			String findId = memId.getMemberId();
 			HttpSession session = request.getSession();
 			session.setAttribute("alertMsg", "가입하신 아이디는 "+ findId + " 입니다.");
-			response.sendRedirect( request.getContextPath()+"/views/member/loginForm.jsp");
+			response.sendRedirect( request.getContextPath()+"/loginPage.me");
 		} else {
 			HttpSession session = request.getSession();
 			session.setAttribute("alertMsg", "가입하신 정보가 없습니다. 정확히 입력했는지 다시 확인해주세요.");
-			response.sendRedirect( request.getContextPath()+"/views/member/findIdForm.jsp" );
+			response.sendRedirect( request.getContextPath()+"/findIdPage.me" );
 		}
 	
 	}

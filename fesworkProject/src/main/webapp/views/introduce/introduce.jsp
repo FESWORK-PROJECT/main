@@ -137,7 +137,7 @@
     </div>
     
     <div id="goToIndex">
-		<a href="http://localhost:8282/feswork/introducePage.intro">▲ Top</a>
+		<a href="<%= contextPath %>/introducePage.intro">▲ Top</a>
     </div>
 </body>
 </html>
