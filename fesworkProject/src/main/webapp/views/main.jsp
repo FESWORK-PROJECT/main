@@ -294,6 +294,57 @@
 		.hidden {
 		    display: none;
 		}
+		
+		/* 모달 창을 기본적으로 숨김 */
+		.modal {
+		  display: none;  /* 숨김 */
+		  position: fixed;
+		  z-index: 1;  /* 가장 위에 표시되도록 함 */
+		  left: 0;
+		  top: 0;
+		  width: 10%;
+		  height: 10%;
+		  background-color: rgba(0,0,0,0.4);  /* 배경 흐리게 */
+		}
+		
+		/* 모달 내용 */
+		.modal-content {
+		  background-color: #fff;
+		  margin: 15% auto;
+		  padding: 20px;
+		  border: 1px solid #888;
+		  width: 30% !important;  /* 모달 크기 조정 (50%에서 30%로 줄임) */
+		  text-align: center;  /* 텍스트 및 이미지 가운데 정렬 */
+		  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  /* 모달 창에 약간의 그림자 추가 (선택사항) */
+		  border-radius: 10px;  /* 모서리 둥글게 (선택사항) */
+		}
+		/* 이미지 가운데 정렬 */
+		#modal-festival-image {
+		  display: block;
+		  margin: 20px auto;
+		  max-width: 100%;  /* 창 크기에 맞춰 이미지 조정 */
+		  height: auto;
+		}
+		/* 모달 내용 안의 글씨 */
+		#modal-festival-name {
+			font-family: "Dongle", sans-serif;
+            font-size: 40px;
+            font-weight: 900;
+            color: #5658b5b3;
+		}
+		
+		/* 닫기 버튼 */
+		.close {
+		  color: black;
+		  float: right;
+		  font-size: 28px;
+		  font-weight: bold;
+		}
+		
+		.close:hover, .close:focus {
+		  color: #5658b5b3;
+		  cursor: pointer;
+		}
 </style>
 </head>
 <body>
@@ -350,35 +401,52 @@
                 </g>
             </svg>
             
-            <div id="festival-info">
-  				<h2 id="festival-name"></h2>
-  				<img id="festival-image" src="" alt="Festival Image">
+            <!-- 모달 창 HTML -->
+			<div id="festival-modal" class="modal">
+			  <div class="modal-content">
+			    <span class="close">&times;</span>  <!-- 닫기 버튼 -->
+			    <h2 id="modal-festival-name"></h2>
+			    <img id="modal-festival-image" src="" alt="Festival Image">
+			  </div>
 			</div>
         
             <script>
-        	 // 특정 지역을 클릭하면 서버에 데이터를 요청하는 JavaScript 코드
+         // 특정 지역을 클릭하면 서버에 데이터를 요청하는 JavaScript 코드
             document.querySelectorAll('path').forEach(function(path) {
               path.addEventListener('click', function(event) {
                 const localCode = event.target.getAttribute('title');  // 지역의 title 값을 가져옴
 
-                fetch('/feswork/festival?localCode='+localCode)
+                fetch('/feswork/festival?localCode=' + localCode)
                   .then(response => response.json())
                   .then(land => {
                     console.log(land);  // 응답 데이터를 콘솔에 출력해 확인
-                    // 응답 데이터가 배열이라면, 첫 번째 요소로 접근해야 할 수도 있음
-                    if (Array.isArray(land) && land.length > 0) {
-                      document.getElementById('festival-name').textContent = land[0].festivalName;
-                      document.getElementById('festival-image').src = land[0].fesImage;
-                    } else {
-                      // 응답이 객체인 경우
-                      document.getElementById('festival-name').textContent = land.festivalName;
-                      document.getElementById('festival-image').src = land.fesImage;
-                    }
+                    
+                    // 응답 데이터가 배열이라면, 첫 번째 요소로 접근
+                    let festivalData = Array.isArray(land) && land.length > 0 ? land[0] : land;
+                    
+                    // 모달 창의 내용을 설정
+                    document.getElementById('modal-festival-name').textContent = festivalData.festivalName;
+                    document.getElementById('modal-festival-image').src = festivalData.fesImage;
+                    
+                    // 모달 창을 표시
+                    document.getElementById('festival-modal').style.display = 'block';
                   })
                   .catch(error => console.error('Error fetching festival data:', error));
               });
             });
 
+            // 모달 닫기 기능
+            document.querySelector('.close').addEventListener('click', function() {
+              document.getElementById('festival-modal').style.display = 'none';
+            });
+
+            // 모달 외부 클릭 시 닫기
+            window.addEventListener('click', function(event) {
+              const modal = document.getElementById('festival-modal');
+              if (event.target == modal) {
+                modal.style.display = 'none';
+              }
+            });
             </script>
         	</div> <!--width="400px"</div>-->
     
@@ -639,6 +707,7 @@
 			// 페이지 로드 시 open 함수 호출
 			$(document).ready(function() {
 				preList();
+				document.title = 'feswork';
 			});
 			</script>
             
